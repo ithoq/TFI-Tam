@@ -300,6 +300,7 @@
     <Content Include="packages.config" />
     <Content Include="Pages\assets\css\style.css" />
     <Content Include="Pages\assets\css\style.min.css" />
+    <Content Include="Pages\assets\img\about_us_slide_2.png" />
     <Content Include="Pages\assets\img\Catálogo\1.png" />
     <Content Include="Pages\assets\img\Catálogo\1732274.jpg" />
     <Content Include="Pages\assets\img\Catálogo\4116-MLA2600172638_042012-F.jpg" />

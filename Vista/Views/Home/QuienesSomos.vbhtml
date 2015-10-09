@@ -23,5 +23,6 @@ end section
         pertinente para que ese anuncio sea perfecto. Contamos con una amplia variedad de piezas para el "antes", el "durante" 
         y el "después" para que el sello personal de los agasajados se vea plasmado durante todo el evento y quede así grabado 
         en la memoria de los invitados. Llamanos y trabajaremos juntos para que cada pieza sea única!</p>
+        <img src="~/Pages/assets/img/about_us_slide_2.png" />
     </div>
 </div>
