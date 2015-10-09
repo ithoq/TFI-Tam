@@ -12,10 +12,8 @@ Public Class ContactoMapper
         Dim parametros As New Hashtable
 
         parametros.Add("@FechaHora",c.FechaHora)
-        parametros.Add("@Nombre", c.Nombre)
-        parametros.Add("@Apellido", c.Apellido)
+        parametros.Add("@NombreApellido", c.NombreApellido)
         parametros.Add("@Email", c.Email)
-        parametros.Add("@Telefono", c.Telefono)
         parametros.Add("@Asunto", c.Asunto)
         parametros.Add("@Mensaje", c.Mensaje)
 
@@ -32,10 +30,8 @@ Public Class ContactoMapper
                 Dim c As Contacto = New Contacto
                 c.Id = Item("Id")
                 c.FechaHora = Item("FechaHora")
-                c.Nombre = Item("Nombre")
-                c.Apellido = Item("Apellido")
+                c.NombreApellido = Item("NombreApellido")
                 c.Email = Item("Email")
-                c.Telefono = Item("Telefono")
                 c.Asunto = Item("Asunto")
                 c.Mensaje = Item("Mensaje")
                 lista.Add(c)

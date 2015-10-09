@@ -1,4 +1,6 @@
-﻿@section breadcrumb
+﻿@ModelType EE.Contacto
+
+@section breadcrumb
     <ul class="breadcrumb">
         <li>
             <p>Inicio</p>
@@ -23,32 +25,27 @@ end section
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(True)
                     @<fieldset>
-                        <div class="form-group form-group-default required ">
-                            <label>Nombre</label>
-                            <input type="text" class="form-control" required="">
-                        </div>
-                        <div class="form-group form-group-default required ">
-                            <label>Apellido</label>
-                            <input type="text" class="form-control" required="">
-                        </div>
-                        <div class="form-group form-group-default required ">
-                            <label>Email</label>
-                            <input type="email" class="form-control" required="">
-                        </div>
-                        <div class="form-group form-group-default required ">
-                            <label>Teléfono</label>
-                            <input type="tel" class="form-control" required="">
-                        </div>
-                        <div class="form-group form-group-default required ">
-                            <label>Asunto</label>
-                            <input type="text" class="form-control" required="">
-                        </div>
-                        <div class="form-group form-group-default required ">
-                            <label>Consulta</label>
-                            <input type="text" class="form-control" required="">
-                        </div>
+                         <div class="form-group form-group-default required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.NombreApellido))), Nothing, "has-error")) ">
+                             @Html.LabelFor(Function(model) model.NombreApellido)
+                             @Html.TextBoxFor(Function(model) model.NombreApellido, New With {.class = "form-control"})
+                             @Html.ValidationMessageFor(Function(model) model.NombreApellido, Nothing, New With {.class = "help-block"})
+                         </div>
+                         <div class="form-group form-group-default required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Email))), Nothing, "has-error")) ">
+                             @Html.LabelFor(Function(model) model.Email)
+                             @Html.TextBoxFor(Function(model) model.Email, New With {.class = "form-control"})
+                             @Html.ValidationMessageFor(Function(model) model.Email, Nothing, New With {.class = "help-block"})
+                         </div>
+                         <div class="form-group form-group-default required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Asunto))), Nothing, "has-error")) ">
+                             @Html.LabelFor(Function(model) model.Asunto)
+                             @Html.TextBoxFor(Function(model) model.Asunto, New With {.class = "form-control"})
+                             @Html.ValidationMessageFor(Function(model) model.Asunto, Nothing, New With {.class = "help-block"})
+                         </div>
+                         <div class="form-group form-group-default required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Mensaje))), Nothing, "has-error")) ">
+                             @Html.LabelFor(Function(model) model.Mensaje)
+                             @Html.TextAreaFor(Function(model) model.Mensaje, New With {.class = "form-control", .rows = 10, .style="height:auto;"})
+                             @Html.ValidationMessageFor(Function(model) model.Mensaje, Nothing, New With {.class = "help-block"})
+                         </div>
                         <button type="submit" class="btn btn-primary btn-cons">Enviar</button>
-                        @Html.ActionLink("Volver", "Index", Nothing, New With {.class = "btn btn-default btn-cons"})
                     </fieldset>
                 End Using
             </div>

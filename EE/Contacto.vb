@@ -21,27 +21,15 @@ Public Class Contacto
         End Set
     End Property
 
-    Private vNombre As String
-    <Required(ErrorMessage:="Campo requerido"), Display(Name:="Nombre")>
+    Private vNombreApellido As String
+    <Required(ErrorMessage:="Campo requerido"), Display(Name:="Nombre y Apellido")>
     <StringLength(50, ErrorMessage:="Se ha superado la longitud permitida de 50 caracteres.")>
-    Public Property Nombre() As String
+    Public Property NombreApellido() As String
         Get
-            Return vNombre
+            Return vNombreApellido
         End Get
         Set(ByVal value As String)
-            vNombre = value
-        End Set
-    End Property
-
-    Private vApellido As String
-    <Required(ErrorMessage:="Campo requerido"), Display(Name:="Apellido")>
-    <StringLength(50, ErrorMessage:="Se ha superado la longitud permitida de 50 caracteres.")>
-    Public Property Apellido() As String
-        Get
-            Return vApellido
-        End Get
-        Set(ByVal value As String)
-            vApellido = value
+            vNombreApellido = value
         End Set
     End Property
 
@@ -55,18 +43,6 @@ Public Class Contacto
         End Get
         Set(ByVal value As String)
             vEmail = value
-        End Set
-    End Property
-
-    Private vTelefono As String
-    <Required(ErrorMessage:="Campo requerido"), Display(Name:="Teléfono")>
-    <StringLength(50, ErrorMessage:="Se ha superado la longitud permitida de 50 caracteres.")>
-    Public Property Telefono() As String
-        Get
-            Return vTelefono
-        End Get
-        Set(ByVal value As String)
-            vTelefono = value
         End Set
     End Property
 

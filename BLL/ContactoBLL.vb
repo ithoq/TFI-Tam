@@ -9,6 +9,7 @@ Public Class ContactoBLL
     End Sub
 
     Public Function Crear(ByVal c As Contacto) As Boolean
+        c.FechaHora = Now
         Return vMapper.Crear(c)
     End Function
 

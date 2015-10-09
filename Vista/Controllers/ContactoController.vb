@@ -24,6 +24,7 @@ Public Class ContactoController
     Function Crear(ByVal c As Contacto) As ActionResult
         If ModelState.IsValid Then
             Me.vBLL.Crear(c)
+            Return RedirectToAction("Index", "Home")
         End If
 
         Return View(c)
