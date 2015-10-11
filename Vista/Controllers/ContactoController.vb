@@ -10,7 +10,7 @@ Public Class ContactoController
 
     '
     ' GET: /Contacto
-    <Autorizar(Roles:="VerContacto")>
+    <Autorizar(Roles:="VerContactos")>
     Function Index() As ActionResult
         Dim vLista As List(Of Contacto) = Me.vBLL.Listar()
         Return View(vLista)

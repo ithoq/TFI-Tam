@@ -799,8 +799,8 @@
                         "<a data-view-animation='push-parrallax' data-view-port='#chat' data-navigate='view' class='' href='#'>" +
                             "<span class='col-xs-height col-middle'>" +
                                 "<span class='thumbnail-wrapper d32 circular bg-success'>" +
-                                    "<img width='34' height='34' alt='' data-src-retina='/Pages/assets/img/profiles/1x.jpg' data-src='/Pages/assets/img/profiles/1.jpg' src='/Pages/assets/img/profiles/1x.jpg' class='col-top'>" +
-                                "</span>" +
+                                    "<img width='34' height='34' alt='' data-src-retina='/Pages/assets/img/profiles/generic_female_avatar.jpg' data-src='/Pages/assets/img/profiles/generic_female_avatar.jpg' src='/Pages/assets/img/profiles/generic_female_avatar.jpg' class='col-top'>" +
+                               "</span>" +
                             "</span>" +
                             "<p class='p-l-10 col-xs-height col-middle col-xs-12'>" +
                                 "<span class='text-master' id='notificationMessage'>" + user.NombreUsuario + "</span>" +
@@ -831,7 +831,7 @@
                         "<a data-view-animation='push-parrallax' data-view-port='#chat' data-navigate='view' class='' href='#'>" +
                             "<span class='col-xs-height col-middle'>" +
                                 "<span class='thumbnail-wrapper d32 circular bg-success'>" +
-                                    "<img width='34' height='34' alt='' data-src-retina='/Pages/assets/img/profiles/1x.jpg' data-src='/Pages/assets/img/profiles/1.jpg' src='/Pages/assets/img/profiles/1x.jpg' class='col-top'>" +
+                                    "<img width='34' height='34' alt='' data-src-retina='/Pages/assets/img/profiles/generic_female_avatar.jpg' data-src='/Pages/assets/img/profiles/generic_female_avatar.jpg' src='/Pages/assets/img/profiles/generic_female_avatar.jpg' class='col-top'>" +
                                 "</span>" +
                             "</span>" +
                             "<p class='p-l-10 col-xs-height col-middle col-xs-12'>" +

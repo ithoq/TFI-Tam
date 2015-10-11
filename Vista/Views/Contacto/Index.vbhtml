@@ -30,10 +30,8 @@ End Section
             <thead>
                 <tr>
                     <th>Fecha</th>
-                    <th>Nombre</th>
-                    <th>Apellido</th>
+                    <th>Nombre y Apellido</th>
                     <th>Email</th>
-                    <th>Teléfono</th>
                     <th>Asunto</th>
                     <th>Mensaje</th>
                 </tr>
@@ -43,19 +41,13 @@ End Section
                     Dim currentItem = item
                     @<tr>
                         <td>
-                             @Html.DisplayFor(Function(modelItem) currentItem.FechaHora.ToString())
+                             @Html.DisplayFor(Function(modelItem) currentItem.FechaHora)
                         </td>
                         <td>
-                            @Html.DisplayFor(Function(modelItem) currentItem.Nombre)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(Function(modelItem) currentItem.Apellido)
+                            @Html.DisplayFor(Function(modelItem) currentItem.NombreApellido)
                         </td>
                         <td>
                             @Html.DisplayFor(Function(modelItem) currentItem.Email)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(Function(modelItem) currentItem.Telefono)
                         </td>
                         <td>
                             @Html.DisplayFor(Function(modelItem) currentItem.Asunto)

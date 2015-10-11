@@ -547,7 +547,11 @@
                     alert("Error: Could not find Google translate frame.");
                     return false;
                 }
-                $frame.contents().find('.goog-te-menu2-item span.text:contains(' + lang.toLowerCase() + ')').get(0).click();
+                $frame.contents().find('.goog-te-menu2-item span.text').each(function () {
+                    if ($(this).text().toLowerCase() == lang.toLowerCase()) {
+                        $(this).get(0).click();
+                    }
+                });
                 return false;
             });
         });

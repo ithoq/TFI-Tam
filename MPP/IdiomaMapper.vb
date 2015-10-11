@@ -8,6 +8,11 @@ Public Class IdiomaMapper
         Me.vDatos = New Datos()
     End Sub
 
+    Public Function Crear(ByVal idioma As Idioma) As Boolean
+        Dim parametros As New Hashtable
+
+    End Function
+
     Public Function Editar(ByVal idiomasActivos As List(Of Integer)) As Boolean
         Dim parametros As New Hashtable
 
@@ -22,6 +27,10 @@ Public Class IdiomaMapper
         parametros.Add("@IdiomasActivos", dt)
 
         Return vDatos.Escribir("s_ModificacionIdioma", parametros)
+    End Function
+
+    Public Function Eliminar(ByVal id As Integer) As Boolean
+
     End Function
 
     Public Function Listar() As List(Of Idioma)
