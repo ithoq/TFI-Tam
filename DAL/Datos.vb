@@ -4,8 +4,10 @@ Public Class Datos
 
     'Private Str As String = "Data Source=.\SQL_UAI;Initial Catalog=TFI;Integrated Security=True"
     Private Str As String = "Data Source=.;Initial Catalog=TFI;Integrated Security=True"
+    Private Str2 As String = "Data Source=.;Initial Catalog=Master;Integrated Security=True"
 
     Private Cnn As New SqlConnection(Str)
+    Private CnnMaster As New SqlConnection(Str2)
     Private Tranx As SqlTransaction
     Private Cmd As SqlCommand
 
@@ -69,6 +71,57 @@ Public Class Datos
             Cnn.Close()
         End Try
 
+    End Function
+
+    Public Function BackupBase(ByVal rutaNombre As String) As Boolean
+        Try
+            If CnnMaster.State = ConnectionState.Closed Then
+                CnnMaster.ConnectionString = Str2
+                CnnMaster.Open()
+            End If
+
+            Dim consulta As String = "BACKUP DATABASE TFI " &
+                                     "TO DISK = '" & rutaNombre & "'"
+
+            Cmd = New SqlCommand
+            Cmd.Connection = CnnMaster
+            Cmd.CommandText = consulta
+            Cmd.CommandType = CommandType.Text
+
+            Dim respuesta As Integer = Cmd.ExecuteNonQuery
+
+            Return True
+        Catch ex As Exception
+            Return False
+        Finally
+            CnnMaster.Close()
+        End Try
+    End Function
+
+    Public Function RestaurarBase(ByVal rutaNombre As String) As Boolean
+        Try
+            If CnnMaster.State = ConnectionState.Closed Then
+                CnnMaster.ConnectionString = Str2
+                CnnMaster.Open()
+            End If
+
+            Dim consulta As String = "Alter Database TFI SET SINGLE_USER With ROLLBACK IMMEDIATE" & vbCrLf &
+                                     "RESTORE DATABASE TFI " &
+                                     "FROM DISK = '" & rutaNombre & "'" & " WITH REPLACE"
+
+            Cmd = New SqlCommand
+            Cmd.Connection = CnnMaster
+            Cmd.CommandText = consulta
+            Cmd.CommandType = CommandType.Text
+
+            Dim respuesta As Integer = Cmd.ExecuteNonQuery
+
+            Return True
+        Catch ex As Exception
+            Return False
+        Finally
+            CnnMaster.Close()
+        End Try
     End Function
 
 End Class

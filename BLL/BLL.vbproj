@@ -67,6 +67,7 @@
     <Compile Include="IdiomaBLL.vb" />
     <Compile Include="MensajeBLL.vb" />
     <Compile Include="PerfilBLL.vb" />
+    <Compile Include="ResguardoBLL.vb" />
     <Compile Include="UsuarioBLL.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

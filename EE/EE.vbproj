@@ -71,6 +71,7 @@
     <Compile Include="Patente.vb" />
     <Compile Include="Perfil.vb" />
     <Compile Include="Permiso.vb" />
+    <Compile Include="Resguardo.vb" />
     <Compile Include="SesionUsuario.vb" />
     <Compile Include="Usuario.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

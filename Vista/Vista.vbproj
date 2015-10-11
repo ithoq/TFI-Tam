@@ -193,6 +193,7 @@
     <Compile Include="Controllers\HomeController.vb" />
     <Compile Include="Controllers\IdiomaController.vb" />
     <Compile Include="Controllers\PerfilController.vb" />
+    <Compile Include="Controllers\ResguardoController.vb" />
     <Compile Include="Controllers\UsuarioController.vb" />
     <Compile Include="Converters\PermisoConverter.vb" />
     <Compile Include="Global.asax.vb">
@@ -1563,6 +1564,7 @@
     <Content Include="Views\Home\QuienesSomos.vbhtml" />
     <Content Include="Views\Contacto\Crear.vbhtml" />
     <Content Include="Views\Contacto\Index.vbhtml" />
+    <Content Include="Views\Resguardo\Index.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
@@ -1787,6 +1789,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Resguardos\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BLL\BLL.vbproj">

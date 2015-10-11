@@ -67,6 +67,7 @@
     <Compile Include="IdiomaMapper.vb" />
     <Compile Include="MensajeMapper.vb" />
     <Compile Include="PerfilMapper.vb" />
+    <Compile Include="ResguardoMapper.vb" />
     <Compile Include="UsuarioMapper.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

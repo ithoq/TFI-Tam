@@ -16,7 +16,7 @@ Public Class MensajeMPP
         parametros.Add("@Grupo", m.Grupo)
         parametros.Add("@Usuario_Id", m.Usuario.Id)
 
-        Return vDatos.Escribir("s_CrearMensaje", parametros)
+        Return vDatos.Escribir("s_AltaMensaje", parametros)
     End Function
 
     Public Function Listar(ByVal grupo As String) As List(Of Mensaje)
