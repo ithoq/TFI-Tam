@@ -36,7 +36,7 @@ Public Class MensajeMPP
                 m.Mensaje = Item("Mensaje")
                 m.Grupo = Item("Grupo")
                 u.Id = Item("Usuario_Id")
-                u.NombreUsuario = Item("Nombre_Usuario")
+                u.NombreUsuario = Item("NombreUsuario")
                 m.Usuario = u
                 lista.Add(m)
             Next

@@ -781,17 +781,154 @@
  * ============================================================ */
 
 (function($) {
-  'use strict';
-  //To Open Chat When Clicked
-  $('[data-chat-input]').on('keypress',function(e){
-    if(e.which == 13) {
-       var el = $(this).attr('data-chat-conversation');
-       $(el).append('<div class="message clearfix">'+
-        '<div class="chat-bubble from-me">'+$(this).val()+
-        '</div></div>');
-       $(this).val('');
+    'use strict';
+
+    if ($("#loggedUserId").length) {
+
+        var chat = $.connection.chatHub;
+
+        chat.client.OnlineStatus = function (connectionId, userList) {
+            console.log("Usuarios Actualizados " + connectionId);
+            var loggedUserId = $("#loggedUserId").val();
+            $("#ulOnlineUsers").html("");
+            for (var i = 0; i < userList.length; i++) {
+                var user = userList[i];
+                if (loggedUserId != user.Id) {
+                    $("#ulOnlineUsers").append(
+                    "<li class='chat-user-list clearfix' data-usuarioId='" + user.Id + "'>" +
+                        "<a data-view-animation='push-parrallax' data-view-port='#chat' data-navigate='view' class='' href='#'>" +
+                            "<span class='col-xs-height col-middle'>" +
+                                "<span class='thumbnail-wrapper d32 circular bg-success'>" +
+                                    "<img width='34' height='34' alt='' data-src-retina='/Pages/assets/img/profiles/1x.jpg' data-src='/Pages/assets/img/profiles/1.jpg' src='/Pages/assets/img/profiles/1x.jpg' class='col-top'>" +
+                                "</span>" +
+                            "</span>" +
+                            "<p class='p-l-10 col-xs-height col-middle col-xs-12'>" +
+                                "<span class='text-master' id='notificationMessage'>" + user.NombreUsuario + "</span>" +
+                                "<span class='block text-master hint-text fs-12'>" + user.Nombre + " " + user.Apellido + "</span>" +
+                            "</p>" +
+                        "</a>" +
+                    "</li>");
+                }
+            }
+            $('.chat-user-list > a[data-navigate="view"]').click(function (e) {
+                e.preventDefault();
+                var el = $(this).attr('data-view-port');
+                $(el).toggleClass($(this).attr('data-view-animation'));
+                chat.server.createGroup($(this).parents(".chat-user-list").attr('data-usuarioid'));
+                return false;
+            });
+        };
+
+        chat.client.joined = function (connectionId, userList) {
+            console.log("Conectado " + connectionId);
+            var loggedUserId = $("#loggedUserId").val();
+            $("#ulOnlineUsers").html("");
+            for (var i = 0; i < userList.length; i++) {
+                var user = userList[i];
+                if (loggedUserId != user.Id) {
+                    $("#ulOnlineUsers").append(
+                    "<li class='chat-user-list clearfix' data-usuarioId='" + user.Id + "'>" +
+                        "<a data-view-animation='push-parrallax' data-view-port='#chat' data-navigate='view' class='' href='#'>" +
+                            "<span class='col-xs-height col-middle'>" +
+                                "<span class='thumbnail-wrapper d32 circular bg-success'>" +
+                                    "<img width='34' height='34' alt='' data-src-retina='/Pages/assets/img/profiles/1x.jpg' data-src='/Pages/assets/img/profiles/1.jpg' src='/Pages/assets/img/profiles/1x.jpg' class='col-top'>" +
+                                "</span>" +
+                            "</span>" +
+                            "<p class='p-l-10 col-xs-height col-middle col-xs-12'>" +
+                                "<span class='text-master' id='notificationMessage'>" + user.NombreUsuario + "</span>" +
+                                "<span class='block text-master hint-text fs-12'>" + user.Nombre + " " + user.Apellido + "</span>" +
+                            "</p>" +
+                        "</a>" +
+                    "</li>");
+                }
+            }
+            $('.chat-user-list > a[data-navigate="view"]').click(function (e) {
+                e.preventDefault();
+                var el = $(this).attr('data-view-port');
+                $(el).toggleClass($(this).attr('data-view-animation'));
+                chat.server.createGroup($(this).parents(".chat-user-list").attr('data-usuarioid'));
+                return false;
+            });
+        };
+
+        chat.client.setChatWindow = function (strGroupName, user, listaMensajes) {
+            var userLi = $(".chat-user-list[data-usuarioid='" + user.Id + "']").find(".badge").remove();
+            var wrapperChat = $('#chatView');
+            wrapperChat.attr('data-nombregrupo', strGroupName);
+            wrapperChat.attr('data-usuarioid', user.Id);
+
+            $('#chatView').find(".view-heading").html(user.NombreUsuario + "<div class='fs-11 hint-text'>" + user.Nombre + " " + user.Apellido + "</div>");
+
+            var chatContainer = $("#my-conversation");
+            chatContainer.html("");
+            for (var i = 0; i < listaMensajes.length; i++) {
+                var mensaje = listaMensajes[i];
+                var message = preparePost(mensaje.EntradaSalida, mensaje.FechaHoraFormateada, mensaje.Usuario.NombreUsuario, 'avatar2', mensaje.Mensaje);
+                message = $(message);
+                chatContainer.append(message);
+            }
+
+            $('#chatView').find('a[data-navigate="view"]').click(function (e) {
+                wrapperChat.attr('data-nombregrupo', "");
+                wrapperChat.attr('data-usuarioid', "");
+                return false;
+            });
+            chatContainer.scrollTop(chatContainer[0].scrollHeight);
+        };
+
+        chat.client.addMessage = function (message, groupName, fromId, fromUserName) {
+            var wrapperChat = $("#chatView[data-usuarioid='" + fromId + "']");
+            if (wrapperChat.length == 0) {
+                var userLi = $(".chat-user-list[data-usuarioid='" + fromId + "']");
+                if (userLi.length > 0) {
+                    if (userLi.find(".badge").length == 0) {
+                        userLi.find("#notificationMessage").append("&nbsp<span class='badge badge-info'>1</span>");
+                    } else {
+                        var badge = userLi.find(".badge");
+                        var count = parseInt(badge.text()) + 1;
+                        badge.html(count);
+                    }
+                }
+            } else {
+                var chatContainer = $("#my-conversation");
+                var time = new Date();
+                var message = preparePost('them', (time.getHours() + ':' + time.getMinutes()), fromUserName, 'avatar2', message);
+                message = $(message);
+                chatContainer.append(message);
+                chatContainer.scrollTop(chatContainer[0].scrollHeight);
+            }
+        };
+
+        $.connection.hub.start(function () {
+            console.log("Conectando...");
+            console.log(chat.server.getAllOnlineStatus());
+        });
+
+        var preparePost = function (dir, time, name, avatar, message) {
+            var tpl = '';
+            tpl += '<div class="message clearfix">' +
+                        '<div class="chat-bubble from-' + dir + '">' +
+                            name + ": " + message + "<br/><small>" + time + "</small>" +
+                        '</div>' +
+                   '</div>';
+            return tpl;
+        };
+
+        //To Open Chat When Clicked
+        $('[data-chat-input]').on('keypress',function(e){
+            if(e.which == 13) {
+                var time = new Date();
+                var message = preparePost('me', (time.getHours() + ':' + time.getMinutes()), "Yo", 'avatar3', $(this).val());
+                message = $(message);
+                var chatContainer = $("#my-conversation");
+                chatContainer.append(message);
+                chatContainer.scrollTop(chatContainer[0].scrollHeight);
+                chat.server.send($(this).val(), $('#chatView').attr('data-nombregrupo'));
+                $(this).val("");
+            }
+        });
+
     }
-  });
 
 })(window.jQuery);
 /* ============================================================

@@ -72,21 +72,21 @@ Public Class Chat
 
     Public Sub CreateGroup(toConnectTo As String)
         Dim strGroupName As String = GetUniqueGroupName(Me.CurrentUser.UsuarioId, toConnectTo)
-        Dim connectionId_To As String = ConexionUsuario.listaUsuariosConectados.Where(Function(item) item.Id = toConnectTo).[Select](Function(item) item.ConexionId).SingleOrDefault()
-        If Not String.IsNullOrEmpty(connectionId_To) Then
+        Dim userToConnectTo As UsuarioChatModel = ConexionUsuario.listaUsuariosConectados.Where(Function(item) item.Id = toConnectTo).SingleOrDefault()
+        If IsNothing(userToConnectTo) = False Then
             Groups.Add(Context.ConnectionId, strGroupName)
-            Groups.Add(connectionId_To, strGroupName)
+            Groups.Add(userToConnectTo.ConexionId, strGroupName)
             Dim listaMensajes As List(Of Mensaje) = Me.vMensajeBLL.Listar(strGroupName)
             For Each m As Mensaje In listaMensajes
                 If m.Usuario.Id = Me.CurrentUser.UsuarioId Then
-                    m.EntradaSalida = "out"
+                    m.EntradaSalida = "me"
                     m.Usuario.NombreUsuario = "Yo"
                 Else
-                    m.EntradaSalida = "in"
+                    m.EntradaSalida = "them"
                 End If
                 m.FechaHoraFormateada = m.FechaHora.ToString("dd/MM/yyyy HH:mm")
             Next
-            Clients.Caller.setChatWindow(strGroupName, toConnectTo, listaMensajes)
+            Clients.Caller.setChatWindow(strGroupName, userToConnectTo, listaMensajes)
         End If
     End Sub
 
