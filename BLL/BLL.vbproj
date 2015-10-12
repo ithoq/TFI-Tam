@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BitacoraBLL.vb" />
+    <Compile Include="CategoriaBLL.vb" />
     <Compile Include="ContactoBLL.vb" />
     <Compile Include="IdiomaBLL.vb" />
     <Compile Include="MensajeBLL.vb" />

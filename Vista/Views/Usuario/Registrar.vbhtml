@@ -55,6 +55,10 @@ end section
                             @Html.PasswordFor(Function(model) model.ConfirmaClave, New With {.class = "form-control"})
                             @Html.ValidationMessageFor(Function(model) model.ConfirmaClave, Nothing, New With {.class = "help-block"})
                         </div>
+                        <div class="checkbox check-success required">
+                             <input type="checkbox" checked="checked" value="1" id="checkbox2">
+                             <label for="checkbox2">Acepto <a>términos y condiciones</a></label>
+                        </div>
                         <button type="submit" class="btn btn-primary btn-cons">Grabar</button>
                     </fieldset>
                 End Using

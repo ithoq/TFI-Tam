@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BitacoraMapper.vb" />
+    <Compile Include="CategoriaMapper.vb" />
     <Compile Include="ContactoMapper.vb" />
     <Compile Include="IdiomaMapper.vb" />
     <Compile Include="MensajeMapper.vb" />

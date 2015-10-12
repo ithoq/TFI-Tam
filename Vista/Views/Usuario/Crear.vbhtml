@@ -57,11 +57,11 @@ End Section
                                 @Html.PasswordFor(Function(model) model.Clave, New With {.class = "form-control"})
                                 @Html.ValidationMessageFor(Function(model) model.Clave, Nothing, New With {.class = "help-block"})
                             </div>
-                             <div class="form-group form-group-default required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.PerfilesId))), Nothing, "has-error"))">
-                                 @Html.LabelFor(Function(model) model.PerfilesId)
-                                 @Html.ListBoxFor(Function(model) model.PerfilesId, New MultiSelectList(ViewBag.Perfiles, "Id", "Nombre"), New With {.style = "width: 100%"})
-                                 @Html.ValidationMessageFor(Function(model) model.PerfilesId, Nothing, New With {.class = "help-block"})
-                             </div>
+                         <div class="form-group form-group-default form-group-default-select2 required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.PerfilesId))), Nothing, "has-error"))">
+                             @Html.LabelFor(Function(model) model.PerfilesId)
+                             @Html.ListBoxFor(Function(model) model.PerfilesId, New MultiSelectList(ViewBag.Perfiles, "Id", "Nombre"), New With {.style = "width: 100%"})
+                             @Html.ValidationMessageFor(Function(model) model.PerfilesId, Nothing, New With {.class = "help-block"})
+                         </div>
                         <button type="submit" class="btn btn-primary btn-cons">Grabar</button>
                         @Html.ActionLink("Volver", "Index", Nothing, New With {.class = "btn btn-default btn-cons"})
                     </fieldset>

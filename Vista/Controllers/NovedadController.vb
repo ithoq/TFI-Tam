@@ -18,6 +18,8 @@ Public Class NovedadController
 
     <Autorizar(Roles:="CrearNovedad")>
     Function Crear() As ActionResult
+        Dim vBLLCat As New CategoriaBLL
+        ViewBag.Categorias = vBLLCat.Listar()
         Return View()
     End Function
 

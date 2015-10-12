@@ -21,7 +21,6 @@ Public Class Resguardo
         End Set
     End Property
 
-
     Private vFechaHora As DateTime
     Public Property FechaHora() As DateTime
         Get

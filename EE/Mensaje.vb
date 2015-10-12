@@ -24,7 +24,6 @@ Public Class Mensaje
         End Set
     End Property
 
-
     Private vFechaHora As DateTime
     Public Property FechaHora() As DateTime
         Get
@@ -44,7 +43,6 @@ Public Class Mensaje
             vFechaHoraFormateada = value
         End Set
     End Property
-
 
     Private vMensaje As String
     Public Property Mensaje() As String

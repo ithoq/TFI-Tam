@@ -1477,10 +1477,12 @@
     <Content Include="Pages\assets\plugins\xcharts\xcharts.js" />
     <Content Include="Pages\assets\plugins\xcharts\xcharts.min.css" />
     <Content Include="Pages\assets\plugins\xcharts\xcharts.min.js" />
+    <Content Include="Pages\assets\plugins\zTree\img\metro.png" />
+    <Content Include="Pages\assets\plugins\zTree\img\metro.gif" />
     <Content Include="Pages\assets\plugins\zTree\img\line_conn.png" />
     <Content Include="Pages\assets\plugins\zTree\img\loading.gif" />
-    <Content Include="Pages\assets\plugins\zTree\img\metro.gif" />
-    <Content Include="Pages\assets\plugins\zTree\img\metro.png" />
+    <Content Include="Pages\assets\plugins\zTree\img\metro - Copia.gif" />
+    <Content Include="Pages\assets\plugins\zTree\img\metro - Copia.png" />
     <Content Include="Pages\assets\plugins\zTree\jquery.ztree.js" />
     <Content Include="Pages\assets\plugins\zTree\ztree.css" />
     <Content Include="Pages\pages\css\custom.css" />

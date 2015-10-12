@@ -22,6 +22,8 @@ Public Class Novedad
     End Property
 
     Private vTitulo As String
+    <Required(ErrorMessage:="Campo requerido"), Display(Name:="Título")>
+    <StringLength(50, ErrorMessage:="Se ha superado la longitud permitida de 50 caracteres.")>
     Public Property Titulo() As String
         Get
             Return vTitulo
@@ -32,6 +34,7 @@ Public Class Novedad
     End Property
 
     Private vContenido As String
+    <Required(ErrorMessage:="Campo requerido"), Display(Name:="Contenido")>
     Public Property Contenido() As String
         Get
             Return vContenido
@@ -51,7 +54,7 @@ Public Class Novedad
         End Set
     End Property
 
-    Private vCategoria As Categoria
+    Private vCategoria As New Categoria
     Public Property Categoria() As Categoria
         Get
             Return vCategoria

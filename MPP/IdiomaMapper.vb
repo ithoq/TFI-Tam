@@ -10,7 +10,7 @@ Public Class IdiomaMapper
 
     Public Function Crear(ByVal idioma As Idioma) As Boolean
         Dim parametros As New Hashtable
-
+        Return Nothing
     End Function
 
     Public Function Editar(ByVal idiomasActivos As List(Of Integer)) As Boolean
@@ -30,7 +30,7 @@ Public Class IdiomaMapper
     End Function
 
     Public Function Eliminar(ByVal id As Integer) As Boolean
-
+        Return Nothing
     End Function
 
     Public Function Listar() As List(Of Idioma)

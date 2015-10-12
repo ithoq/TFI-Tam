@@ -11,6 +11,7 @@ Public Class NovedadBLL
 
     Public Function Crear(ByVal n As Novedad) As Boolean
         n.FechaCreacion = Now.Date
+        n.Tipo = "Novedad"
         Return vMapper.Crear(n)
     End Function
 
