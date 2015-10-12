@@ -1,9 +1,9 @@
-﻿@ModelType IEnumerable(Of EE.Contacto)
+﻿@ModelType IEnumerable(Of EE.Novedad)
 
 @section breadcrumb
     <ul class="breadcrumb">
         <li>
-            <p>Contacto</p>
+            <p>Novedad</p>
         </li>
         <li>
             <a href="#" class="active">Listado</a>
@@ -21,7 +21,7 @@ End Section
 <div class="panel panel-transparent">
     <div class="panel-heading">
         <div class="panel-title">
-            Listado de Contactos
+            Listado de Novedades
         </div>
         <div class="clearfix"></div>
     </div>
@@ -29,11 +29,11 @@ End Section
         <table class="table table-hover" id="tablaUsuarios">
             <thead>
                 <tr>
-                    <th>Fecha</th>
-                    <th>Nombre y Apellido</th>
-                    <th>Email</th>
-                    <th>Asunto</th>
-                    <th>Mensaje</th>
+                    <th>Fecha Creación</th>
+                    <th>Título</th>
+                    <th>Contenido</th>
+                    <th>Tipo</th>
+                    <th>Categoría</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,19 +41,19 @@ End Section
                     Dim currentItem = item
                     @<tr>
                         <td>
-                             @Html.DisplayFor(Function(modelItem) currentItem.FechaHora)
+                            @Html.DisplayFor(Function(modelItem) currentItem.FechaCreacion)
                         </td>
                         <td>
-                            @Html.DisplayFor(Function(modelItem) currentItem.NombreApellido)
+                            @Html.DisplayFor(Function(modelItem) currentItem.Titulo)
                         </td>
                         <td>
-                            @Html.DisplayFor(Function(modelItem) currentItem.Email)
+                            @Html.DisplayFor(Function(modelItem) currentItem.Contenido)
                         </td>
                         <td>
-                            @Html.DisplayFor(Function(modelItem) currentItem.Asunto)
+                            @Html.DisplayFor(Function(modelItem) currentItem.Tipo)
                         </td>
                         <td>
-                             @Html.DisplayFor(Function(modelItem) currentItem.Mensaje)
+                            @Html.DisplayFor(Function(modelItem) currentItem.Categoria)
                         </td>
                     </tr>
                 Next
@@ -74,7 +74,7 @@ End Section
 
 @section javascripts_custom
     <script type="text/javascript">
-        var table = $('#tablaContactos');
+        var table = $('#tablaNovedades');
 
         var settings = {
             "sDom": "<'table-responsive't><'row'<p i>>",
@@ -91,3 +91,5 @@ End Section
         table.dataTable(settings);
     </script>
 End Section
+
+

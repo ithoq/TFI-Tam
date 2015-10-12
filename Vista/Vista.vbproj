@@ -192,6 +192,7 @@
     <Compile Include="Controllers\CuentaController.vb" />
     <Compile Include="Controllers\HomeController.vb" />
     <Compile Include="Controllers\IdiomaController.vb" />
+    <Compile Include="Controllers\NovedadController.vb" />
     <Compile Include="Controllers\PerfilController.vb" />
     <Compile Include="Controllers\ResguardoController.vb" />
     <Compile Include="Controllers\UsuarioController.vb" />
@@ -1565,6 +1566,8 @@
     <Content Include="Views\Contacto\Crear.vbhtml" />
     <Content Include="Views\Contacto\Index.vbhtml" />
     <Content Include="Views\Resguardo\Index.vbhtml" />
+    <Content Include="Views\Novedad\Index.vbhtml" />
+    <Content Include="Views\Novedad\Crear.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
