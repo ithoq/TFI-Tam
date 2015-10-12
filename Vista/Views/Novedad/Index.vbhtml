@@ -26,7 +26,7 @@ End Section
         <div class="clearfix"></div>
     </div>
     <div class="panel-body">
-        <table class="table table-hover" id="tablaUsuarios">
+        <table class="table table-hover" id="tablaNovedades">
             <thead>
                 <tr>
                     <th>Fecha Creación</th>
