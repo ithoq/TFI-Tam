@@ -37,12 +37,12 @@ end section
                         </div>
                         <div class="form-group form-group-default required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Categoria))), Nothing, "has-error")) ">
                              @Html.LabelFor(Function(model) model.Categoria)
-                             @Html.TextAreaFor(Function(model) model.Categoria, New With {.class = "form-control"})
+                             @Html.TextBoxFor(Function(model) model.Categoria, New With {.class = "form-control"})
                              @Html.ValidationMessageFor(Function(model) model.Categoria, Nothing, New With {.class = "help-block"})
                         </div>
                         <div class="form-group form-group-default required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Contenido))), Nothing, "has-error")) ">
                             @Html.LabelFor(Function(model) model.Contenido)
-                            @Html.TextBoxFor(Function(model) model.Contenido, New With {.class = "form-control", .rows = 10, .style = "height:auto;"})
+                            @Html.TextAreaFor(Function(model) model.Contenido, New With {.class = "form-control", .rows = 10, .style = "height:auto;"})
                             @Html.ValidationMessageFor(Function(model) model.Contenido, Nothing, New With {.class = "help-block"})
                         </div>
                         <button type="submit" class="btn btn-primary btn-cons">Grabar</button>
