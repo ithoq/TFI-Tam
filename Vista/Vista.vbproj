@@ -1568,6 +1568,7 @@
     <Content Include="Views\Resguardo\Index.vbhtml" />
     <Content Include="Views\Novedad\Index.vbhtml" />
     <Content Include="Views\Novedad\Crear.vbhtml" />
+    <Content Include="Views\Home\PoliticaPrivacidad.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

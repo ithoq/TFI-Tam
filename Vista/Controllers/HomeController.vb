@@ -16,4 +16,8 @@
         Return View()
     End Function
 
+    Function PoliticaPrivacidad() As ActionResult
+        Return View()
+    End Function
+
 End Class
