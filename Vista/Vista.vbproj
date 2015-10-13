@@ -205,6 +205,7 @@
     <Compile Include="Models\CambioClaveViewModel.vb" />
     <Compile Include="Models\IdiomaEditarViewModel.vb" />
     <Compile Include="Models\LogInViewModel.vb" />
+    <Compile Include="Models\NovedadViewModel.vb" />
     <Compile Include="Models\RegistrarViewModel.vb" />
     <Compile Include="Models\UsuarioSerializableModel.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

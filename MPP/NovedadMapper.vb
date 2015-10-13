@@ -15,7 +15,7 @@ Public Class NovedadMapper
         parametros.Add("@Titulo", n.Titulo)
         parametros.Add("@Contenido", n.Contenido)
         parametros.Add("@Tipo", n.Tipo)
-        parametros.Add("@Categoria", n.Categoria)
+        parametros.Add("@Categoria_Id", n.Categoria.Id)
 
         Return vDatos.Escribir("s_AltaNovedad", parametros)
     End Function
@@ -33,7 +33,7 @@ Public Class NovedadMapper
                 n.Titulo = Item("Titulo")
                 n.Contenido = Item("Contenido")
                 n.Tipo = Item("Tipo")
-                n.Categoria = Item("Categoria")
+                n.Categoria.Nombre = Item("Categoria")
                 lista.Add(n)
             Next
         End If

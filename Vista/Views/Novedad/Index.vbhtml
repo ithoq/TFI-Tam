@@ -30,9 +30,8 @@ End Section
             <thead>
                 <tr>
                     <th>Fecha Creación</th>
-                    <th>Título</th>
-                    <th>Contenido</th>
                     <th>Tipo</th>
+                    <th>Título</th>
                     <th>Categoría</th>
                 </tr>
             </thead>
@@ -44,16 +43,13 @@ End Section
                             @Html.DisplayFor(Function(modelItem) currentItem.FechaCreacion)
                         </td>
                         <td>
-                            @Html.DisplayFor(Function(modelItem) currentItem.Titulo)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(Function(modelItem) currentItem.Contenido)
-                        </td>
-                        <td>
                             @Html.DisplayFor(Function(modelItem) currentItem.Tipo)
                         </td>
                         <td>
-                            @Html.DisplayFor(Function(modelItem) currentItem.Categoria)
+                            @Html.DisplayFor(Function(modelItem) currentItem.Titulo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(Function(modelItem) currentItem.Categoria.Nombre)
                         </td>
                     </tr>
                 Next

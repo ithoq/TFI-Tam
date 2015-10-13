@@ -1,5 +1,5 @@
 ﻿Imports System.ComponentModel.DataAnnotations
-Public Class Novedad
+Public Class NovedadViewModel
 
     Private vId As Integer
     Public Property Id() As Integer
@@ -8,17 +8,6 @@ Public Class Novedad
         End Get
         Set(ByVal value As Integer)
             vId = value
-        End Set
-    End Property
-
-    Private vFechaCreacion As Date
-    <Required(ErrorMessage:="Campo requerido"), Display(Name:="Fecha Creación"), DisplayFormat(DataFormatString:="{0:dd/MM/yyyy}")>
-    Public Property FechaCreacion() As Date
-        Get
-            Return vFechaCreacion
-        End Get
-        Set(ByVal value As Date)
-            vFechaCreacion = value
         End Set
     End Property
 
@@ -35,7 +24,7 @@ Public Class Novedad
     End Property
 
     Private vContenido As String
-    <Required(ErrorMessage:="Campo requerido"), Display(Name:="Contenido")>
+    <Required(ErrorMessage:="Campo requerido"), Display(Name:="Contenido"), AllowHtml()>
     Public Property Contenido() As String
         Get
             Return vContenido
@@ -45,23 +34,25 @@ Public Class Novedad
         End Set
     End Property
 
+    Private vCategoriaId As Integer
+    <Required(ErrorMessage:="Campo requerido"), Display(Name:="Categoría")>
+    Public Property CategoriaId() As Integer
+        Get
+            Return vCategoriaId
+        End Get
+        Set(ByVal value As Integer)
+            vCategoriaId = value
+        End Set
+    End Property
+
     Private vTipo As String
+    <Required(ErrorMessage:="Campo requerido")>
     Public Property Tipo() As String
         Get
             Return vTipo
         End Get
         Set(ByVal value As String)
             vTipo = value
-        End Set
-    End Property
-
-    Private vCategoria As New Categoria
-    Public Property Categoria() As Categoria
-        Get
-            Return vCategoria
-        End Get
-        Set(ByVal value As Categoria)
-            vCategoria = value
         End Set
     End Property
 

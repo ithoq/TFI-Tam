@@ -24,13 +24,21 @@ Public Class NovedadController
     End Function
 
     <Autorizar(Roles:="CrearNovedad")>
-    <HttpPost()> _
-    Function Crear(ByVal n As Novedad) As ActionResult
+    <HttpPost()>
+    Function Crear(ByVal n As NovedadViewModel) As ActionResult
         If ModelState.IsValid Then
-            Me.vBLL.Crear(n)
+            Dim novedad As New Novedad
+            novedad.Titulo = n.Titulo
+            novedad.Contenido = n.Contenido
+            novedad.Tipo = n.Tipo
+            novedad.Categoria.Id = n.CategoriaId
+
+            Me.vBLL.Crear(novedad)
             Return RedirectToAction("Index", "Home")
         End If
 
+        Dim vBLLCat As New CategoriaBLL
+        ViewBag.Categorias = vBLLCat.Listar()
         Return View(n)
     End Function
 

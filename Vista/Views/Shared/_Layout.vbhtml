@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
         <meta charset="utf-8" />
-        <title>Asahi - Tarjetería Social</title>
+        <title class="notranslate">Asahi - Tarjetería Social</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <link rel="apple-touch-icon" href="pages/ico/60.png">
         <link rel="apple-touch-icon" sizes="76x76" href="pages/ico/76.png">
@@ -178,7 +178,7 @@
                         Else
                             @<div class="pull-left p-r-10 p-t-10 fs-16 font-heading">
                                 <input type="hidden" id="loggedUserId" value="@User.UsuarioId" />
-                                <span class="semi-bold">@User.Nombre</span> <span class="text-master">@User.Apellido</span>
+                                <span class="semi-bold notranslate">@User.Nombre</span>
                             </div>
                             @<div class="dropdown pull-right">
                                 <button class="profile-dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

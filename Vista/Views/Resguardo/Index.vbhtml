@@ -42,18 +42,10 @@ End Section
         <table class="table table-hover" id="tablaResguardos">
             <thead>
                 <tr>
-                    <th>
-                        @Html.DisplayNameFor(Function(model) model.FechaHora)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(Function(model) model.Tipo)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(Function(model) model.RutaNombre)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(Function(model) model.Usuario)
-                    </th>
+                    <th>Fecha/Hora</th>
+                    <th>Tipo</th>
+                    <th>Ruta</th>
+                    <th>Usuario</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
