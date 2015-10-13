@@ -6,7 +6,7 @@
             <p>Novedad</p>
         </li>
         <li>
-            <a href="#" class="active">Crear</a>
+            <a href="#" class="active">Editar</a>
         </li>
     </ul>
 end section
@@ -44,14 +44,15 @@ End Section
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="panel-title">
-                    Novedades
+                    Edición de novedades
                 </div>
             </div>
             <div class="panel-body">
-                @Using Html.BeginForm("Crear", "Novedad", Nothing, FormMethod.Post, New With {.id = "formNovedad"})
+                @Using Html.BeginForm("Editar", "Novedad", Nothing, FormMethod.Post, New With {.id = "formNovedad"})
                     @Html.AntiForgeryToken()
                     @Html.ValidationSummary(True)
                     @<fieldset>
+                        @Html.HiddenFor(Function(model) model.Id)
                         <div class="form-group form-group-default form-group-default-select2 required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Tipo))), Nothing, "has-error"))">
                             @Html.LabelFor(Function(model) model.Tipo)
                             @Html.DropDownListFor(Function(model) model.Tipo, New List(Of SelectListItem)() From { _
@@ -81,6 +82,7 @@ End Section
                         </div>
                         @Html.HiddenFor(Function(model) model.Contenido)
                         <button type="submit" class="btn btn-primary btn-cons">Grabar</button>
+                        @Html.ActionLink("Volver", "Index", Nothing, New With {.class = "btn btn-default btn-cons"})
                     </fieldset>
                 End Using
             </div>
@@ -92,3 +94,6 @@ End Section
 @section javascripts_vendor
     <script src="~/Pages/assets/plugins/summernote/js/summernote.min.js" type="text/javascript"></script>
 End Section
+
+
+

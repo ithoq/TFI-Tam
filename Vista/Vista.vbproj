@@ -1572,6 +1572,10 @@
     <Content Include="Views\Novedad\Index.vbhtml" />
     <Content Include="Views\Novedad\Crear.vbhtml" />
     <Content Include="Views\Home\PoliticaPrivacidad.vbhtml" />
+    <Content Include="Views\Home\FAQ.vbhtml" />
+    <Content Include="Views\Novedad\Editar.vbhtml" />
+    <Content Include="Views\Novedad\Detalles.vbhtml" />
+    <Content Include="Views\Novedad\ListarNovedades.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

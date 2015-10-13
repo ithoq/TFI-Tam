@@ -20,4 +20,8 @@
         Return View()
     End Function
 
+    Function FAQ() As ActionResult
+        Return View()
+    End Function
+
 End Class
