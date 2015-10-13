@@ -1576,6 +1576,8 @@
     <Content Include="Views\Novedad\Editar.vbhtml" />
     <Content Include="Views\Novedad\Detalles.vbhtml" />
     <Content Include="Views\Novedad\ListarNovedades.vbhtml" />
+    <Content Include="Views\Idioma\Crear.vbhtml" />
+    <Content Include="Views\Idioma\Index.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
