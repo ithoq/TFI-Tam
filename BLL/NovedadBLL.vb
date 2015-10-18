@@ -35,4 +35,8 @@ Public Class NovedadBLL
         Return n
     End Function
 
+    Public Function Suscribirse(ByVal s As Suscriptor) As Boolean
+        Return vMapper.Suscribirse(s)
+    End Function
+
 End Class

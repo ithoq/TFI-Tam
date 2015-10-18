@@ -207,6 +207,7 @@
     <Compile Include="Models\LogInViewModel.vb" />
     <Compile Include="Models\NovedadViewModel.vb" />
     <Compile Include="Models\RegistrarViewModel.vb" />
+    <Compile Include="Models\SuscribirseViewModel.vb" />
     <Compile Include="Models\UsuarioSerializableModel.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
@@ -1578,6 +1579,7 @@
     <Content Include="Views\Novedad\ListarNovedades.vbhtml" />
     <Content Include="Views\Idioma\Crear.vbhtml" />
     <Content Include="Views\Idioma\Index.vbhtml" />
+    <Content Include="Views\Novedad\Suscribirse.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

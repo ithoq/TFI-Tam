@@ -8,9 +8,9 @@ Public Class CategoriaBLL
         Me.vMapper = New CategoriaMapper
     End Sub
 
-    Public Function Crear(ByVal cat As Categoria) As Boolean
-        Return vMapper.Crear(cat)
-    End Function
+    'Public Function Crear(ByVal cat As Categoria) As Boolean
+    '    Return vMapper.Crear(cat)
+    'End Function
 
     Public Function Listar() As List(Of Categoria)
         Return vMapper.Listar()

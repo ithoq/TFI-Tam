@@ -107,4 +107,18 @@ Public Class NovedadMapper
         End If
     End Function
 
+    Public Function Suscribirse(ByVal s As Suscriptor) As Boolean
+        Dim parametros As New Hashtable
+
+        parametros.Add("@Email", s.Email)
+        Dim dt As New DataTable()
+        dt.Columns.Add("Entidad_Id")
+        For Each c As Categoria In s.ListaCategorias
+            dt.Rows.Add(c.Id)
+        Next
+        parametros.Add("@Lista", dt)
+
+        Return vDatos.Escribir("s_SuscribirCategoria", parametros)
+    End Function
+
 End Class

@@ -17,7 +17,7 @@ end section
     <div class="panel-body">
         <div class="panel bg-success-light text-white">
             <div class="panel-default" role="tab" id="headingOne">
-                <h4 class="panel-title">
+                <h4 class="panel-title text-black">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne" class="">
                         ¿Todos los diseños son personalizables?
                     </a>
@@ -32,7 +32,7 @@ end section
 
         <div class="panel bg-success-light text-white">
             <div class="panel-default" role="tab" id="heading2">
-                <h4 class="panel-title">
+                <h4 class="panel-title text-black">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse2" aria-expanded="true" aria-controls="collapse2">
                         ¿Cuántas ilustraciones puedo incluir?
                     </a>
@@ -48,7 +48,7 @@ end section
 
         <div class="panel bg-success-light text-white">
             <div class="panel-default" role="tab" id="heading3">
-                <h4 class="panel-title">
+                <h4 class="panel-title text-black">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse3" aria-expanded="true" aria-controls="collapse3">
                         ¿Cómo puedo personalizar un diseño?
                     </a>
@@ -66,7 +66,7 @@ end section
 
         <div class="panel bg-success-light text-white">
             <div class="panel-default" role="tab" id="heading0">
-                <h4 class="panel-title">
+                <h4 class="panel-title text-black">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse0" aria-expanded="true" aria-controls="collapse0" class="">
                         ¿Puedo modificar los fondos de los diseños?
                     </a>
@@ -81,7 +81,7 @@ end section
 
         <div class="panel bg-success-light text-white">
             <div class="panel-default" role="tab" id="heading4">
-                <h4 class="panel-title">
+                <h4 class="panel-title text-black">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="true" aria-controls="collapse4">
                         ¿Cuánto texto puedo colocar en un diseño?¿Puedo cambiar el tipo de letra/tipografía?
                     </a>
@@ -97,7 +97,7 @@ end section
 
         <div class="panel bg-success-light text-white">
             <div class="panel-default" role="tab" id="heading5">
-                <h4 class="panel-title">
+                <h4 class="panel-title text-black">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="true" aria-controls="collapse5">
                         ¿Puedo llevar distintos productos con el mismo diseño?
                     </a>
@@ -149,7 +149,7 @@ end section
 
         <div class="panel bg-success-light text-white">
             <div class="panel-default" role="tab" id="heading6">
-                <h4 class="panel-title">
+                <h4 class="panel-title text-black">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse6" aria-expanded="true" aria-controls="collapse6">
                         ¿Puedo llevar el mismo producto con diferentes textos?
                     </a>
@@ -164,7 +164,7 @@ end section
 
         <div class="panel bg-success-light text-white">
             <div class="panel-default" role="tab" id="heading7">
-                <h4 class="panel-title">
+                <h4 class="panel-title text-black">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse7" aria-expanded="true" aria-controls="collapse7">
                         ¿Puedo ver el diseño terminado antes de su impresión?
                     </a>
@@ -181,7 +181,7 @@ end section
 
         <div class="panel bg-success-light text-white">
             <div class="panel-default" role="tab" id="heading8">
-                <h4 class="panel-title">
+                <h4 class="panel-title text-black">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse8" aria-expanded="true" aria-controls="collapse8">
                         ¿Qué tipo de papel e impresión se utilizan?
                     </a>
@@ -196,7 +196,7 @@ end section
 
         <div class="panel bg-success-light text-white">
             <div class="panel-default" role="tab" id="heading9">
-                <h4 class="panel-title">
+                <h4 class="panel-title text-black">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse9" aria-expanded="true" aria-controls="collapse9">
                         ¿Cuál es el tiempo de entrega del producto?
                     </a>
@@ -211,7 +211,7 @@ end section
 
         <div class="panel bg-success-light text-white">
             <div class="panel-default" role="tab" id="heading10">
-                <h4 class="panel-title">
+                <h4 class="panel-title text-black">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse10" aria-expanded="true" aria-controls="collapse10">
                         ¿Cómo se realiza el envío al interior y cuáles son los costos?
                     </a>
@@ -230,7 +230,7 @@ end section
 
         <div class="panel bg-success-light text-white">
             <div class="panel-default" role="tab" id="heading11">
-                <h4 class="panel-title">
+                <h4 class="panel-title text-black">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse11" aria-expanded="true" aria-controls="collapse11">
                         ¿Aceptan devoluciones?
                     </a>
@@ -245,7 +245,7 @@ end section
 
         <div class="panel bg-success-light text-white">
             <div class="panel-default" role="tab" id="heading12">
-                <h4 class="panel-title">
+                <h4 class="panel-title text-black">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse12" aria-expanded="true" aria-controls="collapse12">
                         ¿Puedo llevar un diseño propio?
                     </a>

@@ -8,13 +8,13 @@ Public Class CategoriaMapper
         Me.vDatos = New Datos
     End Sub
 
-    Public Function Crear(ByVal cat As Categoria) As Boolean
-        Dim parametros As New Hashtable
+    'Public Function Crear(ByVal cat As Categoria) As Boolean
+    '    Dim parametros As New Hashtable
 
-        parametros.Add("@Nombre", cat.Nombre)
+    '    parametros.Add("@Nombre", cat.Nombre)
 
-        Return vDatos.Escribir("s_AltaCategoria", parametros)
-    End Function
+    '    Return vDatos.Escribir("s_AltaCategoria", parametros)
+    'End Function
 
     Public Function Listar() As List(Of Categoria)
         Dim ds As New DataSet
