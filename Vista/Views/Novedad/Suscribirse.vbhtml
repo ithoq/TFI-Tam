@@ -5,13 +5,6 @@
         <div class="panel-title">
             Newsletter
         </div>
-        <div class="panel-controls">
-            <ul>
-                <li>
-                    <a data-toggle="close" class="portlet-close" href="#"><i class="portlet-icon portlet-icon-close"></i></a>
-                </li>
-            </ul>
-        </div>
     </div>
     <div class="panel-body">
         @code

@@ -39,4 +39,13 @@ Public Class NovedadBLL
         Return vMapper.Suscribirse(s)
     End Function
 
+    Public Function Enviar(ByVal id As Integer) As Boolean
+        Dim noticia As Novedad = Me.ConsultarPorId(id)
+        Dim listaEmails As List(Of String) = Me.vMapper.ConsultarEmailsPorCategoria(noticia.Categoria.Id)
+        For Each email As String In listaEmails
+            MailServicio.EnviarMail(email, noticia.Titulo, noticia.Contenido)
+        Next
+        Return True
+    End Function
+
 End Class

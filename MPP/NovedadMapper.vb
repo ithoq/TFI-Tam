@@ -121,4 +121,21 @@ Public Class NovedadMapper
         Return vDatos.Escribir("s_SuscribirCategoria", parametros)
     End Function
 
+    Public Function ConsultarEmailsPorCategoria(ByVal categoriaId As Integer) As List(Of String)
+        Dim ds As New DataSet
+        Dim lista As New List(Of String)
+        Dim parametros As New Hashtable
+
+        parametros.Add("@Id", categoriaId)
+        ds = vDatos.Leer("s_ConsultarEmailsPorCategoriaNovedad", parametros)
+
+        If ds.Tables(0).Rows.Count > 0 Then
+            For Each Item As DataRow In ds.Tables(0).Rows
+                lista.Add(Item("Email"))
+            Next
+        End If
+
+        Return lista
+    End Function
+
 End Class
