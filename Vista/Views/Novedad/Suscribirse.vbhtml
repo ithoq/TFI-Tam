@@ -26,7 +26,6 @@
                 @Html.ListBoxFor(Function(model) model.ListaCategoriasSeleccionadas, New MultiSelectList(ViewBag.Categorias, "Id", "Nombre"), New With {.style = "width: 100%;"})
                 @Html.ValidationMessageFor(Function(model) model.ListaCategoriasSeleccionadas, Nothing, New With {.class = "help-block"})
             </div>
-
             @<button type="submit" class="btn btn-primary btn-cons">Suscribirse</button>
         End Using
     </div>

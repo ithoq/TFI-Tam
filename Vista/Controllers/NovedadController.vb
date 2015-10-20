@@ -124,6 +124,7 @@ Public Class NovedadController
         Return PartialView(s)
     End Function
 
+    <Autorizar(Roles:="EnviarNovedad")>
     Public Function Enviar(ByVal id As Integer) As ActionResult
         Me.vBLL.Enviar(id)
         TempData("Info") = "Se ha enviado la noticia a los suscriptores."

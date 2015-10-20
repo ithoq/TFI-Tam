@@ -2,10 +2,10 @@
 Imports System.Configuration
 Public Class Datos
 
-    Private Str As String = "Data Source=.\SQL_UAI;Initial Catalog=TFI;Integrated Security=True"
-    Private Str2 As String = "Data Source=.\SQL_UAI;Initial Catalog=Master;Integrated Security=True"
-    'Private Str As String = "Data Source=.;Initial Catalog=TFI;Integrated Security=True"
-    'Private Str2 As String = "Data Source=.;Initial Catalog=Master;Integrated Security=True"
+    'Private Str As String = "Data Source=.\SQL_UAI;Initial Catalog=TFI;Integrated Security=True"
+    'Private Str2 As String = "Data Source=.\SQL_UAI;Initial Catalog=Master;Integrated Security=True"
+    Private Str As String = "Data Source=.;Initial Catalog=TFI;Integrated Security=True"
+    Private Str2 As String = "Data Source=.;Initial Catalog=Master;Integrated Security=True"
 
     Private Cnn As New SqlConnection(Str)
     Private CnnMaster As New SqlConnection(Str2)
