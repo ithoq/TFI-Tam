@@ -126,7 +126,7 @@ Public Class NovedadMapper
         Dim lista As New List(Of String)
         Dim parametros As New Hashtable
 
-        parametros.Add("@Id", categoriaId)
+        parametros.Add("@CategoriaId", categoriaId)
         ds = vDatos.Leer("s_ConsultarEmailsPorCategoriaNovedad", parametros)
 
         If ds.Tables(0).Rows.Count > 0 Then

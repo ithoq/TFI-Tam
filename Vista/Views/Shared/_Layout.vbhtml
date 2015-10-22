@@ -156,9 +156,9 @@
                         <li class="p-r-15 inline">
                             <a href="@Url.Action("ListarNovedades", "Novedad")" class="grid-box">Novedades</a>
                         </li>
-                        <li class="p-r-15 inline" style="height: 22px;">
+                        @*<li class="p-r-15 inline" style="height: 22px;">
                             <input type="text" id="txtBuscarEnMenu" class="form-control input-sm" placeholder="Buscar...">
-                        </li>
+                        </li>*@
                     </ul>
                             <!-- END NOTIFICATIONS LIST -->
                             @*<a href="#" class="search-link" data-toggle="search"><i class="pg-search"></i>Buscar en el <span class="bold">menú</span></a>*@
