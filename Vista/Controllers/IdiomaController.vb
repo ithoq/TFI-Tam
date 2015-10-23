@@ -9,7 +9,7 @@ Public Class IdiomaController
         Me.vBLL = New IdiomaBLL()
     End Sub
 
-    <Autorizar(Roles:="VerNovedades")>
+    <Autorizar(Roles:="VerIdiomas")>
     Function Index() As ActionResult
         Dim vLista As List(Of Idioma) = Me.vBLL.Listar()
         Return View(vLista)
