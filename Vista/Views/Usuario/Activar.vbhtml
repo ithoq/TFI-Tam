@@ -5,10 +5,10 @@ End Code
 @section breadcrumb
     <ul class="breadcrumb">
         <li>
-            <p>Usuarios</p>
+            <a href="@Url.Action("Index", "Usuario")">Usuarios</a>
         </li>
         <li>
-            <a href="#" class="active">Activar</a>
+            <a class="active">Activar</a>
         </li>
     </ul>
 end section

@@ -65,6 +65,7 @@
     <Compile Include="BitacoraBLL.vb" />
     <Compile Include="CategoriaBLL.vb" />
     <Compile Include="ContactoBLL.vb" />
+    <Compile Include="EncuestaBLL.vb" />
     <Compile Include="IdiomaBLL.vb" />
     <Compile Include="MensajeBLL.vb" />
     <Compile Include="NovedadBLL.vb" />

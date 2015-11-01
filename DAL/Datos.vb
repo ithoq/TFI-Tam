@@ -2,10 +2,8 @@
 Imports System.Configuration
 Public Class Datos
 
-    'Private Str As String = "Data Source=.\SQL_UAI;Initial Catalog=TFI;Integrated Security=True"
-    'Private Str2 As String = "Data Source=.\SQL_UAI;Initial Catalog=Master;Integrated Security=True"
-    Private Str As String = "Data Source=.;Initial Catalog=TFI;Integrated Security=True"
-    Private Str2 As String = "Data Source=.;Initial Catalog=Master;Integrated Security=True"
+    Private Str As String = ConfigurationManager.ConnectionStrings("DefaultConnection").ConnectionString
+    Private Str2 As String = ConfigurationManager.ConnectionStrings("MasterConnection").ConnectionString
 
     Private Cnn As New SqlConnection(Str)
     Private CnnMaster As New SqlConnection(Str2)
@@ -67,7 +65,7 @@ Public Class Datos
 
         Catch ex As Exception
             Tranx.Rollback()
-            Return False
+            Throw New Exception(ex.Message)
         Finally
             Cnn.Close()
         End Try

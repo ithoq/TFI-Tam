@@ -24,4 +24,12 @@
         Return View()
     End Function
 
+    Function PaginaNoEncontrada() As ActionResult
+        Return View()
+    End Function
+
+    Function Excepcion() As ActionResult
+        Return View()
+    End Function
+
 End Class

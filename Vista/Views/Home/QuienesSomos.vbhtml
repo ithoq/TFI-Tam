@@ -1,10 +1,10 @@
 ﻿@section breadcrumb
     <ul class="breadcrumb">
         <li>
-            <p>Inicio</p>
+            <a href="@Url.Action("Index", "Home")">Inicio</a>
         </li>
         <li>
-            <a href="#" class="active">Quienes Somos</a>
+            <a class="active">Quienes Somos</a>
         </li>
     </ul>
 end section

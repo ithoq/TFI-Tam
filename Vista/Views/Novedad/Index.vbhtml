@@ -3,10 +3,10 @@
 @section breadcrumb
     <ul class="breadcrumb">
         <li>
-            <p>Novedad</p>
+            <p>Novedades</p>
         </li>
         <li>
-            <a href="#" class="active">Listado</a>
+            <a class="active">Listado</a>
         </li>
     </ul>
 end section

@@ -6,7 +6,7 @@
             <p>Usuarios</p>
         </li>
         <li>
-            <a href="#" class="active">Listado</a>
+            <a class="active">Listado</a>
         </li>
     </ul>
 end section

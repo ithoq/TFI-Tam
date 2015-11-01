@@ -1,12 +1,10 @@
-﻿@ModelType IEnumerable(Of EE.Bitacora)
-
-@section breadcrumb
+﻿@section breadcrumb
     <ul class="breadcrumb">
         <li>
             <p>Bitácora</p>
         </li>
         <li>
-            <a href="#" class="active">Listado</a>
+            <a class="active">Listado</a>
         </li>
     </ul>
 end section
@@ -37,60 +35,52 @@ End Section
                 <div class="form-group">
                     <label>fecha desde/hasta</label>
                     <div class=" input-daterange input-group" id="datepicker-range">
-                        <input type="text" class="form-control filtro" name="start" id="filtroFechaDesde" />
+                        <input type="text" class="form-control filtro" name="start" id="txtDesde" />
                         <span class="input-group-addon">hasta</span>
-                        <input type="text" class="form-control filtro" name="end" id="filtroFechaHasta" />
+                        <input type="text" class="form-control filtro" name="end" id="txtHasta" />
                     </div>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="form-group">
                     <label>tipo</label>
-                    <select class="full-width select2-offscreen filtro" id="filtroTipo">
-                        <option></option>
-                        <option>Tipo</option>
-                        <option>Usuario</option>
+                    <select class="full-width select2-offscreen filtro" id="cmbTipo">
+                        <option value=""></option>
+                        <option value="0">Advertencia</option>
+                        <option value="1">Fallo</option>
+                        <option value="2">Información</option>
                     </select>
                 </div>
             </div>
             <div class="col-lg-3">
                 <div class="form-group">
-                    <label>usuario</label>
-                    <div class=" input-daterange input-group" id="datepicker-range">
-                        <input type="text" class="form-control filtro" id="filtroUsuario" />
-                    </div>
+                    <label>desripcion</label>
+                    <input type="text" class="form-control filtro" id="txtDescripcion" />
                 </div>
             </div>
-            <table class="table table-hover" id="tablaBitacora">
-                <thead>
-                    <tr>
-                        <th>Fecha/Hora</th>
-                        <th>Tipo</th>
-                        <th>Descripción</th>
-                        <th>Usuario</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @For Each item In Model
-                        Dim currentItem = item
-                        @<tr>
-                            <td>
-                                @Html.DisplayFor(Function(modelItem) currentItem.FechaHora)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(Function(modelItem) currentItem.Tipo)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(Function(modelItem) currentItem.Descripcion)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(Function(modelItem) currentItem.Usuario.NombreUsuario)
-                            </td>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label>usuario</label>
+                    <input type="text" class="form-control filtro" id="txtUsuario" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover" id="tablaBitacora">
+                    <thead>
+                        <tr>
+                            <th>Fecha/Hora</th>
+                            <th>Tipo</th>
+                            <th>Descripción</th>
+                            <th>Usuario</th>
                         </tr>
-                    Next
-            </table>
+                    </thead>
+                </table>
+            </div>
         </div>
     </div>
+</div>
     <!-- END PANEL -->
     @section javascripts_vendor
         <script type="text/javascript" src="~/Pages/assets/plugins/bootstrap-select2/select2.min.js"></script>
@@ -106,9 +96,26 @@ End Section
 
     @section javascripts_custom
         <script type="text/javascript">
-            var table = $('#tablaBitacora');
-
             var settings = {
+                "processing": true,
+                "serverSide": true,
+                "ajax": {
+                    "url": "@Url.Action("ListarAjax")",
+                    "type": "POST",
+                    "data": function (d) {
+                        d.desde = $("#txtDesde").val();
+                        d.hasta = $("#txtHasta").val();
+                        d.tipoEvento = $("#cmbTipoEvento").val();
+                        d.descripcion = $("#txtDescripcion").val();
+                        d.usuario = $("#txtUsuario").val();
+                    }
+                },
+                "columns": [
+                    { "data": "FechaHora" },
+                    { "data": "Tipo" },
+                    { "data": "Descripcion" },
+                    { "data": "Usuario" }
+                ],
                 "sDom": "<'table-responsive't><'row'<p i>>",
                 "sPaginationType": "bootstrap",
                 "destroy": true,
@@ -140,10 +147,10 @@ End Section
                 "iDisplayLength": 10
             };
 
-            table.dataTable(settings);
+            var table = $('#tablaBitacora').DataTable(settings);
 
             $('#search-table').keyup(function () {
-                table.fnFilter($(this).val());
+                table.search($(this).val()).draw();
             });
 
             $.fn.datepicker.dates['es'] = {
@@ -163,7 +170,11 @@ End Section
                 language: 'es'
             });
 
-            $('#filtroTipo').select2();
+            $('#cmbTipo').select2();
+
+            $(".filtro").change(function () {
+                table.draw();
+            });
 
         </script>
     End Section

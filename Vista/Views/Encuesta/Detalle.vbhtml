@@ -1,15 +1,20 @@
-﻿@ModelType EE.Usuario
+﻿@ModelType EE.Encuesta
 
-@section breadcrumb
+@Section breadcrumb
     <ul class="breadcrumb">
         <li>
-            <a href="@Url.Action("Index", "Usuario")">Usuarios</a>
+            <a href="@Url.Action("Index", "Encuesta")">Encuestas</a>
         </li>
         <li>
-            <a class="active">Detalles</a>
+            <a class="active">Detalle</a>
         </li>
     </ul>
-end section
+End Section
+
+@Section javascripts_vendor
+    |
+    <script src="~/Pages/assets/plugins/jquery-sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
+End Section
 
 <div class="panel panel-transparent ">
     <!-- Nav tabs -->
@@ -18,28 +23,28 @@ end section
             <a data-toggle="tab" href="#tab-fillup1"><span>Información Básica</span></a>
         </li>
         <li>
-            <a data-toggle="tab" href="#tab-fillup2"><span>Perfil</span></a>
+            <a data-toggle="tab" href="#tab-fillup2"><span>Estadística</span></a>
         </li>
     </ul>
     <!-- Tab panes -->
     <div class="tab-content">
         <div class="tab-pane active" id="tab-fillup1">
-            @Html.DisplayNameFor(Function(model) model.Nombre): @Html.DisplayFor(Function(model) model.Nombre)<br/>
-            @Html.DisplayNameFor(Function(model) model.Apellido): @Html.DisplayFor(Function(model) model.Apellido)<br/>
-            @Html.DisplayNameFor(Function(model) model.Email): @Html.DisplayFor(Function(model) model.Email)<br/>
-            @Html.DisplayNameFor(Function(model) model.NombreUsuario): @Html.DisplayFor(Function(model) model.NombreUsuario)<br/>
-            @Html.DisplayNameFor(Function(model) model.Activo): @Html.DisplayFor(Function(model) model.Activo)
+            @Html.DisplayNameFor(Function(model) model.Tipo): @Html.DisplayFor(Function(model) model.Tipo)<br />
+            @Html.DisplayNameFor(Function(model) model.FechaVigencia): @Html.DisplayFor(Function(model) model.FechaVigencia)<br />
+            @Html.DisplayNameFor(Function(model) model.Pregunta): @Html.DisplayFor(Function(model) model.Pregunta)<br />
+            <label>Respuestas:</label>
+            <ul>
+                @Code
+                    For Each opcion As EE.Opcion In Model.ListaOpciones
+                    @<li>@opcion.Valor</li>
+                    Next
+                End Code
+            </ul>
         </div>
         <div class="tab-pane" id="tab-fillup2">
             <div class="row">
-                <div class="col-md-12">
-                    <ul>
-                        @For Each item In Model.ListaPerfiles
-                            @<li>
-                                @Html.ActionLink(item.Nombre, "Detalles", "Perfil", New With {.id = item.Id}, Nothing)
-                            </li>  
-                        Next
-                    </ul>
+                <div class="col-md-8 col-md-offset-5">
+                    <div id="sparkline-pie" class="sparkline-chart"></div>
                 </div>
             </div>
         </div>
@@ -47,13 +52,13 @@ end section
 </div>
 <p>
     @Code
-        If Model.NombreUsuario <> "admin" And User.IsInRole("EditarUsuario") Then
+        If User.IsInRole("EditarEncuesta") Then
         @Html.ActionLink("Editar", "Editar", New With {.id = Model.Id}, New With {.class = "btn btn-primary btn-cons"})
         End If
-        If Model.NombreUsuario <> "admin" And User.IsInRole("EliminarUsuario") Then
+        If User.IsInRole("EliminarEncuesta") Then
         @<button class="btn btn-primary btn-cons" data-target="#modalStickUpSmall" data-toggle="modal">Eliminar</button>
         End If
-        If User.IsInRole("VerUsuarios") Then
+        If User.IsInRole("VerEncuestas") Then
         @Html.ActionLink("Volver", "Index", Nothing, New With {.class = "btn btn-default btn-cons"})
         End If
     End Code
@@ -73,7 +78,7 @@ end section
                     <p class="no-margin">Esto eliminará permanentemente el registro.</p>
                 </div>
                 <div class="modal-footer">
-                    @Using Html.BeginForm("Eliminar", "Usuario", New With {.id = Model.Id}, FormMethod.Get)
+                    @Using Html.BeginForm("Eliminar", "Encuesta", New With {.id = Model.Id}, FormMethod.Get)
                         @Html.AntiForgeryToken()
                         @<button type="submit" class="btn btn-primary btn-cons pull-left inline">Aceptar</button>
                     End Using
@@ -85,3 +90,22 @@ end section
     </div>
     <!-- /.modal-dialog -->
 </div>
+
+
+@Section javascripts_custom
+    <script type="text/javascript">
+        var myvalues = @Html.Raw(ViewBag.ListaSelecciones);
+        $('#sparkline-pie').sparkline(myvalues, {
+            type: 'pie',
+            width: '200px',
+            height: '200px',
+            sliceColors: ['#5d3092', '#4dc9ec', '#9de49d', '#9074b1', '#66aa00', '#dd4477', '#0099c6', '#990099'],
+            borderWidth: 7,
+            borderColor: '#f5f5f5',
+            tooltipFormat: '<span style="color: {{color}}">&#9679;</span> {{offset:names}} ({{percent.1}}%)',
+            tooltipValueLookups: {
+                names: @Html.Raw(ViewBag.ListaNombres)
+            }
+        });
+    </script>
+End Section

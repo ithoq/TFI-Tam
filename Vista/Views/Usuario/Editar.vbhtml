@@ -3,10 +3,10 @@
 @section breadcrumb
     <ul class="breadcrumb">
         <li>
-            <p>Usuarios</p>
+            <a href="@Url.Action("Index", "Usuario")">Usuarios</a>
         </li>
         <li>
-            <a href="#" class="active">Editar</a>
+            <a class="active">Editar</a>
         </li>
     </ul>
 end section

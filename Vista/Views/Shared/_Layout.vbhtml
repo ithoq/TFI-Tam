@@ -226,7 +226,7 @@
                     @RenderSection("page_title", required:=False)
                 </div>
                 <!-- START CONTAINER FLUID -->
-                <div class="container-fluid container-fixed-lg m-t-20">
+                <div class="container-fluid container-fixed-lg">
                     @RenderBody()
                 </div>
                 <!-- END CONTAINER FLUID -->
@@ -556,6 +556,11 @@
                     }
                 });
                 return false;
+            });
+
+            //Formulario de Encuestas
+            $('input[type=radio][name=Respuesta]').change(function () {
+                $("#btnResponderEncuesta").attr("disabled", false);
             });
         });
     </script>

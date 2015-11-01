@@ -7,10 +7,10 @@ End Code
 @Section breadcrumb
     <ul class="breadcrumb">
         <li>
-            <p>Perfiles</p>
+            <a href="@Url.Action("Index", "Perfil")">Perfiles</a>
         </li>
         <li>
-            <a href="#" class="active">Editar</a>
+            <a class="active">Editar</a>
         </li>
     </ul>
 End Section

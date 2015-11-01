@@ -3,13 +3,14 @@
 @section breadcrumb
     <ul class="breadcrumb">
         <li>
-            <p>Novedad</p>
+            <a href="@Url.Action("Index", "Novedad")">Novedades</a>
         </li>
         <li>
-            <a href="#" class="active">Detalles</a>
+            <a class="active">Detalles</a>
         </li>
     </ul>
 end section
+
 <div class="panel panel-transparent ">
     <!-- Nav tabs -->
     <ul class="nav nav-tabs nav-tabs-fillup">
