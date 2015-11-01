@@ -105,7 +105,7 @@ End Section
                     "data": function (d) {
                         d.desde = $("#txtDesde").val();
                         d.hasta = $("#txtHasta").val();
-                        d.tipoEvento = $("#cmbTipoEvento").val();
+                        d.tipoEvento = $("#cmbTipo").val();
                         d.descripcion = $("#txtDescripcion").val();
                         d.usuario = $("#txtUsuario").val();
                     }
