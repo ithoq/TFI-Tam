@@ -60,6 +60,7 @@ Public Class TipografiaMapper
         If ds.Tables(0).Rows.Count > 0 Then
             Dim row As DataRow = ds.Tables(0).Rows(0)
             Dim t As New Tipografia
+            t.Id = row.Item("Id")
             t.Nombre = row.Item("Nombre")
             Return t
         Else
