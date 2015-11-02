@@ -1,9 +1,9 @@
-﻿@ModelType EE.Encuesta
+﻿@ModelType EE.Papel
 
 @Section breadcrumb
     <ul class="breadcrumb">
         <li>
-            <a href="@Url.Action("Index", "Encuesta")">Encuestas</a>
+            <a href="@Url.Action("Index", "Papel")">Papeles</a>
         </li>
         <li>
             <a class="active">Detalle</a>
@@ -21,43 +21,27 @@ End Section
         <li class="active">
             <a data-toggle="tab" href="#tab-fillup1"><span>Información Básica</span></a>
         </li>
-        <li>
-            <a data-toggle="tab" href="#tab-fillup2"><span>Estadística</span></a>
-        </li>
     </ul>
     <!-- Tab panes -->
     <div class="tab-content">
         <div class="tab-pane active" id="tab-fillup1">
-            @Html.DisplayNameFor(Function(model) model.Tipo): @Html.DisplayFor(Function(model) model.Tipo)<br />
-            @Html.DisplayNameFor(Function(model) model.FechaVigencia): @Html.DisplayFor(Function(model) model.FechaVigencia)<br />
-            @Html.DisplayNameFor(Function(model) model.Pregunta): @Html.DisplayFor(Function(model) model.Pregunta)<br />
-            <label>Respuestas:</label>
-            <ul>
-                @Code
-                    For Each opcion As EE.Opcion In Model.ListaOpciones
-                    @<li>@opcion.Valor</li>
-                    Next
-                End Code
-            </ul>
-        </div>
-        <div class="tab-pane" id="tab-fillup2">
-            <div class="row">
-                <div class="col-md-8 col-md-offset-5">
-                    <div id="sparkline-pie" class="sparkline-chart"></div>
-                </div>
-            </div>
+            @Html.DisplayNameFor(Function(model) model.Espesor): @Html.DisplayFor(Function(model) model.Espesor)<br />
+            @Html.DisplayNameFor(Function(model) model.Color): @Html.DisplayFor(Function(model) model.Color)<br />
+            @Html.DisplayNameFor(Function(model) model.Nombre): @Html.DisplayFor(Function(model) model.Nombre)<br />
+            @Html.DisplayNameFor(Function(model) model.Precio): @Html.DisplayFor(Function(model) model.Precio)<br />
+            @Html.DisplayNameFor(Function(model) model.Tipo): @Html.DisplayFor(Function(model) model.Tipo)
         </div>
     </div>
 </div>
 <p>
     @Code
-        If User.IsInRole("EditarEncuesta") Then
+        If User.IsInRole("EditarPapel") Then
         @Html.ActionLink("Editar", "Editar", New With {.id = Model.Id}, New With {.class = "btn btn-primary btn-cons"})
         End If
-        If User.IsInRole("EliminarEncuesta") Then
+        If User.IsInRole("EliminarPapel") Then
         @<button class="btn btn-primary btn-cons" data-target="#modalStickUpSmall" data-toggle="modal">Eliminar</button>
         End If
-        If User.IsInRole("VerEncuestas") Then
+        If User.IsInRole("VerPapeles") Then
         @Html.ActionLink("Volver", "Index", Nothing, New With {.class = "btn btn-default btn-cons"})
         End If
     End Code
@@ -77,7 +61,7 @@ End Section
                     <p class="no-margin">Esto eliminará permanentemente el registro.</p>
                 </div>
                 <div class="modal-footer">
-                    @Using Html.BeginForm("Eliminar", "Encuesta", New With {.id = Model.Id}, FormMethod.Get)
+                    @Using Html.BeginForm("Eliminar", "Papel", New With {.id = Model.Id}, FormMethod.Get)
                         @Html.AntiForgeryToken()
                         @<button type="submit" class="btn btn-primary btn-cons pull-left inline">Aceptar</button>
                     End Using
@@ -90,21 +74,3 @@ End Section
     <!-- /.modal-dialog -->
 </div>
 
-
-@Section javascripts_custom
-    <script type="text/javascript">
-        var myvalues = @Html.Raw(ViewBag.ListaSelecciones);
-        $('#sparkline-pie').sparkline(myvalues, {
-            type: 'pie',
-            width: '200px',
-            height: '200px',
-            sliceColors: ['#5d3092', '#4dc9ec', '#9de49d', '#9074b1', '#66aa00', '#dd4477', '#0099c6', '#990099'],
-            borderWidth: 7,
-            borderColor: '#f5f5f5',
-            tooltipFormat: '<span style="color: {{color}}">&#9679;</span> {{offset:names}} ({{percent.1}}%)',
-            tooltipValueLookups: {
-                names: @Html.Raw(ViewBag.ListaNombres)
-            }
-        });
-    </script>
-End Section

@@ -24,7 +24,7 @@ Public Class PapelBLL
         Return Me.vMapper.Listar()
     End Function
 
-    Public Function ConsutarPorId(ByVal id As Integer) As Boolean
+    Public Function ConsutarPorId(ByVal id As Integer) As Papel
         Return Me.vMapper.ConsutarPorId(id)
     End Function
 

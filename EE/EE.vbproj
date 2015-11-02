@@ -69,6 +69,7 @@
     <Compile Include="Leyenda.vb" />
     <Compile Include="Producto.vb" />
     <Compile Include="Tema.vb" />
+    <Compile Include="Tipografia.vb" />
     <Compile Include="TipoProducto.vb" />
     <Compile Include="Contacto.vb" />
     <Compile Include="Encuesta.vb" />

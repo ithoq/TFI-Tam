@@ -188,12 +188,14 @@
     <Compile Include="Chat\UsuarioChatModel.vb" />
     <Compile Include="Controllers\BaseController.vb" />
     <Compile Include="Controllers\BitacoraController.vb" />
+    <Compile Include="Controllers\CartuchoController.vb" />
     <Compile Include="Controllers\ContactoController.vb" />
     <Compile Include="Controllers\CuentaController.vb" />
     <Compile Include="Controllers\EncuestaController.vb" />
     <Compile Include="Controllers\HomeController.vb" />
     <Compile Include="Controllers\IdiomaController.vb" />
     <Compile Include="Controllers\NovedadController.vb" />
+    <Compile Include="Controllers\PapelController.vb" />
     <Compile Include="Controllers\PerfilController.vb" />
     <Compile Include="Controllers\ResguardoController.vb" />
     <Compile Include="Controllers\UsuarioController.vb" />
@@ -1538,6 +1540,14 @@
     <Content Include="Views\Encuesta\Responder.vbhtml" />
     <Content Include="Views\Home\PaginaNoEncontrada.vbhtml" />
     <Content Include="Views\Home\Excepcion.vbhtml" />
+    <Content Include="Views\Cartucho\Index.vbhtml" />
+    <Content Include="Views\Cartucho\Detalles.vbhtml" />
+    <Content Include="Views\Cartucho\Crear.vbhtml" />
+    <Content Include="Views\Cartucho\Editar.vbhtml" />
+    <Content Include="Views\Papel\Index.vbhtml" />
+    <Content Include="Views\Papel\Detalles.vbhtml" />
+    <Content Include="Views\Papel\Crear.vbhtml" />
+    <Content Include="Views\Papel\Editar.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
