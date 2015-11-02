@@ -198,6 +198,7 @@
     <Compile Include="Controllers\PapelController.vb" />
     <Compile Include="Controllers\PerfilController.vb" />
     <Compile Include="Controllers\ResguardoController.vb" />
+    <Compile Include="Controllers\TipografiaController.vb" />
     <Compile Include="Controllers\UsuarioController.vb" />
     <Compile Include="Converters\PermisoConverter.vb" />
     <Compile Include="ErrorHandler\CustomErrorHandler.vb" />
@@ -1548,6 +1549,10 @@
     <Content Include="Views\Papel\Detalles.vbhtml" />
     <Content Include="Views\Papel\Crear.vbhtml" />
     <Content Include="Views\Papel\Editar.vbhtml" />
+    <Content Include="Views\Tipografia\Index.vbhtml" />
+    <Content Include="Views\Tipografia\Crear.vbhtml" />
+    <Content Include="Views\Tipografia\Detalles.vbhtml" />
+    <Content Include="Views\Tipografia\Editar.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
