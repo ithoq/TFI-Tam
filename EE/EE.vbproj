@@ -64,14 +64,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bitacora.vb" />
+    <Compile Include="Cartucho.vb" />
     <Compile Include="Categoria.vb" />
+    <Compile Include="Leyenda.vb" />
+    <Compile Include="Producto.vb" />
+    <Compile Include="Tema.vb" />
+    <Compile Include="TipoProducto.vb" />
     <Compile Include="Contacto.vb" />
     <Compile Include="Encuesta.vb" />
     <Compile Include="Familia.vb" />
     <Compile Include="Idioma.vb" />
+    <Compile Include="MateriaPrima.vb" />
     <Compile Include="Mensaje.vb" />
     <Compile Include="Novedad.vb" />
     <Compile Include="Opcion.vb" />
+    <Compile Include="Papel.vb" />
     <Compile Include="Patente.vb" />
     <Compile Include="Perfil.vb" />
     <Compile Include="Permiso.vb" />

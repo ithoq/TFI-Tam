@@ -93,7 +93,20 @@ Public Class NovedadController
 
     Function ListarNovedades() As ActionResult
         Dim vLista As List(Of Novedad) = Me.vBLL.ListarNovedades()
+        Dim vBLLCat As New CategoriaBLL
+        ViewBag.Categorias = vBLLCat.Listar()
         Return View(vLista)
+    End Function
+
+    Function ListarNovedadesAjax() As ActionResult
+        Dim categoriaId As String = Request("categoriaId")
+        Dim vLista As List(Of Novedad) = Me.vBLL.ListarNovedades()
+
+        If String.IsNullOrEmpty(categoriaId) = False Then
+            vLista = vLista.Where(Function(x) x.Categoria.Id = categoriaId).ToList()
+        End If
+
+        Return Json(vLista, JsonRequestBehavior.AllowGet)
     End Function
 
     Public Function Suscribirse() As PartialViewResult

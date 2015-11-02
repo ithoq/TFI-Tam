@@ -53,7 +53,8 @@ Public Class NovedadMapper
                 n.Titulo = Item("Titulo")
                 n.Contenido = Item("Contenido")
                 n.Tipo = Item("Tipo")
-                n.Categoria.Nombre = Item("Categoria")
+                n.Categoria.Id = Item("CategoriaId")
+                n.Categoria.Nombre = Item("CategoriaNombre")
                 lista.Add(n)
             Next
         End If
@@ -75,7 +76,8 @@ Public Class NovedadMapper
                     n.Titulo = Item("Titulo")
                     n.Contenido = Item("Contenido")
                     n.Tipo = Item("Tipo")
-                    n.Categoria.Nombre = Item("Categoria")
+                    n.Categoria.Id = Item("CategoriaId")
+                    n.Categoria.Nombre = Item("CategoriaNombre")
                     lista.Add(n)
                 End If
             Next

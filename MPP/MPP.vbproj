@@ -63,12 +63,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BitacoraMapper.vb" />
+    <Compile Include="CartuchoMapper.vb" />
     <Compile Include="CategoriaMapper.vb" />
     <Compile Include="ContactoMapper.vb" />
     <Compile Include="EncuestaMapper.vb" />
     <Compile Include="IdiomaMapper.vb" />
     <Compile Include="MensajeMapper.vb" />
     <Compile Include="NovedadMapper.vb" />
+    <Compile Include="PapelMapper.vb" />
     <Compile Include="PerfilMapper.vb" />
     <Compile Include="ResguardoMapper.vb" />
     <Compile Include="UsuarioMapper.vb" />
