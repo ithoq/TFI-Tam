@@ -31,10 +31,11 @@ Public Class MvcApplication
             newUser.Nombre = serializeModel.Nombre
             newUser.NombreUsuario = serializeModel.NombreUsuario
             newUser.Apellido = serializeModel.Apellido
-            newUser.Permisos = serializeModel.Permisos
+            Dim vPerfilBll As New BLL.PerfilBLL()
+            newUser.Permisos = vPerfilBll.ConsultarPermisosStringPorUsuario(serializeModel.UsuarioId)
+            Dim vUsuarioBll As New BLL.UsuarioBLL()
+            EE.SesionUsuario.Instance.UsuarioActual = vUsuarioBll.ConsultarPorId(serializeModel.UsuarioId)
             HttpContext.Current.User = newUser
-            Dim vUsuarioBLL As New BLL.UsuarioBLL
-            EE.SesionUsuario.Instance.UsuarioActual = vUsuarioBLL.ConsultarPorId(serializeModel.UsuarioId)
         End If
     End Sub
 

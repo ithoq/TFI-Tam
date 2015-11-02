@@ -169,4 +169,23 @@ Public Class PerfilMapper
         End If
     End Function
 
+    Public Function ConsultarPorNombre(ByVal nombre As String) As Perfil
+        Dim parametros As New Hashtable
+        Dim ds As New DataSet
+
+        parametros.Add("@Nombre", nombre)
+        ds = vDatos.Leer("s_ConsultarPorNombrePerfil", parametros)
+
+        If ds.Tables(0).Rows.Count > 0 Then
+            Dim row As DataRow = ds.Tables(0).Rows(0)
+            Dim p As New Perfil
+            p.Id = row.Item("Id")
+            p.Nombre = row.Item("Nombre")
+            p.ListaPermisos = Me.ConsultarPermisos(p.Id)
+            Return p
+        Else
+            Return Nothing
+        End If
+    End Function
+
 End Class

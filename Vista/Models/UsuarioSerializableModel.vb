@@ -30,16 +30,6 @@
         End Set
     End Property
 
-    Private vPermisos As String()
-    Public Property Permisos() As String()
-        Get
-            Return vPermisos
-        End Get
-        Set(ByVal value As String())
-            vPermisos = value
-        End Set
-    End Property
-
     Private vNombreUsuario As String
     Public Property NombreUsuario() As String
         Get

@@ -4,9 +4,11 @@ Imports Servicios
 Public Class UsuarioBLL
 
     Private vMapper As UsuarioMapper
+    Private vPerfilMapper As PerfilMapper
     Private vCryptoServicio As CryptoServicio
     Sub New()
         Me.vMapper = New UsuarioMapper()
+        Me.vPerfilMapper = New PerfilMapper()
         Me.vCryptoServicio = New CryptoServicio()
     End Sub
 
@@ -27,6 +29,7 @@ Public Class UsuarioBLL
         u.Clave = Me.vCryptoServicio.EncryptData(u.Clave)
         u.Activo = False
         u.TokenActivacion = token
+        u.PerfilesId.Add(Me.vPerfilMapper.ConsultarPorNombre("Cliente").Id)
         If vMapper.Crear(u) Then
             MailServicio.EnviarMail(u.Email, "Activación de Cuenta", "<html><head></head><body>Su cuenta ya ha sido creada.<br/>Solamente le queda hacer click en el siguiente link para activarla:<br/><a href='" + uri + "Usuario/Activar/" + token + "'>Haga click aquí</a></body>")
             BitacoraServicio.Crear(TipoEvento.Informacion, "Registro correcto de usuario")
