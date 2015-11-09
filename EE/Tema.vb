@@ -1,8 +1,10 @@
 ﻿Imports System.ComponentModel
 Public Enum Tema
+    <Description("Casamiento")>
     Casamiento = 0
     <Description("Quince Años")>
     Quince = 1
+    <Description("Personalizable")>
     Personalizable = 2 'Dentro de este tema entraría comunión, bautismo, babyshower, etc.
     <Description("Tarjetas Presentación")>
     TarjetaPresentacion = 3
@@ -10,6 +12,7 @@ Public Enum Tema
     TarjetaFelicitacion = 4
     <Description("Tarjetas Agradecimiento")>
     TarjetaAgradecimiento = 5
+    <Description("Sobres")>
     Sobres = 6
     <Description("Sobres Impresos")>
     SobresImpresos = 7
@@ -17,7 +20,9 @@ Public Enum Tema
     InvitacionesPersonales = 8
     <Description("Tarjetas lista de Regalos")>
     TarjetasListaRegalos = 9
+    <Description("Mapas")>
     Mapas = 10
+    <Description("Etiquetas")>
     Etiquetas = 11
     <Description("Números de Mesa")>
     NumerosMesa = 12
@@ -39,6 +44,7 @@ Public Enum Tema
     LibrosFirmas = 20
     <Description("Candy Bar")>
     CandyBar = 21
+    <Description("Calendarios")>
     Calendarios = 22
     <Description("Cuadernos Impresos")>
     CuadernosImpresos = 23

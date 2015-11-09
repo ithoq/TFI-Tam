@@ -72,6 +72,7 @@
     <Compile Include="NovedadMapper.vb" />
     <Compile Include="PapelMapper.vb" />
     <Compile Include="PerfilMapper.vb" />
+    <Compile Include="ProductoMapper.vb" />
     <Compile Include="ResguardoMapper.vb" />
     <Compile Include="TipografiaMapper.vb" />
     <Compile Include="UsuarioMapper.vb" />
