@@ -151,10 +151,13 @@
                             <a href="@Url.Action("Crear", "Contacto")" class="grid-box">Contáctenos</a>
                         </li>
                         <li class="p-r-15 inline">
-                            <a href="@Url.Action("FAQ", "Home")" class="grid-box">Preguntas Frecuentes</a>
+                            <a href="@Url.Action("FAQ", "Home")" class="grid-box">FAQ</a>
                         </li>
                         <li class="p-r-15 inline">
                             <a href="@Url.Action("ListarNovedades", "Novedad")" class="grid-box">Novedades</a>
+                        </li>
+                        <li class="p-r-15 inline">
+                            <a href="@Url.Action("VerCarro", "Pedido")" class="grid-box">Mis Compras</a>
                         </li>
                         @*<li class="p-r-15 inline" style="height: 22px;">
                             <input type="text" id="txtBuscarEnMenu" class="form-control input-sm" placeholder="Buscar...">

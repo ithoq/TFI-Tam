@@ -136,4 +136,9 @@ Public Class ProductoController
         Return RedirectToAction("Index")
     End Function
 
+    Function Agregar(ByVal id As Integer) As ActionResult
+        Dim vProducto As Producto = Me.vBLL.ConsutarPorId(id)
+        Return View(vProducto)
+    End Function
+
 End Class

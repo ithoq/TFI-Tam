@@ -196,6 +196,7 @@
     <Compile Include="Controllers\IdiomaController.vb" />
     <Compile Include="Controllers\NovedadController.vb" />
     <Compile Include="Controllers\PapelController.vb" />
+    <Compile Include="Controllers\PedidoController.vb" />
     <Compile Include="Controllers\PerfilController.vb" />
     <Compile Include="Controllers\ProductoController.vb" />
     <Compile Include="Controllers\ResguardoController.vb" />
@@ -1559,6 +1560,8 @@
     <Content Include="Views\Producto\Index.vbhtml" />
     <Content Include="Views\Producto\Detalles.vbhtml" />
     <Content Include="Views\Producto\Editar.vbhtml" />
+    <Content Include="Views\Producto\Agregar.vbhtml" />
+    <Content Include="Views\Pedido\VerCarro.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

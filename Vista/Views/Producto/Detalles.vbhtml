@@ -25,14 +25,24 @@ End Section
     <!-- Tab panes -->
     <div class="tab-content">
         <div class="tab-pane active" id="tab-fillup1">
-            <img style="width:40%" src="@Model.Fondo"/><br />
-            @Html.DisplayNameFor(Function(model) model.Nombre): @Html.DisplayFor(Function(model) model.Nombre)<br />
-            @Html.DisplayNameFor(Function(model) model.Alto): @Html.DisplayFor(Function(model) model.Alto)<br />
-            @Html.DisplayNameFor(Function(model) model.Ancho): @Html.DisplayFor(Function(model) model.Ancho)<br />
-            @Html.DisplayNameFor(Function(model) model.Papel.Espesor): @Html.DisplayFor(Function(model) model.Papel.Espesor)<br />
-            @Html.DisplayNameFor(Function(model) model.Papel.Nombre): @Html.DisplayFor(Function(model) model.TipoProducto)<br />
-            @Html.DisplayNameFor(Function(model) model.Tema): @Html.DisplayFor(Function(model) model.Tema)<br />
+            <img style="width:40%" src="@Model.Fondo" /><br />
+            <label>Nombre:</label>
+            @model.Nombre<br />
+            <label>Alto:</label>
+            @model.Alto<br />
+            <label>Ancho:</label>
+            @model.Ancho<br />
+            <label>Espesor:</label>
+            @model.Papel.Espesor<br />
+            <label>Papel:</label>
+            @model.Papel.Nombre<br />
+            <label>Tipo de producto:</label>
+            @Model.TipoProducto<br />
+            <label>Tema:</label>
+            @model.Tema<br />
+            <label>Costo:</label>
             @Model.ObtenerCosto<br />
+            <label>Precio:</label>
             @Model.ObtenerPrecio
         </div>
     </div>
@@ -40,13 +50,13 @@ End Section
 <p>
     @Code
         If User.IsInRole("EditarProducto") Then
-        @Html.ActionLink("Editar", "Editar", New With {.id = Model.Id}, New With {.class = "btn btn-primary btn-cons"})
+    @Html.ActionLink("Editar", "Editar", New With {.id = Model.Id}, New With {.class = "btn btn-primary btn-cons"})
         End If
         If User.IsInRole("EliminarProducto") Then
-        @<button class="btn btn-primary btn-cons" data-target="#modalStickUpSmall" data-toggle="modal">Eliminar</button>
+    @<button class="btn btn-primary btn-cons" data-target="#modalStickUpSmall" data-toggle="modal">Eliminar</button>
         End If
         If User.IsInRole("VerProductos") Then
-        @Html.ActionLink("Volver", "Index", Nothing, New With {.class = "btn btn-default btn-cons"})
+    @Html.ActionLink("Volver", "Index", Nothing, New With {.class = "btn btn-default btn-cons"})
         End If
     End Code
 </p>
