@@ -202,4 +202,24 @@ Public Class UsuarioMapper
         Return vDatos.Escribir("s_CambiarClaveUsuario", parametros)
     End Function
 
+    Public Function ListarClientes() As List(Of Usuario)
+        Dim ds As New DataSet
+        Dim lista As New List(Of Usuario)
+        ds = vDatos.Leer("s_ListarCliente", Nothing)
+
+        If ds.Tables(0).Rows.Count > 0 Then
+            For Each Item As DataRow In ds.Tables(0).Rows
+                Dim u As Usuario = New Usuario
+                u.Id = Item("Id")
+                u.Nombre = Item("Nombre")
+                u.Apellido = Item("Apellido")
+                u.Email = Item("Email")
+                u.NombreUsuario = Item("NombreUsuario")
+                lista.Add(u)
+            Next
+        End If
+
+        Return lista
+    End Function
+
 End Class

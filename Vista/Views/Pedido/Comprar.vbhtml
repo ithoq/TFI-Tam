@@ -21,7 +21,7 @@ End Section
 <div class="panel panel-transparent">
     <div class="panel-heading">
         <div class="panel-title">
-            Pedido
+            Compra
         </div>
         <div class="clearfix"></div>
     </div>
@@ -29,7 +29,6 @@ End Section
         <table class="table table-hover" id="tablaPedidos">
             <thead>
                 <tr>
-                    <th>Imagen</th>
                     <th>Producto</th>
                     <th>Cantidad</th>
                     <th>Precio Unitario</th>
@@ -42,9 +41,6 @@ End Section
                     If Model IsNot Nothing Then
                     @For Each item In Model.ListaPedidos
                         @<tr>
-                            <td>
-                                <img class="img-responsive" style="width: 100px; height: 100px;" src="@item.Producto.Fondo" />
-                            </td>
                             <td>
                                 @item.Producto.Nombre
                             </td>
@@ -67,12 +63,9 @@ End Section
                     End If
                 End Code
         </table>
-        <div class="pull-right m-t-10">
-            Total: $@Model.Importe
-        </div>
         <br />
         <div class="pull-right m-t-10">
-            @Html.ActionLink("Comenzar Compra", "Comprar", "Pedido", New With {.class = "btn btn-primary btn-cons pull-right"})
+            @Html.ActionLink("Comprar", "Comprar", "Pedido", New With {.class = "btn btn-primary btn-cons pull-right"})
         </div>
     </div>
 </div>
@@ -127,3 +120,5 @@ End Section
         table.dataTable(settings);
     </script>
 End Section
+
+

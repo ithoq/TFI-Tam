@@ -61,6 +61,4 @@ Public Class Leyenda
         End Set
     End Property
 
-
-
 End Class

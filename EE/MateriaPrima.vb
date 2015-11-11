@@ -12,6 +12,8 @@ Public MustInherit Class MateriaPrima
     End Property
 
     Private vNombre As String
+    <Required(ErrorMessage:="Campo requerido"), Display(Name:="Nombre")>
+    <StringLength(50, ErrorMessage:="Se ha superado la longitud permitida de 50 caracteres.")>
     Public Property Nombre() As String
         Get
             Return vNombre
@@ -22,6 +24,7 @@ Public MustInherit Class MateriaPrima
     End Property
 
     Private vPrecio As Double
+    <Required(ErrorMessage:="Campo requerido"), RegularExpression("^(\d{1,16}(\,\d{0,2})?)$", ErrorMessage:="Formato incorrecto")>
     Public Property Precio() As Double
         Get
             Return vPrecio
@@ -32,6 +35,8 @@ Public MustInherit Class MateriaPrima
     End Property
 
     Private vTipo As String
+    <Required(ErrorMessage:="Campo requerido"), Display(Name:="Tipo")>
+    <StringLength(50, ErrorMessage:="Se ha superado la longitud permitida de 50 caracteres.")>
     Public Property Tipo() As String
         Get
             Return vTipo

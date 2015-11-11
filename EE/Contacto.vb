@@ -1,5 +1,5 @@
 ﻿Imports System.ComponentModel.DataAnnotations
-Imports System.Web.Mvc
+
 Public Class Contacto
 
     Private vId As Integer

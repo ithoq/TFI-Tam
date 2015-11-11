@@ -60,4 +60,8 @@ Public Class PedidoController
         End If
     End Function
 
+    Function Comprar() As ActionResult
+        Return View()
+    End Function
+
 End Class

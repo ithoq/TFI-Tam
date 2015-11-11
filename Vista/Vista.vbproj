@@ -189,6 +189,8 @@
     <Compile Include="Controllers\BaseController.vb" />
     <Compile Include="Controllers\BitacoraController.vb" />
     <Compile Include="Controllers\CartuchoController.vb" />
+    <Compile Include="Controllers\CategoriaController.vb" />
+    <Compile Include="Controllers\ClienteController.vb" />
     <Compile Include="Controllers\ContactoController.vb" />
     <Compile Include="Controllers\CuentaController.vb" />
     <Compile Include="Controllers\EncuestaController.vb" />
@@ -256,7 +258,7 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-    <Content Include="Content\img\f80cb932-67d2-47d2-b1c5-0775ded61d53.png" />
+    <Content Include="Content\img\Navidad.png" />
     <Content Include="Content\img\TarjetaIvo1.jpg" />
     <Content Include="packages.config" />
     <Content Include="Pages\assets\css\style.css" />
@@ -1562,6 +1564,12 @@
     <Content Include="Views\Producto\Editar.vbhtml" />
     <Content Include="Views\Producto\Agregar.vbhtml" />
     <Content Include="Views\Pedido\VerCarro.vbhtml" />
+    <Content Include="Views\Pedido\Comprar.vbhtml" />
+    <Content Include="Views\Categoria\Index.vbhtml" />
+    <Content Include="Views\Categoria\Detalles.vbhtml" />
+    <Content Include="Views\Categoria\Crear.vbhtml" />
+    <Content Include="Views\Categoria\Editar.vbhtml" />
+    <Content Include="Views\Cliente\Index.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

@@ -35,6 +35,7 @@ Public Class Encuesta
 
     Private vTipo As String
     <Required(ErrorMessage:="Campo requerido"), Display(Name:="Tipo")>
+    <StringLength(50, ErrorMessage:="Se ha superado la longitud permitida de 50 caracteres.")>
     Public Property Tipo() As String
         Get
             Return vTipo

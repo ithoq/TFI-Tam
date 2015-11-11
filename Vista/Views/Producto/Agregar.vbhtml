@@ -25,7 +25,7 @@ End Section
     <!-- Tab panes -->
     <div class="tab-content">
         <div class="tab-pane active" id="tab-fillup1">
-            <img style="width:60%" src="@Model.Fondo" /><br />
+            <img style="width:40%" src="@Model.Fondo" /><br />
             <label>Nombre:</label>
             @Model.Nombre<br />
             <label>Alto:</label>

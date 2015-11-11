@@ -3,6 +3,8 @@ Public Class Cartucho
     Inherits MateriaPrima
 
     Private vModelo As String
+    <Required(ErrorMessage:="Campo requerido"), Display(Name:="Modelo")>
+    <StringLength(50, ErrorMessage:="Se ha superado la longitud permitida de 50 caracteres.")>
     Public Property Modelo() As String
         Get
             Return vModelo
@@ -13,6 +15,8 @@ Public Class Cartucho
     End Property
 
     Private vMarca As String
+    <Required(ErrorMessage:="Campo requerido"), Display(Name:="Marca")>
+    <StringLength(50, ErrorMessage:="Se ha superado la longitud permitida de 50 caracteres.")>
     Public Property Marca() As String
         Get
             Return vMarca

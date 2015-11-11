@@ -96,4 +96,8 @@ Public Class UsuarioBLL
         End If
     End Function
 
+    Public Function ListarClientes() As List(Of Usuario)
+        Return vMapper.ListarClientes()
+    End Function
+
 End Class

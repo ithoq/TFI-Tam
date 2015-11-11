@@ -1,17 +1,17 @@
-﻿@ModelType EE.Pedido
+﻿@ModelType IEnumerable(Of EE.Usuario)
 
-@Section breadcrumb
+@section breadcrumb
     <ul class="breadcrumb">
         <li>
-            <p>Pedidos</p>
+            <p>Clientes</p>
         </li>
         <li>
             <a class="active">Listado</a>
         </li>
     </ul>
-End Section
+end section
 
-@Section stylesheets
+@section stylesheets
     <link href="~/Pages/assets/plugins/jquery-datatable/media/css/jquery.dataTables.css" rel="stylesheet" type="text/css" />
     <link href="~/Pages/assets/plugins/jquery-datatable/extensions/FixedColumns/css/dataTables.fixedColumns.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Pages/assets/plugins/datatables-responsive/css/datatables.responsive.css" rel="stylesheet" type="text/css" media="screen" />
@@ -21,63 +21,65 @@ End Section
 <div class="panel panel-transparent">
     <div class="panel-heading">
         <div class="panel-title">
-            Pedido
+            Listado de clientes
+        </div>
+        <div class="pull-right">
+            <div class="col-xs-12">
+                <!--<a class="btn btn-primary btn-cons" href="@Url.Action("Crear")"><i class="fa fa-plus"></i> Nuevo</a>-->
+                @Code
+                    If User.IsInRole("CrearUsuario") Then
+                @<div class="btn-group">
+                    <a href="@Url.Action("Crear")" class="btn btn-primary btn-cons">
+                        Nuevo <i class="fa fa-plus"></i>
+                    </a>
+                </div>
+                    End If
+                End Code
+            </div>
         </div>
         <div class="clearfix"></div>
     </div>
     <div class="panel-body">
-        <table class="table table-hover" id="tablaPedidos">
+        <table class="table table-hover" id="tablaClientes">
             <thead>
                 <tr>
-                    <th>Imagen</th>
-                    <th>Producto</th>
-                    <th>Cantidad</th>
-                    <th>Precio Unitario</th>
-                    <th>Total</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Email</th>
+                    <th>Nombre de Usuario</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
-                @Code
-                    If Model IsNot Nothing Then
-                    @For Each item In Model.ListaPedidos
-                        @<tr>
-                            <td>
-                                <img class="img-responsive" style="width: 100px; height: 100px;" src="@item.Producto.Fondo" />
-                            </td>
-                            <td>
-                                @item.Producto.Nombre
-                            </td>
-                            <td>
-                                @item.Cantidad
-                            </td>
-                            <td>
-                                @item.Producto.ObtenerPrecio
-                            </td>
-                            <td>
-                                @item.Total
-                            </td>
-                            <td class="center">
-                                @Code
-                                    @Html.ActionLink("Quitar", "Quitar", "Pedido", New With {.id = item.Producto.Id}, New With {.class = "btn btn-primary btn-cons"})
-                                End Code
-                            </td>
-                        </tr>
-                        Next
-                    End If
-                End Code
+                @For Each item In Model
+                    Dim currentItem = item
+                    @<tr>
+                        <td>
+                            @Html.DisplayFor(Function(modelItem) currentItem.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(Function(modelItem) currentItem.Apellido)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(Function(modelItem) currentItem.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(Function(modelItem) currentItem.NombreUsuario)
+                        </td>
+                        <td class="center">
+                            @Code
+                            If User.IsInRole("ConsultarUsuario") Then
+                                @Html.ActionLink("Ver", "Detalles", New With {.id = currentItem.Id}, New With {.class = "btn btn-primary btn-cons"})
+                            End If
+                            End Code
+                        </td>
+                    </tr>
+                Next
         </table>
-        <div class="pull-right m-t-10">
-            Total: $@Model.Importe
-        </div>
-        <br />
-        <div class="pull-right m-t-10">
-            @Html.ActionLink("Comenzar Compra", "Comprar", "Pedido", New With {.class = "btn btn-primary btn-cons pull-right"})
-        </div>
     </div>
 </div>
 <!-- END PANEL -->
-@Section javascripts_vendor
+@section javascripts_vendor
     <script type="text/javascript" src="~/Pages/assets/plugins/bootstrap-select2/select2.min.js"></script>
     <script type="text/javascript" src="~/Pages/assets/plugins/classie/classie.js"></script>
     <script src="~/Pages/assets/plugins/switchery/js/switchery.min.js" type="text/javascript"></script>
@@ -88,12 +90,12 @@ End Section
     <script type="text/javascript" src="~/Pages/assets/plugins/datatables-responsive/js/lodash.min.js"></script>
 End Section
 
-@Section javascripts_custom
+@section javascripts_custom
     <script type="text/javascript">
-        var table = $('#tablaPedidos');
+        var table = $('#tablaClientes');
 
         var settings = {
-            "sDom": "<'table-responsive't>",
+            "sDom": "<'table-responsive't><'row'<p i>>",
             "sPaginationType": "bootstrap",
             "destroy": true,
             "scrollCollapse": true,
