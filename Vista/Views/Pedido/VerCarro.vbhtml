@@ -40,32 +40,33 @@ End Section
             <tbody>
                 @Code
                     If Model IsNot Nothing Then
-                    @For Each item In Model.ListaPedidos
-                        @<tr>
-                            <td>
-                                <img class="img-responsive" style="width: 100px; height: 100px;" src="@item.Producto.Fondo" />
-                            </td>
-                            <td>
-                                @item.Producto.Nombre
-                            </td>
-                            <td>
-                                @item.Cantidad
-                            </td>
-                            <td>
-                                @item.Producto.ObtenerPrecio
-                            </td>
-                            <td>
-                                @item.Total
-                            </td>
-                            <td class="center">
-                                @Code
-                                    @Html.ActionLink("Quitar", "Quitar", "Pedido", New With {.id = item.Producto.Id}, New With {.class = "btn btn-primary btn-cons"})
-                                End Code
-                            </td>
-                        </tr>
-                        Next
+                @For Each item In Model.ListaPedidos
+                    @<tr>
+                        <td>
+                            <img class="img-responsive" style="width: 100px; height: 100px;" src="@item.Producto.Fondo" />
+                        </td>
+                        <td>
+                            @item.Producto.Nombre
+                        </td>
+                        <td>
+                            @item.Cantidad
+                        </td>
+                        <td>
+                            @item.Producto.ObtenerPrecio
+                        </td>
+                        <td>
+                            @item.Total
+                        </td>
+                        <td class="center">
+                            @Code
+                                @Html.ActionLink("Quitar", "Quitar", "Pedido", New With {.id = item.Producto.Id}, New With {.class = "btn btn-primary btn-cons"})
+                            End Code
+                        </td>
+                    </tr>
+                    Next
                     End If
                 End Code
+            </tbody>
         </table>
         <div class="pull-right m-t-10">
             Total: $@Model.Importe

@@ -27,11 +27,11 @@ End Section
             <div class="col-xs-12">
                 @Code
                     If User.IsInRole("CrearCartucho") Then
-                    @<div class="btn-group">
-                        <a href="@Url.Action("Crear")" class="btn btn-primary btn-cons">
-                            Nuevo <i class="fa fa-plus"></i>
-                        </a>
-                    </div>
+                @<div class="btn-group">
+                    <a href="@Url.Action("Crear")" class="btn btn-primary btn-cons">
+                        Nuevo <i class="fa fa-plus"></i>
+                    </a>
+                </div>
                     End If
                 End Code
             </div>
@@ -79,11 +79,11 @@ End Section
                         </td>
                     </tr>
                 Next
+            </tbody>
         </table>
     </div>
 </div>
 <!-- END PANEL -->
-
 @Section javascripts_vendor
     <script type="text/javascript" src="~/Pages/assets/plugins/bootstrap-select2/select2.min.js"></script>
     <script type="text/javascript" src="~/Pages/assets/plugins/classie/classie.js"></script>

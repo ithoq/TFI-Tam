@@ -1,0 +1,12 @@
+﻿Public Class NotaDebito
+    Inherits Movimiento
+
+
+    Public Overrides Function ObtenerImporte() As Double
+        Return Me.Importe * -1
+    End Function
+
+    Public Overrides Function ObtenerTipo() As String
+        Return "Nota de Débito " + Me.TipoComprobante
+    End Function
+End Class

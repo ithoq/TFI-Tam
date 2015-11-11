@@ -28,11 +28,11 @@ End Section
                 <!--<a class="btn btn-primary btn-cons" href="@Url.Action("Crear")"><i class="fa fa-plus"></i> Nuevo</a>-->
                 @Code
                     If User.IsInRole("CrearPerfil") Then
-                    @<div class="btn-group">
-                        <a href="@Url.Action("Crear")" class="btn btn-primary btn-cons">
-                            Nuevo <i class="fa fa-plus"></i>
-                        </a>
-                    </div>
+                @<div class="btn-group">
+                    <a href="@Url.Action("Crear")" class="btn btn-primary btn-cons">
+                        Nuevo <i class="fa fa-plus"></i>
+                    </a>
+                </div>
                     End If
                 End Code
             </div>
@@ -55,20 +55,20 @@ End Section
                             @Html.DisplayFor(Function(modelItem) currentItem.Nombre)
                         </td>
                         <td class="text-center">
-                        @Code
-                        If User.IsInRole("ConsultarPerfil") Then
-                            @Html.ActionLink("Ver", "Detalles", New With {.id = currentItem.Id}, New With {.class = "btn btn-primary btn-cons"})
-                        End If
-                        End Code
-                            
+                            @Code
+                            If User.IsInRole("ConsultarPerfil") Then
+                                @Html.ActionLink("Ver", "Detalles", New With {.id = currentItem.Id}, New With {.class = "btn btn-primary btn-cons"})
+                            End If
+                            End Code
+
                         </td>
                     </tr>
                 Next
+            </tbody>
         </table>
     </div>
 </div>
 <!-- END PANEL -->
-
 @section javascripts_vendor
     <script type="text/javascript" src="~/Pages/assets/plugins/bootstrap-select2/select2.min.js"></script>
     <script type="text/javascript" src="~/Pages/assets/plugins/classie/classie.js"></script>

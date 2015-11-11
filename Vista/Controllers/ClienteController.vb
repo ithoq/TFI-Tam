@@ -17,4 +17,10 @@ Public Class ClienteController
         Return View(vLista)
     End Function
 
+    <Autorizar(Roles:="ConsultarCliente")>
+    Function Detalles(ByVal id As Integer) As ActionResult
+        Dim vCliente As Usuario = Me.vBLL.ConsultarPorId(id)
+        Return View(vCliente)
+    End Function
+
 End Class

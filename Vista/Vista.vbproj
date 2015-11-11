@@ -1570,6 +1570,7 @@
     <Content Include="Views\Categoria\Crear.vbhtml" />
     <Content Include="Views\Categoria\Editar.vbhtml" />
     <Content Include="Views\Cliente\Index.vbhtml" />
+    <Content Include="Views\Cliente\Detalles.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

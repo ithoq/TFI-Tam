@@ -114,4 +114,14 @@ Public Class Usuario
         End Set
     End Property
 
+    Private vListaMovimientos As New List(Of Movimiento)
+    Public Property ListaMovimientos() As List(Of Movimiento)
+        Get
+            Return vListaMovimientos
+        End Get
+        Set(ByVal value As List(Of Movimiento))
+            vListaMovimientos = value
+        End Set
+    End Property
+
 End Class

@@ -27,11 +27,11 @@ End Section
             <div class="col-xs-12">
                 @Code
                     If User.IsInRole("CrearResguardo") Then
-                        @<div class="btn-group">
-                             <a class="btn btn-primary btn-cons" data-toggle="modal" href="#create-confirmation" style="color: #ffffff;opacity: .9;">
-                                 Nuevo <i class="fa fa-plus"></i>
-                             </a>
-                        </div>
+                @<div class="btn-group">
+                    <a class="btn btn-primary btn-cons" data-toggle="modal" href="#create-confirmation" style="color: #ffffff;opacity: .9;">
+                        Nuevo <i class="fa fa-plus"></i>
+                    </a>
+                </div>
                     End If
                 End Code
             </div>
@@ -53,86 +53,87 @@ End Section
                 @For Each item In Model
                     Dim currentItem = item
                     @<tr>
-                         <td>
-                             @Html.DisplayFor(Function(modelItem) currentItem.FechaHora)
-                         </td>
-                         <td>
-                             @Html.DisplayFor(Function(modelItem) currentItem.Tipo)
-                         </td>
-                         <td>
-                             @Html.DisplayFor(Function(modelItem) currentItem.RutaNombre)
-                         </td>
-                         <td>
-                             @Html.DisplayFor(Function(modelItem) currentItem.Usuario.NombreUsuario)
-                         </td>
-                         <td class="text-center">
-                             @Code
-                             If User.IsInRole("RestaurarResguardo") And currentItem.Tipo <> "Restauración" Then
-                                 @<a class="btn btn-success btn-xs" data-toggle="modal" href="#restore-confirmation-@currentItem.Id">Restaurar</a>
-                                 @<div class="modal fade stick-up" id="restore-confirmation-@currentItem.Id" tabindex="-1" role="dialog" aria-hidden="true">
-                                    <div class="modal-dialog modal-sm">
-                                        <div class="modal-content-wrapper">
-                                            <div class="modal-content">
-                                                <div class="modal-header clearfix text-left">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                                        <i class="pg-close fs-14"></i>
-                                                    </button>
-                                                    <h5>Está seguro que desea eliminar el registro?</h5>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p class="no-margin">Esto eliminará permanentemente el registro.</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    @Using Html.BeginForm("Restaurar", "Resguardo")
-                                                        @Html.AntiForgeryToken()
-                                                        @Html.Hidden("id", currentItem.Id)
-                                                        @Html.Hidden("rutaNombre", currentItem.RutaNombre)
-                                                        @<button type="submit" class="btn btn-primary btn-cons pull-left inline">Aceptar</button>
-                                                        End Using
-                                                    <button type="button" class="btn btn-default btn-cons no-margin pull-left inline" data-dismiss="modal">Cancelar</button>
-                                                </div>
+                        <td>
+                            @Html.DisplayFor(Function(modelItem) currentItem.FechaHora)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(Function(modelItem) currentItem.Tipo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(Function(modelItem) currentItem.RutaNombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(Function(modelItem) currentItem.Usuario.NombreUsuario)
+                        </td>
+                        <td class="text-center">
+                            @Code
+                            If User.IsInRole("RestaurarResguardo") And currentItem.Tipo <> "Restauración" Then
+                            @<a class="btn btn-success btn-xs" data-toggle="modal" href="#restore-confirmation-@currentItem.Id">Restaurar</a>
+                            @<div class="modal fade stick-up" id="restore-confirmation-@currentItem.Id" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content-wrapper">
+                                        <div class="modal-content">
+                                            <div class="modal-header clearfix text-left">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                    <i class="pg-close fs-14"></i>
+                                                </button>
+                                                <h5>Está seguro que desea eliminar el registro?</h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p class="no-margin">Esto eliminará permanentemente el registro.</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                @Using Html.BeginForm("Restaurar", "Resguardo")
+                                                    @Html.AntiForgeryToken()
+                                                    @Html.Hidden("id", currentItem.Id)
+                                                    @Html.Hidden("rutaNombre", currentItem.RutaNombre)
+                                                    @<button type="submit" class="btn btn-primary btn-cons pull-left inline">Aceptar</button>
+                                                End Using
+                                                <button type="button" class="btn btn-default btn-cons no-margin pull-left inline" data-dismiss="modal">Cancelar</button>
                                             </div>
                                         </div>
-                                        <!-- /.modal-content -->
                                     </div>
-                                    <!-- /.modal-dialog -->
+                                    <!-- /.modal-content -->
                                 </div>
+                                <!-- /.modal-dialog -->
+                            </div>
                             End If
                             If User.IsInRole("EliminarResguardo") And currentItem.Tipo <> "Restauración" Then
-                                @<a class="btn btn-danger btn-xs" data-toggle="modal" href="#delete-confirmation-@currentItem.Id">Eliminar</a>
-                                @<div class="modal fade stick-up" id="delete-confirmation-@currentItem.Id" tabindex="-1" role="dialog" aria-hidden="true">
-                                    <div class="modal-dialog modal-sm">
-                                        <div class="modal-content-wrapper">
-                                            <div class="modal-content">
-                                                <div class="modal-header clearfix text-left">
-                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                                        <i class="pg-close fs-14"></i>
-                                                    </button>
-                                                    <h5>Está seguro que desea eliminar el registro?</h5>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p class="no-margin">Esto eliminará permanentemente el registro.</p>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    @Using Html.BeginForm("Eliminar", "Resguardo")
-                                                        @Html.AntiForgeryToken()
-                                                        @Html.Hidden("id", currentItem.Id)
-                                                        @Html.Hidden("rutaNombre", currentItem.RutaNombre)
-                                                        @<button type="submit" class="btn btn-primary btn-cons pull-left inline">Aceptar</button>
-                                                        End Using
-                                                    <button type="button" class="btn btn-default btn-cons no-margin pull-left inline" data-dismiss="modal">Cancelar</button>
-                                                </div>
+                            @<a class="btn btn-danger btn-xs" data-toggle="modal" href="#delete-confirmation-@currentItem.Id">Eliminar</a>
+                            @<div class="modal fade stick-up" id="delete-confirmation-@currentItem.Id" tabindex="-1" role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-sm">
+                                    <div class="modal-content-wrapper">
+                                        <div class="modal-content">
+                                            <div class="modal-header clearfix text-left">
+                                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                                    <i class="pg-close fs-14"></i>
+                                                </button>
+                                                <h5>Está seguro que desea eliminar el registro?</h5>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p class="no-margin">Esto eliminará permanentemente el registro.</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                @Using Html.BeginForm("Eliminar", "Resguardo")
+                                                    @Html.AntiForgeryToken()
+                                                    @Html.Hidden("id", currentItem.Id)
+                                                    @Html.Hidden("rutaNombre", currentItem.RutaNombre)
+                                                    @<button type="submit" class="btn btn-primary btn-cons pull-left inline">Aceptar</button>
+                                                End Using
+                                                <button type="button" class="btn btn-default btn-cons no-margin pull-left inline" data-dismiss="modal">Cancelar</button>
                                             </div>
                                         </div>
-                                        <!-- /.modal-content -->
                                     </div>
-                                    <!-- /.modal-dialog -->
+                                    <!-- /.modal-content -->
                                 </div>
+                                <!-- /.modal-dialog -->
+                            </div>
                             End If
                             End Code
-                         </td>
+                        </td>
                     </tr>
                 Next
+            </tbody>
         </table>
     </div>
 </div>

@@ -27,11 +27,11 @@ End Section
             <div class="col-xs-12">
                 @Code
                     If User.IsInRole("CrearProducto") Then
-                    @<div class="btn-group">
-                        <a href="@Url.Action("Crear")" class="btn btn-primary btn-cons">
-                            Nuevo <i class="fa fa-plus"></i>
-                        </a>
-                    </div>
+                @<div class="btn-group">
+                    <a href="@Url.Action("Crear")" class="btn btn-primary btn-cons">
+                        Nuevo <i class="fa fa-plus"></i>
+                    </a>
+                </div>
                     End If
                 End Code
             </div>
@@ -39,7 +39,7 @@ End Section
         <div class="clearfix"></div>
     </div>
     <div class="panel-body">
-        <table class="table table-hover" id="tablaPapeles">
+        <table class="table table-hover" id="tablaProductos">
             <thead>
                 <tr>
                     <th>Fondo</th>
@@ -74,21 +74,21 @@ End Section
                         <td>
                             @Html.DisplayFor(Function(modelItem) currentItem.Papel.Espesor)
                         </td>
-                         <td>
-                             @Html.DisplayFor(Function(modelItem) currentItem.Papel.Nombre)
-                         </td>
-                         <td>
-                             @currentItem.TipoProducto.ToString()
-                         </td>
-                         <td>
-                             @currentItem.Tema.ToString()
-                         </td>
-                         <td>
-                             @currentItem.ObtenerCosto()
-                         </td>
-                         <td>
-                             @currentItem.ObtenerPrecio()
-                         </td>
+                        <td>
+                            @Html.DisplayFor(Function(modelItem) currentItem.Papel.Nombre)
+                        </td>
+                        <td>
+                            @currentItem.TipoProducto.ToString()
+                        </td>
+                        <td>
+                            @currentItem.Tema.ToString()
+                        </td>
+                        <td>
+                            @currentItem.ObtenerCosto()
+                        </td>
+                        <td>
+                            @currentItem.ObtenerPrecio()
+                        </td>
                         <td class="center">
                             @Code
                             If User.IsInRole("ConsultarProductos") Then
@@ -98,6 +98,7 @@ End Section
                         </td>
                     </tr>
                 Next
+            </tbody>
         </table>
     </div>
 </div>

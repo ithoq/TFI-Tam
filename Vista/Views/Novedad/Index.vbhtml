@@ -63,16 +63,17 @@ End Code
                         <td class="center">
                             @Code
                             If currentItem.Tipo = "Noticia" And User.IsInRole("EnviarNovedad") Then
-                                @Html.ActionLink("Enviar", "Enviar", New With {.id = currentItem.Id}, New With {.class = "btn btn-primary btn-cons"})
+                            @Html.ActionLink("Enviar", "Enviar", New With {.id = currentItem.Id}, New With {.class = "btn btn-primary btn-cons"})
                             End If
 
                             If User.IsInRole("ConsultarNovedad") Then
-                                @Html.ActionLink("Ver", "Detalles", New With {.id = currentItem.Id}, New With {.class = "btn btn-primary btn-cons"})
+                            @Html.ActionLink("Ver", "Detalles", New With {.id = currentItem.Id}, New With {.class = "btn btn-primary btn-cons"})
                             End If
                             End Code
                         </td>
                     </tr>
                 Next
+            </tbody>
         </table>
     </div>
 </div>

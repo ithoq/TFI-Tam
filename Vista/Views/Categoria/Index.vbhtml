@@ -62,6 +62,7 @@ End Section
                         </td>
                     </tr>
                 Next
+            </tbody>
         </table>
     </div>
 </div>

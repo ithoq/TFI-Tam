@@ -106,6 +106,28 @@ Public Class UsuarioMapper
                 Next
                 u.ListaPerfiles = lista
             End If
+
+            Dim listaMovimientos As New List(Of Movimiento)
+            If ds.Tables(2).Rows.Count > 0 Then
+                For Each row3 As DataRow In ds.Tables(2).Rows
+                    Dim m As Movimiento = Nothing
+                    Select Case row3("Tipo")
+                        Case "Factura"
+                            m = New Factura
+                        Case "NotaCredito"
+                            m = New NotaCredito
+                        Case "NotaDebito"
+                            m = New NotaDebito
+                    End Select
+
+                    m.Numero = row3("Numero")
+                    m.TipoComprobante = row3("TipoComprobante")
+                    m.Observacion = row3("Observacion")
+                    m.Importe = row3("Importe")
+                    listaMovimientos.Add(m)
+                Next
+            End If
+            u.ListaMovimientos = listaMovimientos
             Return u
         Else
             Return Nothing

@@ -27,11 +27,11 @@ End Section
             <div class="col-xs-12">
                 @Code
                     If User.IsInRole("CrearTipografia") Then
-                    @<div class="btn-group">
-                        <a href="@Url.Action("Crear")" class="btn btn-primary btn-cons">
-                            Nuevo <i class="fa fa-plus"></i>
-                        </a>
-                    </div>
+                @<div class="btn-group">
+                    <a href="@Url.Action("Crear")" class="btn btn-primary btn-cons">
+                        Nuevo <i class="fa fa-plus"></i>
+                    </a>
+                </div>
                     End If
                 End Code
             </div>
@@ -56,12 +56,13 @@ End Section
                         <td class="center">
                             @Code
                             If User.IsInRole("ConsultarTipografia") Then
-                            @Html.ActionLink("Ver", "Detalles", New With {.id = currentItem.Id}, New With {.class = "btn btn-primary btn-cons"})
+                                @Html.ActionLink("Ver", "Detalles", New With {.id = currentItem.Id}, New With {.class = "btn btn-primary btn-cons"})
                             End If
                             End Code
                         </td>
                     </tr>
                 Next
+            </tbody>
         </table>
     </div>
 </div>

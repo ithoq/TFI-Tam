@@ -41,7 +41,7 @@ End Section
                     Dim currentItem = item
                     @<tr>
                         <td>
-                             @Html.DisplayFor(Function(modelItem) currentItem.FechaHora)
+                            @Html.DisplayFor(Function(modelItem) currentItem.FechaHora)
                         </td>
                         <td>
                             @Html.DisplayFor(Function(modelItem) currentItem.NombreApellido)
@@ -53,10 +53,11 @@ End Section
                             @Html.DisplayFor(Function(modelItem) currentItem.Asunto)
                         </td>
                         <td>
-                             @Html.DisplayFor(Function(modelItem) currentItem.Mensaje)
+                            @Html.DisplayFor(Function(modelItem) currentItem.Mensaje)
                         </td>
                     </tr>
                 Next
+            </tbody>
         </table>
     </div>
 </div>

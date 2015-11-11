@@ -23,20 +23,6 @@ End Section
         <div class="panel-title">
             Listado de clientes
         </div>
-        <div class="pull-right">
-            <div class="col-xs-12">
-                <!--<a class="btn btn-primary btn-cons" href="@Url.Action("Crear")"><i class="fa fa-plus"></i> Nuevo</a>-->
-                @Code
-                    If User.IsInRole("CrearUsuario") Then
-                @<div class="btn-group">
-                    <a href="@Url.Action("Crear")" class="btn btn-primary btn-cons">
-                        Nuevo <i class="fa fa-plus"></i>
-                    </a>
-                </div>
-                    End If
-                End Code
-            </div>
-        </div>
         <div class="clearfix"></div>
     </div>
     <div class="panel-body">
@@ -69,12 +55,13 @@ End Section
                         <td class="center">
                             @Code
                             If User.IsInRole("ConsultarUsuario") Then
-                                @Html.ActionLink("Ver", "Detalles", New With {.id = currentItem.Id}, New With {.class = "btn btn-primary btn-cons"})
+                            @Html.ActionLink("Ver", "Detalles", New With {.id = currentItem.Id}, New With {.class = "btn btn-primary btn-cons"})
                             End If
                             End Code
                         </td>
                     </tr>
                 Next
+            </tbody>
         </table>
     </div>
 </div>

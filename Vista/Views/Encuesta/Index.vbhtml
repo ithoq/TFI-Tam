@@ -28,11 +28,11 @@ End Section
                 <!--<a class="btn btn-primary btn-cons" href="@Url.Action("Crear")"><i class="fa fa-plus"></i> Nuevo</a>-->
                 @Code
                     If User.IsInRole("CrearEncuesta") Then
-                    @<div class="btn-group">
-                        <a href="@Url.Action("Crear")" class="btn btn-primary btn-cons">
-                            Nuevo <i class="fa fa-plus"></i>
-                        </a>
-                    </div>
+                @<div class="btn-group">
+                    <a href="@Url.Action("Crear")" class="btn btn-primary btn-cons">
+                        Nuevo <i class="fa fa-plus"></i>
+                    </a>
+                </div>
                     End If
                 End Code
             </div>
@@ -65,17 +65,17 @@ End Section
                         <td class="center">
                             @Code
                             If User.IsInRole("ConsultarEncuesta") Then
-                            @Html.ActionLink("Ver", "Detalle", New With {.id = currentItem.Id}, New With {.class = "btn btn-primary btn-cons"})
+                                @Html.ActionLink("Ver", "Detalle", New With {.id = currentItem.Id}, New With {.class = "btn btn-primary btn-cons"})
                             End If
                             End Code
                         </td>
                     </tr>
                 Next
+            </tbody>
         </table>
     </div>
 </div>
 <!-- END PANEL -->
-
 @Section javascripts_vendor
     <script type="text/javascript" src="~/Pages/assets/plugins/bootstrap-select2/select2.min.js"></script>
     <script type="text/javascript" src="~/Pages/assets/plugins/classie/classie.js"></script>
