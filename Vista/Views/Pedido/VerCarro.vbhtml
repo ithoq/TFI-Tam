@@ -52,10 +52,10 @@ End Section
                             @item.Cantidad
                         </td>
                         <td>
-                            @item.Producto.ObtenerPrecio
+                            $@item.Producto.ObtenerPrecio
                         </td>
                         <td>
-                            @item.Total
+                            $@item.Total
                         </td>
                         <td class="center">
                             @Code

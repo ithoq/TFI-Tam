@@ -209,6 +209,7 @@
     <Compile Include="Global.asax.vb">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\CarroExtensions.vb" />
     <Compile Include="Helpers\DropdownLenguajeExtensions.vb" />
     <Compile Include="Helpers\MenuVerticalExtensions.vb" />
     <Compile Include="Models\BitacoraListAjaxViewModel.vb" />

@@ -84,10 +84,10 @@ End Section
                             @currentItem.Tema.ToString()
                         </td>
                         <td>
-                            @currentItem.ObtenerCosto()
+                            $@currentItem.ObtenerCosto()
                         </td>
                         <td>
-                            @currentItem.ObtenerPrecio()
+                            $@currentItem.ObtenerPrecio()
                         </td>
                         <td class="center">
                             @Code

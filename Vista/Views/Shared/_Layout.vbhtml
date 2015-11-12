@@ -145,10 +145,10 @@
                     <!-- START NOTIFICATION LIST -->
                     <ul class="notification-list no-margin hidden-sm hidden-xs b-grey b-l b-r no-style p-l-30 p-r-20">
                         <li class="p-r-15 inline">
-                            <a href="@Url.Action("QuienesSomos", "Home")" class="clip ">Quienes Somos?</a>
+                            <a href="@Url.Action("QuienesSomos", "Home")" class="clip ">Nosotros</a>
                         </li>
                         <li class="p-r-15 inline">
-                            <a href="@Url.Action("Crear", "Contacto")" class="grid-box">Contáctenos</a>
+                            <a href="@Url.Action("Crear", "Contacto")" class="grid-box">Contacto</a>
                         </li>
                         <li class="p-r-15 inline">
                             <a href="@Url.Action("FAQ", "Home")" class="grid-box">FAQ</a>
@@ -156,12 +156,10 @@
                         <li class="p-r-15 inline">
                             <a href="@Url.Action("ListarNovedades", "Novedad")" class="grid-box">Novedades</a>
                         </li>
-                        <li class="p-r-15 inline">
-                            <a href="@Url.Action("VerCarro", "Pedido")" class="grid-box">Mis Compras</a>
-                        </li>
-                        @*<li class="p-r-15 inline" style="height: 22px;">
+                        @Html.Carro()
+                        <li class="p-r-15 inline" style="height: 22px;">
                             <input type="text" id="txtBuscarEnMenu" class="form-control input-sm" placeholder="Buscar...">
-                        </li>*@
+                        </li>
                     </ul>
                             <!-- END NOTIFICATIONS LIST -->
                             @*<a href="#" class="search-link" data-toggle="search"><i class="pg-search"></i>Buscar en el <span class="bold">menú</span></a>*@
@@ -182,9 +180,9 @@
                     @Html.DropdownLenguaje()
                     @Code
                         If IsNothing(User) Then
-                            @<a href="@Url.Action("Registrar", "Usuario")" class="btn btn-primary btn-cons" style="color: white; margin-top: 3px;">Registrarse</a>
-                            @<a href="@Url.Action("LogIn", "Cuenta")" class="btn btn-primary btn-cons" style="color: white; margin-top: 3px;">Iniciar Sesión</a>
-                        Else
+                            @<a href="@Url.Action("Registrar", "Usuario")" class="btn btn-primary btn-sm btn-cons" style="color: white; margin-top: 3px;">Registrarse</a>
+                            @<a href="@Url.Action("LogIn", "Cuenta")" class="btn btn-primary btn-sm btn-cons" style="color: white; margin-top: 3px;">Iniciar Sesión</a>
+Else
                             @<div class="pull-left p-r-10 p-t-10 fs-16 font-heading">
                                 <input type="hidden" id="loggedUserId" value="@User.UsuarioId" />
                                 <span class="semi-bold notranslate">@User.Nombre</span>
