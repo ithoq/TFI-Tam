@@ -80,7 +80,6 @@
     <Compile Include="Pedido.vb" />
     <Compile Include="Producto.vb" />
     <Compile Include="Tema.vb" />
-    <Compile Include="Tema1.vb" />
     <Compile Include="Tipografia.vb" />
     <Compile Include="TipoProducto.vb" />
     <Compile Include="Contacto.vb" />
