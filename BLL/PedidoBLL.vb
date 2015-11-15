@@ -16,5 +16,8 @@ Public Class PedidoBLL
         Return Me.vMapper.ConsutarPorId(id)
     End Function
 
+    Public Function Crear(ByVal entidad As Pedido) As Boolean
+        Return vMapper.Crear(entidad)
+    End Function
 
 End Class

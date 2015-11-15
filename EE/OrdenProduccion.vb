@@ -20,22 +20,22 @@
         End Set
     End Property
 
-    Private vFechaInicio As Date
-    Public Property FechaInicio() As Date
+    Private vFechaInicio As DateTime
+    Public Property FechaInicio() As DateTime
         Get
             Return vFechaInicio
         End Get
-        Set(ByVal value As Date)
+        Set(ByVal value As DateTime)
             vFechaInicio = value
         End Set
     End Property
 
-    Private vFechaFin As Date
-    Public Property FechaFin() As Date
+    Private vFechaFin As DateTime
+    Public Property FechaFin() As DateTime
         Get
             Return vFechaFin
         End Get
-        Set(ByVal value As Date)
+        Set(ByVal value As DateTime)
             vFechaFin = value
         End Set
     End Property

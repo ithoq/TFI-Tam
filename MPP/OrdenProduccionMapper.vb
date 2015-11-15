@@ -32,6 +32,17 @@ Public Class OrdenProduccionMapper
         Return lista
     End Function
 
+    Public Function Crear(ByVal entidad As OrdenProduccion) As Boolean
+        Dim parametros As New Hashtable
+
+        parametros.Add("@Tipo", entidad.Tipo)
+        parametros.Add("@Estado", entidad.Estado)
+        parametros.Add("@Cantidad", entidad.Cantidad)
+        parametros.Add("@Producto_Id", entidad.Producto.Id)
+
+        Return vDatos.Escribir("s_CrearOrden", parametros)
+    End Function
+
     Public Function Iniciar(ByVal id As Integer) As Boolean
         Dim parametros As New Hashtable
 

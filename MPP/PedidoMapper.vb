@@ -8,6 +8,34 @@ Public Class PedidoMapper
         Me.vDatos = New Datos
     End Sub
 
+    Public Function Crear(ByVal entidad As Pedido) As Boolean
+        Dim parametros As New Hashtable
+
+        parametros.Add("@Estado", entidad.Estado)
+        parametros.Add("@Fecha_Inicio", entidad.FechaInicio)
+        parametros.Add("@Importe", entidad.Importe)
+        parametros.Add("@Usuario_Id", entidad.Usuario.Id)
+        parametros.Add("@Direccion_Calle", entidad.Direccion.Calle)
+        parametros.Add("@Direccion_Numero", entidad.Direccion.Numero)
+        parametros.Add("@Direccion_Dpto_Piso", entidad.Direccion.DptoPiso)
+        parametros.Add("@Direccion_Localidad", entidad.Direccion.Localidad)
+
+        Dim dt As New DataTable()
+        dt.Columns.Add("Producto_Id", System.Type.GetType("System.Int32"))
+        dt.Columns.Add("Precio", System.Type.GetType("System.Decimal"))
+        dt.Columns.Add("Cantidad", System.Type.GetType("System.Int32"))
+        For Each dp As DetallePedido In entidad.ListaPedidos
+            Dim dr As DataRow = dt.NewRow
+            dr.Item("Producto_Id") = dp.Producto.Id
+            dr.Item("Precio") = dp.Precio
+            dr.Item("Cantidad") = dp.Cantidad
+            dt.Rows.Add(dr)
+        Next
+        parametros.Add("@Detalles", dt)
+
+        Return vDatos.Escribir("s_CrearPedido", parametros)
+    End Function
+
     Public Function Listar() As List(Of Pedido)
         Dim ds As New DataSet
         Dim lista As New List(Of Pedido)

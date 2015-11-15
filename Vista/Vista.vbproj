@@ -215,6 +215,7 @@
     <Compile Include="Helpers\MenuVerticalExtensions.vb" />
     <Compile Include="Models\BitacoraListAjaxViewModel.vb" />
     <Compile Include="Models\CambioClaveViewModel.vb" />
+    <Compile Include="Models\ComprarViewModel.vb" />
     <Compile Include="Models\FloatChartSerializableModel.vb" />
     <Compile Include="Models\IdiomaEditarViewModel.vb" />
     <Compile Include="Models\LogInViewModel.vb" />
@@ -1576,6 +1577,7 @@
     <Content Include="Views\OrdenProduccion\Index.vbhtml" />
     <Content Include="Views\Pedido\Index.vbhtml" />
     <Content Include="Views\Pedido\Detalles.vbhtml" />
+    <Content Include="Views\Pedido\Exito.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

@@ -1,5 +1,15 @@
 ﻿Public MustInherit Class Movimiento
 
+    Private vFecha As Date
+    Public Property Fecha() As Date
+        Get
+            Return vFecha
+        End Get
+        Set(ByVal value As Date)
+            vFecha = value
+        End Set
+    End Property
+
     Private vNumero As Integer
     Public Property Numero() As Integer
         Get
@@ -47,6 +57,16 @@
         End Get
         Set(ByVal value As Usuario)
             vUsuario = value
+        End Set
+    End Property
+
+    Private vListaDetalles As New List(Of DetalleMovimiento)
+    Public Property ListaDetalles() As List(Of DetalleMovimiento)
+        Get
+            Return vListaDetalles
+        End Get
+        Set(ByVal value As List(Of DetalleMovimiento))
+            vListaDetalles = value
         End Set
     End Property
 

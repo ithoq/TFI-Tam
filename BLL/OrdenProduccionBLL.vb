@@ -12,6 +12,10 @@ Public Class OrdenProduccionBLL
         Return vMapper.Listar()
     End Function
 
+    Public Function Crear(ByVal entidad As OrdenProduccion) As Boolean
+        Return vMapper.Crear(entidad)
+    End Function
+
     Public Function Iniciar(ByVal id As Integer) As Boolean
         Return Me.vMapper.Iniciar(id)
     End Function

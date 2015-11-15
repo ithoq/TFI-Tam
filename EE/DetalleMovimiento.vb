@@ -1,18 +1,6 @@
-﻿Imports System.ComponentModel.DataAnnotations
-Public Class DetallePedido
-
-    Private vId As Integer
-    Public Property Id() As Integer
-        Get
-            Return vId
-        End Get
-        Set(ByVal value As Integer)
-            vId = value
-        End Set
-    End Property
+﻿Public Class DetalleMovimiento
 
     Private vCantidad As Integer
-    <Required(ErrorMessage:="Campo requerido"), RegularExpression("^\d{1,16}?$", ErrorMessage:="Formato incorrecto")>
     Public Property Cantidad() As Integer
         Get
             Return vCantidad
@@ -32,7 +20,7 @@ Public Class DetallePedido
         End Set
     End Property
 
-    Private vProducto As New Producto
+    Private vProducto As Producto
     Public Property Producto() As Producto
         Get
             Return vProducto
@@ -42,9 +30,4 @@ Public Class DetallePedido
         End Set
     End Property
 
-    Public ReadOnly Property Total As Double
-        Get
-            Return Math.Round(Me.Cantidad * Me.Precio, 2)
-        End Get
-    End Property
 End Class
