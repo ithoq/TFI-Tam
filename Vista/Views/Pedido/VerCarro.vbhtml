@@ -52,7 +52,7 @@ End Section
                             @item.Cantidad
                         </td>
                         <td>
-                            $@item.Producto.ObtenerPrecio
+                            $@item.Producto.ObtenerPrecioConIva()
                         </td>
                         <td>
                             $@item.Total

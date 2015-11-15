@@ -67,6 +67,7 @@
     <Compile Include="Cartucho.vb" />
     <Compile Include="Categoria.vb" />
     <Compile Include="Comentario.vb" />
+    <Compile Include="DetalleMovimiento.vb" />
     <Compile Include="DetallePedido.vb" />
     <Compile Include="Direccion.vb" />
     <Compile Include="Factura.vb" />
@@ -75,6 +76,7 @@
     <Compile Include="NotaCredito.vb" />
     <Compile Include="NotaDebito.vb" />
     <Compile Include="OrdenProduccion.vb" />
+    <Compile Include="Pago.vb" />
     <Compile Include="Pedido.vb" />
     <Compile Include="Producto.vb" />
     <Compile Include="Tema.vb" />

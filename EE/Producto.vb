@@ -131,4 +131,24 @@ Public Class Producto
         Return Math.Round(Me.ObtenerPrecio() + Me.ObtenerIva(), 2)
     End Function
 
+    Public Function CrearOrdenesProduccion(ByVal cantidad As Integer) As List(Of OrdenProduccion)
+        Dim listaOrdenes As New List(Of OrdenProduccion)
+
+        Dim o1 As New OrdenProduccion
+        o1.Tipo = "Impresión"
+        o1.Cantidad = cantidad
+        o1.Estado = "Pendiente"
+        o1.Producto = Me
+
+        Dim o2 As New OrdenProduccion
+        o2.Tipo = "Terminación"
+        o2.Cantidad = cantidad
+        o2.Estado = "Pendiente"
+        o2.Producto = Me
+
+        listaOrdenes.AddRange({o1, o2})
+
+        Return listaOrdenes
+    End Function
+
 End Class

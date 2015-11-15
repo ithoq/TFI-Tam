@@ -38,6 +38,9 @@ Public Class UsuarioMapper
         parametros.Add("@Apellido", u.Apellido)
         parametros.Add("@Email", u.Email)
         parametros.Add("@NombreUsuario", u.NombreUsuario)
+        If u.Telefono IsNot Nothing Then
+            parametros.Add("@Telefono", u.Telefono)
+        End If
         Dim dt As New DataTable()
         dt.Columns.Add("Perfil_Id")
         For Each id As Integer In u.PerfilesId
