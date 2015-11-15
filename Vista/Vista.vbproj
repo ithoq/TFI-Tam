@@ -203,6 +203,7 @@
     <Compile Include="Controllers\PerfilController.vb" />
     <Compile Include="Controllers\ProductoController.vb" />
     <Compile Include="Controllers\ResguardoController.vb" />
+    <Compile Include="Controllers\TemaController.vb" />
     <Compile Include="Controllers\TipografiaController.vb" />
     <Compile Include="Controllers\UsuarioController.vb" />
     <Compile Include="Converters\PermisoConverter.vb" />
@@ -635,6 +636,11 @@
     <Content Include="Pages\assets\plugins\bootstrap-select2\select2_locale_vi.js" />
     <Content Include="Pages\assets\plugins\bootstrap-select2\select2_locale_zh-CN.js" />
     <Content Include="Pages\assets\plugins\bootstrap-select2\select2_locale_zh-TW.js" />
+    <Content Include="Pages\assets\plugins\bootstrap-star-rating\css\star-rating.css" />
+    <Content Include="Pages\assets\plugins\bootstrap-star-rating\css\star-rating.min.css" />
+    <Content Include="Pages\assets\plugins\bootstrap-star-rating\img\loading.gif" />
+    <Content Include="Pages\assets\plugins\bootstrap-star-rating\js\star-rating.js" />
+    <Content Include="Pages\assets\plugins\bootstrap-star-rating\js\star-rating.min.js" />
     <Content Include="Pages\assets\plugins\bootstrap-tag\bootstrap-tagsinput.css" />
     <Content Include="Pages\assets\plugins\bootstrap-tag\bootstrap-tagsinput.js" />
     <Content Include="Pages\assets\plugins\bootstrap-tag\bootstrap-tagsinput.min.js" />
@@ -1576,6 +1582,11 @@
     <Content Include="Views\OrdenProduccion\Index.vbhtml" />
     <Content Include="Views\Pedido\Index.vbhtml" />
     <Content Include="Views\Pedido\Detalles.vbhtml" />
+    <Content Include="Views\Tema\Index.vbhtml" />
+    <Content Include="Views\Tema\Detalles.vbhtml" />
+    <Content Include="Views\Tema\Crear.vbhtml" />
+    <Content Include="Views\Tema\Editar.vbhtml" />
+    <Content Include="Views\Producto\Comentar.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

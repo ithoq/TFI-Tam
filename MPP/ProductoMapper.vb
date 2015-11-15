@@ -17,7 +17,7 @@ Public Class ProductoMapper
         parametros.Add("@Ancho", entidad.Ancho)
         parametros.Add("@Papel_Id", entidad.Papel.Id)
         parametros.Add("@TipoProducto_Id", Convert.ToInt16(entidad.TipoProducto))
-        parametros.Add("@Tema_Id", Convert.ToInt16(entidad.Tema))
+        parametros.Add("@Tema_Id", entidad.Tema.Id)
         parametros.Add("@Cartucho_Id", entidad.Cartucho.Id)
 
         Return vDatos.Escribir("s_AltaProducto", parametros)
@@ -35,7 +35,7 @@ Public Class ProductoMapper
         parametros.Add("@Nombre", entidad.Nombre)
         parametros.Add("@Papel_Id", entidad.Papel.Id)
         parametros.Add("@TipoProducto_Id", Convert.ToInt16(entidad.TipoProducto))
-        parametros.Add("@Tema_Id", Convert.ToInt16(entidad.Tema))
+        parametros.Add("@Tema_Id", entidad.Tema.Id)
         parametros.Add("@Cartucho_Id", entidad.Cartucho.Id)
 
         Return vDatos.Escribir("s_ModificacionProducto", parametros)
@@ -63,7 +63,8 @@ Public Class ProductoMapper
                 p.Ancho = Item("Ancho")
                 p.Nombre = Item("Nombre")
                 p.TipoProducto = Item("TipoProducto_Id")
-                p.Tema = Item("Tema_Id")
+                p.Tema.Id = Item("Tema_Id")
+                p.Tema.Tema = Item("Tema")
                 p.Papel.Id = Item("IdPapel")
                 p.Papel.Nombre = Item("NombrePapel")
                 p.Papel.Precio = Item("PrecioPapel")
@@ -74,6 +75,7 @@ Public Class ProductoMapper
                 p.Cartucho.Nombre = Item("NombreCartucho")
                 p.Cartucho.Precio = Item("PrecioCartucho")
                 p.Cartucho.Tipo = Item("TipoCartucho")
+                p.Valoracion = Item("Valoracion")
                 lista.Add(p)
             Next
         End If
@@ -97,7 +99,8 @@ Public Class ProductoMapper
             p.Ancho = row.Item("Ancho")
             p.Nombre = row.Item("Nombre")
             p.TipoProducto = row.Item("TipoProducto_Id")
-            p.Tema = row.Item("Tema_Id")
+            p.Tema.Id = row.Item("Tema_Id")
+            p.Tema.Tema = row.Item("Tema")
             p.Papel.Id = row.Item("IdPapel")
             p.Papel.Nombre = row.Item("NombrePapel")
             p.Papel.Precio = row.Item("PrecioPapel")
@@ -112,6 +115,16 @@ Public Class ProductoMapper
         Else
             Return Nothing
         End If
+    End Function
+
+    Public Function Comentar(ByVal entidad As Comentario) As Boolean
+        Dim parametros As New Hashtable
+
+        parametros.Add("@Valoracion", entidad.Valoracion)
+        parametros.Add("@Mensaje", entidad.Mensaje)
+        parametros.Add("@Producto_Id", entidad.Producto.Id)
+
+        Return vDatos.Escribir("s_AltaComentario", parametros)
     End Function
 
 End Class

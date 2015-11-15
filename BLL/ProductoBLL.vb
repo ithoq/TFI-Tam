@@ -27,4 +27,9 @@ Public Class ProductoBLL
         Return Me.vMapper.ConsutarPorId(id)
     End Function
 
+    Public Function Comentar(ByVal entidad As Comentario) As Boolean
+        Return Me.vMapper.Comentar(entidad)
+    End Function
+
+
 End Class

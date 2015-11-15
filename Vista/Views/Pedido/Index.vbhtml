@@ -52,7 +52,7 @@ End Section
                             @Html.DisplayFor(Function(modelItem) currentItem.FechaFin)
                         </td>
                         <td>
-                            @Html.DisplayFor(Function(modelItem) currentItem.Importe)
+                            $@currentItem.Importe.ToString("0.00")
                         </td>
                         <td>
                             @Html.DisplayFor(Function(modelItem) currentItem.Estado)

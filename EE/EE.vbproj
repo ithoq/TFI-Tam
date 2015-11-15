@@ -66,6 +66,7 @@
     <Compile Include="Bitacora.vb" />
     <Compile Include="Cartucho.vb" />
     <Compile Include="Categoria.vb" />
+    <Compile Include="Comentario.vb" />
     <Compile Include="DetallePedido.vb" />
     <Compile Include="Direccion.vb" />
     <Compile Include="Factura.vb" />
@@ -77,6 +78,7 @@
     <Compile Include="Pedido.vb" />
     <Compile Include="Producto.vb" />
     <Compile Include="Tema.vb" />
+    <Compile Include="Tema1.vb" />
     <Compile Include="Tipografia.vb" />
     <Compile Include="TipoProducto.vb" />
     <Compile Include="Contacto.vb" />
