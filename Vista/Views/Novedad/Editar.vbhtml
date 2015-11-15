@@ -92,7 +92,7 @@ End Section
 </div>
 
 @section javascripts_vendor
-    <script src="~/Pages/assets/plugins/summernote/js/summernote.min.js" type="text/javascript"></script>
+    <script src="~/Pages/assets/plugins/summernote/js/summernote.js" type="text/javascript"></script>
 End Section
 
 

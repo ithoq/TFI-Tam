@@ -124,4 +124,33 @@ Public Class Usuario
         End Set
     End Property
 
+    Private vTelefono As String
+    Public Property Telefono() As String
+        Get
+            Return vTelefono
+        End Get
+        Set(ByVal value As String)
+            vTelefono = value
+        End Set
+    End Property
+
+    Private vListaPedidos As New List(Of Pedido)
+    Public Property ListaPedidos() As List(Of Pedido)
+        Get
+            Return vListaPedidos
+        End Get
+        Set(ByVal value As List(Of Pedido))
+            vListaPedidos = value
+        End Set
+    End Property
+
+    Public ReadOnly Property TotalCC As Double
+        Get
+            Dim valor As Double = 0
+            For Each m As Movimiento In Me.ListaMovimientos
+                valor += m.ObtenerImporte()
+            Next
+            Return valor
+        End Get
+    End Property
 End Class

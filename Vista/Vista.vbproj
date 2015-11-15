@@ -197,6 +197,7 @@
     <Compile Include="Controllers\HomeController.vb" />
     <Compile Include="Controllers\IdiomaController.vb" />
     <Compile Include="Controllers\NovedadController.vb" />
+    <Compile Include="Controllers\OrdenProduccionController.vb" />
     <Compile Include="Controllers\PapelController.vb" />
     <Compile Include="Controllers\PedidoController.vb" />
     <Compile Include="Controllers\PerfilController.vb" />
@@ -1572,6 +1573,9 @@
     <Content Include="Views\Categoria\Editar.vbhtml" />
     <Content Include="Views\Cliente\Index.vbhtml" />
     <Content Include="Views\Cliente\Detalles.vbhtml" />
+    <Content Include="Views\OrdenProduccion\Index.vbhtml" />
+    <Content Include="Views\Pedido\Index.vbhtml" />
+    <Content Include="Views\Pedido\Detalles.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

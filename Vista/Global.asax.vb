@@ -31,6 +31,7 @@ Public Class MvcApplication
             newUser.Nombre = serializeModel.Nombre
             newUser.NombreUsuario = serializeModel.NombreUsuario
             newUser.Apellido = serializeModel.Apellido
+            newUser.Email = serializeModel.Email
             Dim vPerfilBll As New BLL.PerfilBLL()
             newUser.Permisos = vPerfilBll.ConsultarPermisosStringPorUsuario(serializeModel.UsuarioId)
             Dim vUsuarioBll As New BLL.UsuarioBLL()

@@ -128,6 +128,25 @@ Public Class UsuarioMapper
                 Next
             End If
             u.ListaMovimientos = listaMovimientos
+
+            Dim listaPedidos As New List(Of Pedido)
+            If ds.Tables(3).Rows.Count > 0 Then
+                For Each row4 As DataRow In ds.Tables(3).Rows
+                    Dim p As New Pedido
+                    p.Id = row4("Id")
+                    p.FechaInicio = row4("FechaInicio")
+                    p.FechaFin = row4("FechaFin")
+                    p.Estado = row4("Estado")
+                    p.Importe = row4("Importe")
+                    p.Direccion.Calle = row4("Direccion_Calle")
+                    p.Direccion.Numero = row4("Direccion_Numero")
+                    p.Direccion.DptoPiso = row4("Direccion_DptoPiso")
+                    p.Direccion.Localidad = row4("Direccion_Localidad")
+                    listaPedidos.Add(p)
+                Next
+            End If
+            u.ListaPedidos = listaPedidos
+
             Return u
         Else
             Return Nothing

@@ -70,7 +70,9 @@
     <Compile Include="IdiomaBLL.vb" />
     <Compile Include="MensajeBLL.vb" />
     <Compile Include="NovedadBLL.vb" />
+    <Compile Include="OrdenProduccionBLL.vb" />
     <Compile Include="PapelBLL.vb" />
+    <Compile Include="PedidoBLL.vb" />
     <Compile Include="PerfilBLL.vb" />
     <Compile Include="ProductoBLL.vb" />
     <Compile Include="ResguardoBLL.vb" />

@@ -1,9 +1,9 @@
-﻿@ModelType IEnumerable(Of EE.Producto)
+﻿@ModelType IEnumerable(Of EE.OrdenProduccion)
 
 @section breadcrumb
     <ul class="breadcrumb">
         <li>
-            <p>Productos</p>
+            <p>Ordenes de producción</p>
         </li>
         <li>
             <a class="active">Listado</a>
@@ -21,37 +21,20 @@ End Section
 <div class="panel panel-transparent">
     <div class="panel-heading">
         <div class="panel-title">
-            Listado de Productos
-        </div>
-        <div class="pull-right">
-            <div class="col-xs-12">
-                @Code
-                    If User.IsInRole("CrearProducto") Then
-                @<div class="btn-group">
-                    <a href="@Url.Action("Crear")" class="btn btn-primary btn-cons">
-                        Nuevo <i class="fa fa-plus"></i>
-                    </a>
-                </div>
-                    End If
-                End Code
-            </div>
+            Listado de ordenes de producción
         </div>
         <div class="clearfix"></div>
     </div>
     <div class="panel-body">
-        <table class="table table-hover" id="tablaProductos">
+        <table class="table table-hover" id="tablaOrdenes">
             <thead>
                 <tr>
-                    <th>Fondo</th>
-                    <th>Nombre</th>
-                    <th>Alto</th>
-                    <th>Ancho</th>
-                    <th>Papel Espesor</th>
-                    <th>Papel Nombre</th>
-                    <th>Tipo de producto</th>
-                    <th>Tema</th>
-                    <th>Costo Unitario</th>
-                    <th>Precio Unitario</th>
+                    <th>Tipo</th>
+                    <th>Fecha Inicio</th>
+                    <th>Fecha Fin</th>
+                    <th>Cantidad</th>
+                    <th>Observacion</th>
+                    <th>Estado</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -60,39 +43,33 @@ End Section
                     Dim currentItem = item
                     @<tr>
                         <td>
-                            <img class="img-responsive" style="width: 100px; height: 100px;" src="@currentItem.Fondo" />
+                            @Html.DisplayFor(Function(modelItem) currentItem.Tipo)
                         </td>
                         <td>
-                            @Html.DisplayFor(Function(modelItem) currentItem.Nombre)
+                            @Html.DisplayFor(Function(modelItem) currentItem.FechaInicio)
                         </td>
                         <td>
-                            @Html.DisplayFor(Function(modelItem) currentItem.Alto)
+                            @Html.DisplayFor(Function(modelItem) currentItem.FechaFin)
                         </td>
                         <td>
-                            @Html.DisplayFor(Function(modelItem) currentItem.Ancho)
+                            @Html.DisplayFor(Function(modelItem) currentItem.Cantidad)
                         </td>
                         <td>
-                            @Html.DisplayFor(Function(modelItem) currentItem.Papel.Espesor)
+                            @Html.DisplayFor(Function(modelItem) currentItem.Observacion)
                         </td>
                         <td>
-                            @Html.DisplayFor(Function(modelItem) currentItem.Papel.Nombre)
-                        </td>
-                        <td>
-                            @currentItem.TipoProducto.ToString()
-                        </td>
-                        <td>
-                            @currentItem.Tema.ToString()
-                        </td>
-                        <td>
-                            $@currentItem.ObtenerCosto()
-                        </td>
-                        <td>
-                            $@currentItem.ObtenerPrecio()
+                            @Html.DisplayFor(Function(modelItem) currentItem.Estado)
                         </td>
                         <td class="center">
                             @Code
-                            If User.IsInRole("ConsultarProducto") Then
-                            @Html.ActionLink("Ver", "Detalles", New With {.id = currentItem.Id}, New With {.class = "btn btn-primary btn-cons"})
+                            If currentItem.Estado = "Pendiente" Then
+                            If User.IsInRole("IniciarOrden") Then
+                            @Html.ActionLink("Iniciar", "Iniciar", New With {.id = currentItem.Id}, New With {.class = "btn btn-primary btn-cons"})
+                            End If
+                            ElseIf currentItem.Estado = "En Proceso" Then
+                            If User.IsInRole("TerminarOrden") Then
+                            @Html.ActionLink("Terminar", "Terminar", New With {.id = currentItem.Id}, New With {.class = "btn btn-primary btn-cons"})
+                            End If
                             End If
                             End Code
                         </td>
@@ -116,7 +93,7 @@ End Section
 
 @Section javascripts_custom
     <script type="text/javascript">
-        var table = $('#tablaProductos');
+        var table = $('#tablaOrdenes');
 
         var settings = {
             "sDom": "<'table-responsive't><'row'<p i>>",

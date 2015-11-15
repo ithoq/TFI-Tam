@@ -92,15 +92,23 @@ Public Class Producto
     End Property
 
     Public Function ObtenerCosto() As Double
-        Dim volumen As Double = Me.Ancho * Me.Alto * Me.Papel.Espesor
-        Dim volumenPapel As Double = 21 * 45 * 0.09
+        Dim volumen As Double = (Me.Ancho * 0.0264) * (Me.Alto * 0.0264) * (Me.Papel.Espesor * 0.1)
+        Dim volumenPapel As Double = 21 * 45 * (Me.Papel.Espesor * 0.1)
         Dim costoPapel As Double = volumen * Me.Papel.Precio / volumenPapel
         Dim costoCartucho As Double = Me.Cartucho.Precio * 0.01
         Return Math.Round(costoPapel + costoCartucho, 2)
     End Function
 
     Public Function ObtenerPrecio() As Double
-        Return Me.ObtenerCosto() * 2
+        Return Me.ObtenerCosto() * 4
+    End Function
+
+    Public Function ObtenerIva() As Double
+        Return Math.Round(Me.ObtenerPrecio() * 0.21, 2)
+    End Function
+
+    Public Function ObtenerPrecioConIva() As Double
+        Return Math.Round(Me.ObtenerPrecio() + Me.ObtenerIva(), 2)
     End Function
 
 End Class

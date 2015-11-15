@@ -1,4 +1,5 @@
-﻿Public Class Pedido
+﻿Imports System.ComponentModel.DataAnnotations
+Public Class Pedido
 
     Private vId As Integer
     Public Property Id() As Integer
@@ -11,6 +12,7 @@
     End Property
 
     Private vFechaInicio As Date
+    <Required(ErrorMessage:="Campo requerido"), Display(Name:="Fecha Inicio"), DisplayFormat(ApplyFormatInEditMode:=True, DataFormatString:="{0:dd/MM/yyyy}")>
     Public Property FechaInicio() As Date
         Get
             Return vFechaInicio
@@ -21,6 +23,7 @@
     End Property
 
     Private vFechaFin As Date
+    <Required(ErrorMessage:="Campo requerido"), Display(Name:="Fecha Fin"), DisplayFormat(ApplyFormatInEditMode:=True, DataFormatString:="{0:dd/MM/yyyy}")>
     Public Property FechaFin() As Date
         Get
             Return vFechaFin
@@ -50,13 +53,13 @@
         End Set
     End Property
 
-    Private vUsuarioId As New Usuario
-    Public Property UsuarioId() As Usuario
+    Private vUsuario As New Usuario
+    Public Property Usuario() As Usuario
         Get
-            Return vUsuarioId
+            Return vUsuario
         End Get
         Set(ByVal value As Usuario)
-            vUsuarioId = value
+            vUsuario = value
         End Set
     End Property
 
@@ -68,6 +71,28 @@
         Set(ByVal value As List(Of DetallePedido))
             vLista = value
         End Set
+    End Property
+
+    Private vDireccion As New Direccion
+    Public Property Direccion() As Direccion
+        Get
+            Return vDireccion
+        End Get
+        Set(ByVal value As Direccion)
+            vDireccion = value
+        End Set
+    End Property
+
+    Public ReadOnly Property Iva() As Double
+        Get
+            Return Me.Importe * 0.21
+        End Get
+    End Property
+
+    Public ReadOnly Property Total() As Double
+        Get
+            Return Me.Importe
+        End Get
     End Property
 
 End Class

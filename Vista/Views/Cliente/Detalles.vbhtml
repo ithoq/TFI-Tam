@@ -26,6 +26,9 @@ End Section
         <li>
             <a data-toggle="tab" href="#tab-fillup2"><span>Cuenta Corriente</span></a>
         </li>
+        <li>
+            <a data-toggle="tab" href="#tab-fillup3"><span>Pedidos</span></a>
+        </li>
     </ul>
     <!-- Tab panes -->
     <div class="tab-content">
@@ -48,73 +51,84 @@ End Section
                 <tbody>
                     @Code
                         If Model IsNot Nothing Then
-                    @For Each item In Model.ListaMovimientos
-                        @<tr>
-                            <td>
-                                @item.ObtenerTipo
-                            </td>
-                            <td>
-                                @item.Numero
-                            </td>
-                            <td>
-                                @item.Observacion
-                            </td>
-                            <td>
-                                @item.ObtenerImporte
-                            </td>
-                        </tr>
-                        Next
+                        @For Each item In Model.ListaMovimientos
+                            @<tr>
+                                <td>
+                                    @item.ObtenerTipo
+                                </td>
+                                <td>
+                                    @item.Numero
+                                </td>
+                                <td>
+                                    @item.Observacion
+                                </td>
+                                <td>
+                                    @item.ObtenerImporte
+                                </td>
+                            </tr>
+                            Next
                         End If
                     End Code
                 </tbody>
             </table>
             <div class="pull-right m-t-10">
-                Total: $
+                <h3>Total: $@Model.TotalCC.ToString("0.00")</h3>
             </div>
         </div>
+        <div class="tab-pane" id="tab-fillup3">
+            <table class="table table-hover" id="tablaPedidos">
+                <thead>
+                    <tr>
+                        <th>N° de orden</th>
+                        <th>Fecha Inicio</th>
+                        <th>Fecha Fin</th>
+                        <th>Importe</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @For Each item In Model.ListaPedidos
+                        @<tr>
+                            <td>
+                                @Html.DisplayFor(Function(modelItem) item.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(Function(modelItem) item.FechaInicio)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(Function(modelItem) item.FechaFin)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(Function(modelItem) item.Importe)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(Function(modelItem) item.Estado)
+                            </td>
+                            <td class="center">
+                                @Code
+                                If User.IsInRole("ConsultarPedido") Then
+                                    @Html.ActionLink("Ver", "Detalles", "Pedido", New With {.id = item.Id}, New With {.class = "btn btn-primary btn-cons"})
+                                End If
+                                End Code
+                            </td>
+                        </tr>
+                    Next
+                </tbody>
+            </table>
+        </div>
     </div>
-    <p>
-        @Code
-            If Model.NombreUsuario <> "admin" And User.IsInRole("EditarCliente") Then
-        @Html.ActionLink("Editar", "Editar", New With {.id = Model.Id}, New With {.class = "btn btn-primary btn-cons"})
-            End If
-            If Model.NombreUsuario <> "admin" And User.IsInRole("EliminarCliente") Then
-        @<button class="btn btn-primary btn-cons" data-target="#modalStickUpSmall" data-toggle="modal">Eliminar</button>
-            End If
-            If User.IsInRole("VerClientes") Then
-        @<br />
-        @Html.ActionLink("Volver", "Index", Nothing, New With {.class = "btn btn-default btn-cons"})
-            End If
-        End Code
-    </p>
 </div>
+<p>
+    @Code
+        If User.IsInRole("VerClientes") Then
 
-<div class="modal fade stick-up" id="modalStickUpSmall" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
-        <div class="modal-content-wrapper">
-            <div class="modal-content">
-                <div class="modal-header clearfix text-left">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        <i class="pg-close fs-14"></i>
-                    </button>
-                    <h5>Está seguro que desea eliminar el registro?</h5>
-                </div>
-                <div class="modal-body">
-                    <p class="no-margin">Esto eliminará permanentemente el registro.</p>
-                </div>
-                <div class="modal-footer">
-                    @Using Html.BeginForm("Eliminar", "Usuario", New With {.id = Model.Id}, FormMethod.Get)
-                        @Html.AntiForgeryToken()
-                        @<button type="submit" class="btn btn-primary btn-cons pull-left inline">Aceptar</button>
-                        End Using
-                    <button type="button" class="btn btn-default btn-cons no-margin pull-left inline" data-dismiss="modal">Cancelar</button>
-                </div>
-            </div>
-        </div>
-        <!-- /.modal-content -->
-    </div>
-    <!-- /.modal-dialog -->
-</div>
+        @Html.ActionLink("Volver", "Index", Nothing, New With {.class = "btn btn-default btn-cons"})
+        End If
+    End Code
+</p>
+
+
 
 @Section javascripts_vendor
     <script type="text/javascript" src="~/Pages/assets/plugins/bootstrap-select2/select2.min.js"></script>
@@ -130,6 +144,7 @@ End Section
 @Section javascripts_custom
     <script type="text/javascript">
         var table = $('#tablaMovimientos');
+        var table1 = $('#tablaPedidos');
 
         var settings = {
             "sDom": "<'table-responsive't><'row'<p i>>",
@@ -164,5 +179,6 @@ End Section
         };
 
         table.DataTable(settings);
+        table1.dataTable(settings);
     </script>
 End Section

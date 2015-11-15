@@ -70,7 +70,9 @@
     <Compile Include="IdiomaMapper.vb" />
     <Compile Include="MensajeMapper.vb" />
     <Compile Include="NovedadMapper.vb" />
+    <Compile Include="OrdenProduccionMapper.vb" />
     <Compile Include="PapelMapper.vb" />
+    <Compile Include="PedidoMapper.vb" />
     <Compile Include="PerfilMapper.vb" />
     <Compile Include="ProductoMapper.vb" />
     <Compile Include="ResguardoMapper.vb" />

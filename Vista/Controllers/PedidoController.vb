@@ -4,22 +4,31 @@ Public Class PedidoController
     Inherits BaseController
 
     Private vProductoBLL As ProductoBLL
+    Private vPedidoBLL As PedidoBLL
 
     Sub New()
         Me.vProductoBLL = New ProductoBLL
+        Me.vPedidoBLL = New PedidoBLL
     End Sub
     '
     ' GET: /Pedido
-
+    <Autorizar(Roles:="VerPedidos")>
     Function Index() As ActionResult
-        Return View()
+        Dim vLista As List(Of Pedido) = Me.vPedidoBLL.Listar()
+        Return View(vLista)
+    End Function
+
+    <Autorizar(Roles:="ConsultarPedido")>
+    Function Detalles(ByVal id As Integer) As ActionResult
+        Dim vPedido As Pedido = Me.vPedidoBLL.ConsutarPorId(id)
+        Return View(vPedido)
     End Function
 
     Function Agregar(ByVal form As FormCollection) As ActionResult
         Dim detalle As New DetallePedido
         Dim prod As Producto = Me.vProductoBLL.ConsutarPorId(form.Item("Producto_Id"))
         detalle.Cantidad = form.Item("Cantidad")
-        detalle.Precio = prod.ObtenerPrecio()
+        detalle.Precio = prod.ObtenerPrecioConIva()
         detalle.Producto = prod
         Me.ObtenerCarrito.Importe += detalle.Total
         Me.ObtenerCarrito().ListaPedidos.Add(detalle)
