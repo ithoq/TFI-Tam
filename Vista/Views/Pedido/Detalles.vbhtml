@@ -64,7 +64,7 @@ End Section
                 Next
             </tbody>
         </table>
-        <h3>Total: $@Model.Total.ToString("0.00")</h3>
+        <h3>Total: $@Model.Importe.ToString("0.00")</h3>
     </div>
 </div>
 <p>
