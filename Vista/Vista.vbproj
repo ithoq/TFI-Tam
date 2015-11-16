@@ -205,6 +205,7 @@
     <Compile Include="Controllers\ResguardoController.vb" />
     <Compile Include="Controllers\TemaController.vb" />
     <Compile Include="Controllers\TipografiaController.vb" />
+    <Compile Include="Controllers\TipoProductoController.vb" />
     <Compile Include="Controllers\UsuarioController.vb" />
     <Compile Include="Converters\PermisoConverter.vb" />
     <Compile Include="ErrorHandler\CustomErrorHandler.vb" />
@@ -1590,6 +1591,10 @@
     <Content Include="Views\Producto\Comentar.vbhtml" />
     <Content Include="Views\Pedido\Exito.vbhtml" />
     <Content Include="Views\Producto\Comparar.vbhtml" />
+    <Content Include="Views\TipoProducto\Index.vbhtml" />
+    <Content Include="Views\TipoProducto\Detalles.vbhtml" />
+    <Content Include="Views\TipoProducto\Crear.vbhtml" />
+    <Content Include="Views\TipoProducto\Editar.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

@@ -61,7 +61,7 @@ Public Class Producto
         End Set
     End Property
 
-    Private vTipoProducto As TipoProducto
+    Private vTipoProducto As New TipoProducto
     Public Property TipoProducto() As TipoProducto
         Get
             Return vTipoProducto

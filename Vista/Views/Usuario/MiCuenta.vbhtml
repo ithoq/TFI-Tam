@@ -27,7 +27,7 @@ End Section
             <a data-toggle="tab" href="#tab-fillup2"><span>Cuenta Corriente</span></a>
         </li>
         <li>
-            <a data-toggle="tab" href="#tab-fillup3"><span>Pedidos</span></a>
+            <a data-toggle="tab" href="#tab-fillup3"><span>Mis Pedidos</span></a>
         </li>
     </ul>
     <!-- Tab panes -->

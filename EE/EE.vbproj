@@ -71,6 +71,7 @@
     <Compile Include="DetallePedido.vb" />
     <Compile Include="Direccion.vb" />
     <Compile Include="Factura.vb" />
+    <Compile Include="InformeGanancia.vb" />
     <Compile Include="Leyenda.vb" />
     <Compile Include="Movimiento.vb" />
     <Compile Include="NotaCredito.vb" />
@@ -81,7 +82,6 @@
     <Compile Include="Producto.vb" />
     <Compile Include="Tema.vb" />
     <Compile Include="Tipografia.vb" />
-    <Compile Include="TipoProducto.vb" />
     <Compile Include="Contacto.vb" />
     <Compile Include="Encuesta.vb" />
     <Compile Include="Familia.vb" />
@@ -97,6 +97,7 @@
     <Compile Include="Resguardo.vb" />
     <Compile Include="SesionUsuario.vb" />
     <Compile Include="Suscriptor.vb" />
+    <Compile Include="TipoProducto.vb" />
     <Compile Include="Usuario.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

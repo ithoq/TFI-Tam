@@ -34,9 +34,9 @@ Public Module MenuVerticalExtensions
                         "</li>" +
                         "<li>" +
                             "<a href='/Usuario/MiCuenta'>" +
-                                "<span class='title'>Mis Compras</span>" +
+                                "<span class='title'>Mis Pedidos</span>" +
                             "</a>" +
-                            "<i class='icon-thumbnail'>MC</i>" +
+                            "<i class='icon-thumbnail'>MP</i>" +
                         "</li>" +
                     "</ul>" +
                 "</li>"

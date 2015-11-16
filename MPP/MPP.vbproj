@@ -79,6 +79,7 @@
     <Compile Include="ResguardoMapper.vb" />
     <Compile Include="TemaMapper.vb" />
     <Compile Include="TipografiaMapper.vb" />
+    <Compile Include="TipoProductoMapper.vb" />
     <Compile Include="UsuarioMapper.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

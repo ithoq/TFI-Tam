@@ -99,7 +99,7 @@ End Section
         @<button class="btn btn-primary btn-cons" data-target="#modalStickUpSmall" data-toggle="modal">Eliminar</button>
         End If
         If User.IsInRole("VerPerfiles") Then
-        @Html.ActionLink("Volver", "Index", Nothing, New With {.class = "btn btn-default btn-cons"})
+        @Html.ActionLink("Volver", "Index", Nothing, New With {.class = "btn btn-primary btn-cons"})
         End If
     End Code
 </p>

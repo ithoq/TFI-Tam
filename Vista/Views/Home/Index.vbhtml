@@ -33,7 +33,7 @@
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="">
-                                        <h5 class="text-white light">@producto.TipoProducto.ToString()</h5>
+                                        <h5 class="text-white light">@producto.TipoProducto.Tipo</h5>
                                     </div>
                                     <div class="m-t-10">
                                         @*<div class="thumbnail-wrapper d32 circular m-t-5">
@@ -81,7 +81,7 @@
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="">
-                                        <h5 class="text-white light">@producto.TipoProducto.ToString()</h5>
+                                        <h5 class="text-white light">@producto.TipoProducto.Tipo</h5>
                                     </div>
                                     <div class="m-t-10">
                                         @*<div class="thumbnail-wrapper d32 circular m-t-5">
@@ -129,7 +129,7 @@
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="">
-                                        <h5 class="text-white light">@producto.TipoProducto.ToString()</h5>
+                                        <h5 class="text-white light">@producto.TipoProducto.Tipo</h5>
                                     </div>
                                     <div class="m-t-10">
                                         @*<div class="thumbnail-wrapper d32 circular m-t-5">

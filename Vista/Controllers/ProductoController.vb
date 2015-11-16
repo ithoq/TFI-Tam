@@ -9,11 +9,13 @@ Public Class ProductoController
     Private vPapelBLL As PapelBLL
     Private vCartuchoBLL As CartuchoBLL
     Private vTemaBLL As TemaBLL
+    Private vTipoProductoBLL As TipoProductoBLL
     Sub New()
-        Me.vBLL = New ProductoBLL()
-        Me.vPapelBLL = New PapelBLL()
-        Me.vCartuchoBLL = New CartuchoBLL()
-        Me.vTemaBLL = New TemaBLL()
+        Me.vBLL = New ProductoBLL
+        Me.vPapelBLL = New PapelBLL
+        Me.vCartuchoBLL = New CartuchoBLL
+        Me.vTemaBLL = New TemaBLL
+        Me.vTipoProductoBLL = New TipoProductoBLL
     End Sub
 
     '
@@ -38,6 +40,7 @@ Public Class ProductoController
         ViewBag.Papeles = Me.vPapelBLL.Listar()
         ViewBag.Cartuchos = Me.vCartuchoBLL.Listar()
         ViewBag.Temas = Me.vTemaBLL.Listar()
+        ViewBag.TiposProductos = Me.vTipoProductoBLL.Listar()
         Return View()
     End Function
 
@@ -60,6 +63,7 @@ Public Class ProductoController
         ModelState("Cartucho.Marca").Errors.Clear()
         ModelState("Cartucho.Tipo").Errors.Clear()
         ModelState("Tema.Tema").Errors.Clear()
+        ModelState("TipoProducto.Tipo").Errors.Clear()
         ModelState("Papel.Color").Errors.Clear()
         ModelState("Papel.Nombre").Errors.Clear()
         ModelState("Papel.Tipo").Errors.Clear()
@@ -83,6 +87,7 @@ Public Class ProductoController
         ViewBag.Papeles = Me.vPapelBLL.Listar()
         ViewBag.Cartuchos = Me.vCartuchoBLL.Listar()
         ViewBag.Temas = Me.vTemaBLL.Listar()
+        ViewBag.TiposProductos = Me.vTipoProductoBLL.Listar()
         Return View(entidad)
     End Function
 
@@ -94,6 +99,7 @@ Public Class ProductoController
         ViewBag.Papeles = Me.vPapelBLL.Listar()
         ViewBag.Cartuchos = Me.vCartuchoBLL.Listar()
         ViewBag.Temas = Me.vTemaBLL.Listar()
+        ViewBag.TiposProductos = Me.vTipoProductoBLL.Listar()
         Return View(vProducto)
     End Function
 
@@ -117,6 +123,7 @@ Public Class ProductoController
         ModelState("Cartucho.Marca").Errors.Clear()
         ModelState("Cartucho.Tipo").Errors.Clear()
         ModelState("Tema.Tema").Errors.Clear()
+        ModelState("TipoProducto.Tipo").Errors.Clear()
         ModelState("Papel.Color").Errors.Clear()
         ModelState("Papel.Nombre").Errors.Clear()
         ModelState("Papel.Tipo").Errors.Clear()
@@ -146,6 +153,7 @@ Public Class ProductoController
         ViewBag.Papeles = Me.vPapelBLL.Listar()
         ViewBag.Cartuchos = Me.vCartuchoBLL.Listar()
         ViewBag.Temas = Me.vTemaBLL.Listar()
+        ViewBag.TiposProductos = Me.vTipoProductoBLL.Listar()
         Return View(entidad)
     End Function
 

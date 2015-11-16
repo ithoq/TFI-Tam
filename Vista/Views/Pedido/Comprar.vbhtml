@@ -11,16 +11,6 @@
     </ul>
 End Section
 
-@*@Section stylesheets
-        @Styles.Render("~/Content/select2/css")
-        @Styles.Render("~/Content/datepicker/css")
-    End Section
-
-    @Section javascripts
-        @Scripts.Render("~/Content/select2/js")
-        @Scripts.Render("~/Content/datepicker/js")
-    End Section*@
-
 @Section javascripts_custom
     <script type="text/javascript">
         $(document).ready(function () {
@@ -100,333 +90,256 @@ End Section
         });
     </script>
 End Section
-
-<div class="row">
-    <div class="col-md-12">
-        <!-- START PANEL -->
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <div class="panel-title">
-                    Nuevo Pedido
-                </div>
-                <div class="actions">
-                    <a href="@Url.Action("VerCarro", "Pedido")" class="btn default">
-                        <i class="fa fa-angle-left"></i>
-                        <span class="hidden-480">
-                            Atrás
-                        </span>
-                    </a>
-                </div>
-            </div>
-            <div class="panel-body">
-                @Using Html.BeginForm("Crear", "Producto", FormMethod.Post, New With {.enctype = "multipart/form-data"})
-                    @Html.AntiForgeryToken()
-                    @Html.ValidationSummary(True)
-                    @<fieldset>
-                        <div class="form-group form-group-default required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Nombre))), Nothing, "has-error")) ">
-                            @Html.LabelFor(Function(model) model.Nombre)
-                            @Html.TextBoxFor(Function(model) model.Nombre, New With {.class = "form-control"})
-                            @Html.ValidationMessageFor(Function(model) model.Nombre, Nothing, New With {.class = "help-block"})
-                        </div>
-                        <div class="form-group form-group-default form-group-default-select2 required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Papel.Id))), Nothing, "has-error"))">
-                            <label>Papel</label>
-                            @Html.DropDownListFor(Function(model) model.Papel.Id, New SelectList(ViewBag.Papeles, "Id", "Nombre"), "", New With {.class = "full-width select2-offscreen"})
-                            @Html.ValidationMessageFor(Function(model) model.Papel.Id, Nothing, New With {.class = "help-block"})
-                        </div>
-                        <div class="form-group form-group-default form-group-default-select2 required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Cartucho.Id))), Nothing, "has-error"))">
-                            <label>Cartucho</label>
-                            @Html.DropDownListFor(Function(model) model.Cartucho.Id, New SelectList(ViewBag.Cartuchos, "Id", "Nombre"), "", New With {.class = "full-width select2-offscreen"})
-                            @Html.ValidationMessageFor(Function(model) model.Cartucho.Id, Nothing, New With {.class = "help-block"})
-                        </div>
-                        <div class="form-group form-group-default form-group-default-select2 required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Tema.Id))), Nothing, "has-error"))">
-                            @Html.LabelFor(Function(model) model.Tema)
-                            @Html.DropDownListFor(Function(model) model.Tema.Id, New SelectList(ViewBag.Temas, "Id", "Tema"), "", New With {.class = "full-width select2-offscreen"})
-                            @Html.ValidationMessageFor(Function(model) model.Tema.Id, Nothing, New With {.class = "help-block"})
-                        </div>
-                        <div class="form-group form-group-default form-group-default-select2 required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.TipoProducto))), Nothing, "has-error"))">
-                            @Html.LabelFor(Function(model) model.TipoProducto)
-                            @Html.DropDownListFor(Function(model) model.TipoProducto, [Enum].GetValues(GetType(EE.TipoProducto)).Cast(Of EE.TipoProducto)().Select(Function(x) New SelectListItem() With {.Value = Convert.ToInt16(x).ToString(), .Text = DirectCast(x.GetType().GetField(x.ToString()).GetCustomAttributes(GetType(System.ComponentModel.DescriptionAttribute), False)(0), System.ComponentModel.DescriptionAttribute).Description}), New With {.class = "full-width select2-offscreen"})
-                            @Html.ValidationMessageFor(Function(model) model.TipoProducto, Nothing, New With {.class = "help-block"})
-                        </div>
-                        <div class="form-group">
-                            <label for="Archivo" class="control-label">Fondo</label>
-                            <input type="file" name="Archivo" />
-                            @Html.ValidationMessage("Archivo", New With {.class = "help-block"})
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-cons">Grabar</button>
-                    </fieldset>
-
-                End Using
+@Using Html.BeginForm()
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(True)
+    
+    @<div class="panel panel-transparent">
+        <div class="panel-heading">
+            <div class="panel-title">
+                Nuevo Pedido
             </div>
         </div>
-        <!-- END PANEL -->
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-12">
-        <!-- Begin: life time stats -->
-        <div class="portlet light">
-            @*<div class="portlet-title">
-                <div class="caption">
-                    Nuevo Pedido
-                </div>
-                <div class="actions">
-                    <a href="@Url.Action("VerCarro", "Pedido")" class="btn default yellow-stripe">
-                        <i class="fa fa-angle-left"></i>
-                        <span class="hidden-480">
-                            Atrás
-                        </span>
-                    </a>
-                </div>
-            </div>*@
-            @Using Html.BeginForm()
-                @Html.AntiForgeryToken()
-                @<div class="portlet-body">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-12">
-                            <div class="portlet yellow-crusta box">
-                                <div class="portlet-title">
-                                    <div class="caption">
-                                        <i class="fa fa-cogs"></i>Información del Cliente
-                                    </div>
-                                </div>
-                                <div class="portlet-body">
-                                    <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.ClienteCondicion))), Nothing, "has-error"))">
-                                        <label class="control-label">Condición frente al IVA:</label>
-                                        @Html.DropDownListFor(Function(model) model.ClienteCondicion, New List(Of SelectListItem)() From { _
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-default bg-success" style="color: #626262;">
+                        <div class="panel-heading separator">
+                            <div class="panel-title">
+                                Información de Cliente
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <fieldset>
+                                <div class="form-group form-group-default required m-t-20 @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.ClienteCondicion))), Nothing, "has-error"))">
+                                    <label class="">Condición frente al IVA:</label>
+                                    @Html.DropDownListFor(Function(model) model.ClienteCondicion, New List(Of SelectListItem)() From { _
                                                 New SelectListItem() With {.Text = "Responsable Inscripto", .Value = "Responsable Inscripto"},
                                                 New SelectListItem() With {.Text = "Monotributista", .Value = "Monotributista"},
                                                 New SelectListItem() With {.Text = "Consumidor Final", .Value = "Consumidor Final"}
-                                             }, "", New With {.class = "form-control"})
-                                        @Html.ValidationMessageFor(Function(model) model.ClienteCondicion, Nothing, New With {.class = "help-block"})
-                                    </div>
-                                    <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.ClienteCuit))), Nothing, "has-error"))">
-                                        <label class="control-label">CUIT:</label>
-                                        @Html.TextBoxFor(Function(model) model.ClienteCuit, New With {.class = "form-control"})
-                                        @Html.ValidationMessageFor(Function(model) model.ClienteCuit, Nothing, New With {.class = "help-block"})
-                                    </div>
-                                    <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.ClienteNombre))), Nothing, "has-error"))">
-                                        <label class="control-label">Nombre:</label>
-                                        @Html.TextBoxFor(Function(model) model.ClienteNombre, New With {.class = "form-control"})
-                                        @Html.ValidationMessageFor(Function(model) model.ClienteNombre, Nothing, New With {.class = "help-block"})
-                                    </div>
-                                    <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.ClienteTelefono))), Nothing, "has-error"))">
-                                        <label class="control-label">Teléfono:</label>
-                                        @Html.TextBoxFor(Function(model) model.ClienteTelefono, New With {.class = "form-control"})
-                                        @Html.ValidationMessageFor(Function(model) model.ClienteTelefono, Nothing, New With {.class = "help-block"})
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label">Email:</label>
-                                        @Html.TextBoxFor(Function(model) User.Email, New With {.class = "form-control", .disabled = "disabled"})
-                                        @Html.ValidationMessageFor(Function(model) model.ClienteTelefono, Nothing, New With {.class = "help-block"})
-                                    </div>
+                                                }, "", New With {.class = "form-control"})
+                                    @Html.ValidationMessageFor(Function(model) model.ClienteCondicion, Nothing, New With {.class = "help-block"})
                                 </div>
+                                <div class="form-group form-group-default required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.ClienteCuit))), Nothing, "has-error"))">
+                                    <label class="">CUIT:</label>
+                                    @Html.TextBoxFor(Function(model) model.ClienteCuit, New With {.class = "form-control"})
+                                    @Html.ValidationMessageFor(Function(model) model.ClienteCuit, Nothing, New With {.class = "help-block"})
+                                </div>
+                                <div class="form-group form-group-default required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.ClienteNombre))), Nothing, "has-error"))">
+                                    <label class="">Nombre:</label>
+                                    @Html.TextBoxFor(Function(model) model.ClienteNombre, New With {.class = "form-control"})
+                                    @Html.ValidationMessageFor(Function(model) model.ClienteNombre, Nothing, New With {.class = "help-block"})
+                                </div>
+                                <div class="form-group form-group-default required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.ClienteTelefono))), Nothing, "has-error"))">
+                                    <label class="">Teléfono:</label>
+                                    @Html.TextBoxFor(Function(model) model.ClienteTelefono, New With {.class = "form-control"})
+                                    @Html.ValidationMessageFor(Function(model) model.ClienteTelefono, Nothing, New With {.class = "help-block"})
+                                </div>
+                                <div class="form-group form-group-default">
+                                    <label class="">Email:</label>
+                                    @Html.TextBoxFor(Function(model) User.Email, New With {.class = "form-control", .disabled = "disabled"})
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="panel panel-default bg-complete" style="color: #626262;">
+                        <div class="panel-heading separator">
+                            <div class="panel-title">
+                                Dirección de Envío
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-12">
-                            <div class="portlet blue-hoki box">
-                                <div class="portlet-title">
-                                    <div class="caption">
-                                        <i class="fa fa-cogs"></i>Dirección de Envío
-                                    </div>
-                                </div>
-                                <div class="portlet-body">
-                                    <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.DireccionCalle))), Nothing, "has-error"))">
-                                        <label class="control-label">Calle:</label>
-                                        @Html.TextBoxFor(Function(model) model.DireccionCalle, New With {.class = "form-control"})
-                                        @Html.ValidationMessageFor(Function(model) model.DireccionCalle, Nothing, New With {.class = "help-block"})
-                                    </div>
-                                    <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.DireccionNumero))), Nothing, "has-error"))">
-                                        <label class="control-label">Número:</label>
-                                        @Html.TextBoxFor(Function(model) model.DireccionNumero, New With {.class = "form-control"})
-                                        @Html.ValidationMessageFor(Function(model) model.DireccionNumero, Nothing, New With {.class = "help-block"})
-                                    </div>
-                                    <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.DireccionDptoPiso))), Nothing, "has-error"))">
-                                        <label class="control-label">Dpto/Piso:</label>
-                                        @Html.TextBoxFor(Function(model) model.DireccionDptoPiso, New With {.class = "form-control"})
-                                        @Html.ValidationMessageFor(Function(model) model.DireccionDptoPiso, Nothing, New With {.class = "help-block"})
-                                    </div>
-                                    <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.DireccionLocalidad))), Nothing, "has-error"))">
-                                        <label class="control-label">Localidad:</label>
-                                        @Html.TextBoxFor(Function(model) model.DireccionLocalidad, New With {.class = "form-control"})
-                                        @Html.ValidationMessageFor(Function(model) model.DireccionLocalidad, Nothing, New With {.class = "help-block"})
-                                    </div>
-                                </div>
+                        <div class="panel-body">
+                            <div class="form-group form-group-default required m-t-20 @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.DireccionCalle))), Nothing, "has-error"))">
+                                <label class="">Calle:</label>
+                                @Html.TextBoxFor(Function(model) model.DireccionCalle, New With {.class = "form-control"})
+                                @Html.ValidationMessageFor(Function(model) model.DireccionCalle, Nothing, New With {.class = "help-block"})
+                            </div>
+                            <div class="form-group form-group-default required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.DireccionNumero))), Nothing, "has-error"))">
+                                <label class="">Número:</label>
+                                @Html.TextBoxFor(Function(model) model.DireccionNumero, New With {.class = "form-control"})
+                                @Html.ValidationMessageFor(Function(model) model.DireccionNumero, Nothing, New With {.class = "help-block"})
+                            </div>
+                            <div class="form-group form-group-default @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.DireccionDptoPiso))), Nothing, "has-error"))">
+                                <label class="">Dpto/Piso:</label>
+                                @Html.TextBoxFor(Function(model) model.DireccionDptoPiso, New With {.class = "form-control"})
+                                @Html.ValidationMessageFor(Function(model) model.DireccionDptoPiso, Nothing, New With {.class = "help-block"})
+                            </div>
+                            <div class="form-group form-group-default required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.DireccionLocalidad))), Nothing, "has-error"))">
+                                <label class="">Localidad:</label>
+                                @Html.TextBoxFor(Function(model) model.DireccionLocalidad, New With {.class = "form-control"})
+                                @Html.ValidationMessageFor(Function(model) model.DireccionLocalidad, Nothing, New With {.class = "help-block"})
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6 col-sm-12">
-                            <div class="portlet green-meadow box">
-                                <div class="portlet-title">
-                                    <div class="caption">
-                                        <i class="fa fa-cogs"></i>Pago
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading separator">
+                            <div class="panel-title">
+                                Pago
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group form-group-default m-t-20 @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.PagoConNC))), Nothing, "has-error"))">
+                                        @Html.CheckBoxFor(Function(model) model.PagoConNC) Pagar con notas de crédito?
+                                        @Html.ValidationMessageFor(Function(model) model.PagoConNC, Nothing, New With {.class = "help-block"})
                                     </div>
                                 </div>
-                                <div class="portlet-body">
-                                    <div class="row">
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.PagoConNC))), Nothing, "has-error"))">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        @Html.CheckBoxFor(Function(model) model.PagoConNC) Pagar con notas de crédito?
-                                                    </label>
-                                                    @Html.ValidationMessageFor(Function(model) model.PagoConNC, Nothing, New With {.class = "help-block"})
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6 col-sm-12">
-                                            <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.SaldoAFavor))), Nothing, "has-error"))">
-                                                <label class="control-label">Saldo a favor:</label>
-                                                @Html.TextBoxFor(Function(model) model.SaldoAFavor, New With {.class = "form-control", .disabled = "disabled"})
-                                                @Html.ValidationMessageFor(Function(model) model.SaldoAFavor, Nothing, New With {.class = "help-block"})
-                                            </div>
-                                        </div>
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="form-group form-group-default required m-t-20 @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.SaldoAFavor))), Nothing, "has-error"))">
+                                        <label class="">Saldo a favor:</label>
+                                        @Html.TextBoxFor(Function(model) model.SaldoAFavor, New With {.class = "form-control", .disabled = "disabled"})
+                                        @Html.ValidationMessageFor(Function(model) model.SaldoAFavor, Nothing, New With {.class = "help-block"})
                                     </div>
-                                    <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.TarjetaImporte))), Nothing, "has-error"))">
-                                        <label class="control-label">Importe a pagar en tarjeta:</label>
-                                        @Html.TextBoxFor(Function(model) model.TarjetaImporte, New With {.class = "form-control", .disabled = "disabled"})
-                                        @Html.ValidationMessageFor(Function(model) model.TarjetaImporte, Nothing, New With {.class = "help-block"})
-                                    </div>
-                                    <hr />
-                                    <div id="CampoTarjeta">
-                                        <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.TarjetaTitular))), Nothing, "has-error"))">
-                                            <label class="control-label">Nombre del titular:</label>
-                                            @Html.TextBoxFor(Function(model) model.TarjetaTitular, New With {.class = "form-control"})
-                                            @Html.ValidationMessageFor(Function(model) model.TarjetaTitular, Nothing, New With {.class = "help-block"})
-                                        </div>
-                                        <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.TarjetaNombre))), Nothing, "has-error"))">
-                                            <label class="control-label">Medio de pago:</label>
-                                            @Html.DropDownListFor(Function(model) model.TarjetaNombre, New List(Of SelectListItem)() From { _
+                                </div>
+                            </div>
+                            <div class="form-group form-group-default required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.TarjetaImporte))), Nothing, "has-error"))">
+                                <label class="">Importe a pagar en tarjeta:</label>
+                                @Html.TextBoxFor(Function(model) model.TarjetaImporte, New With {.class = "form-control", .disabled = "disabled"})
+                                @Html.ValidationMessageFor(Function(model) model.TarjetaImporte, Nothing, New With {.class = "help-block"})
+                            </div>
+                            <hr />
+                            <div id="CampoTarjeta">
+                                <div class="form-group form-group-default required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.TarjetaTitular))), Nothing, "has-error"))">
+                                    <label class="">Nombre del titular:</label>
+                                    @Html.TextBoxFor(Function(model) model.TarjetaTitular, New With {.class = "form-control"})
+                                    @Html.ValidationMessageFor(Function(model) model.TarjetaTitular, Nothing, New With {.class = "help-block"})
+                                </div>
+                                <div class="form-group form-group-default required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.TarjetaNombre))), Nothing, "has-error"))">
+                                    <label class="">Medio de pago:</label>
+                                    @Html.DropDownListFor(Function(model) model.TarjetaNombre, New List(Of SelectListItem)() From { _
                                                 New SelectListItem() With {.Text = "Visa", .Value = "Visa"},
                                                 New SelectListItem() With {.Text = "Master Card", .Value = "Master Card"},
                                                 New SelectListItem() With {.Text = "American Express", .Value = "American Express"}
                                                 }, "", New With {.class = "form-control"})
-                                            @Html.ValidationMessageFor(Function(model) model.TarjetaNombre, Nothing, New With {.class = "help-block"})
-                                        </div>
-                                        <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.TarjetaCuotas))), Nothing, "has-error"))">
-                                            <label class="control-label">Cuotas:</label>
-                                            @Html.DropDownListFor(Function(model) model.TarjetaCuotas, New List(Of SelectListItem)() From { _
+                                    @Html.ValidationMessageFor(Function(model) model.TarjetaNombre, Nothing, New With {.class = "help-block"})
+                                </div>
+                                <div class="form-group form-group-default required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.TarjetaCuotas))), Nothing, "has-error"))">
+                                    <label class="">Cuotas:</label>
+                                    @Html.DropDownListFor(Function(model) model.TarjetaCuotas, New List(Of SelectListItem)() From { _
                                                 New SelectListItem() With {.Text = "1", .Value = "1"},
                                                 New SelectListItem() With {.Text = "3", .Value = "3"},
                                                 New SelectListItem() With {.Text = "6", .Value = "6"},
                                                 New SelectListItem() With {.Text = "12", .Value = "12"}
                                                 }, "", New With {.class = "form-control"})
-                                            @Html.ValidationMessageFor(Function(model) model.TarjetaCuotas, Nothing, New With {.class = "help-block"})
-                                        </div>
-                                        <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.TarjetaNumero))), Nothing, "has-error"))">
-                                            <label class="control-label">Número:</label>
-                                            @Html.TextBoxFor(Function(model) model.TarjetaNumero, New With {.class = "form-control"})
-                                            @Html.ValidationMessageFor(Function(model) model.TarjetaNumero, Nothing, New With {.class = "help-block"})
-                                        </div>
-                                        <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.TarjetaCodigoSeguridad))), Nothing, "has-error"))">
-                                            <label class="control-label">Código de Seguridad:</label>
-                                            @Html.TextBoxFor(Function(model) model.TarjetaCodigoSeguridad, New With {.class = "form-control"})
-                                            @Html.ValidationMessageFor(Function(model) model.TarjetaCodigoSeguridad, Nothing, New With {.class = "help-block"})
-                                        </div>
-                                        <div class="form-group @IIf(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.TarjetaFechaVencimiento))), Nothing, "has-error")">
-                                            <label class="control-label">Fecha de Vencimiento:</label>
-                                            <div class="input-group date date-picker" data-date-format="mm/yyyy" data-date-start-date="+0d">
-                                                @Html.TextBoxFor(Function(model) model.TarjetaFechaVencimiento, New With {.class = "form-control", .readonly = "readonly", .Value = Model.TarjetaFechaVencimiento.ToString("MM/yyyy")})
-                                                <span class="input-group-btn">
-                                                    <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
-                                                </span>
-                                            </div>
+                                    @Html.ValidationMessageFor(Function(model) model.TarjetaCuotas, Nothing, New With {.class = "help-block"})
+                                </div>
+                                <div class="form-group form-group-default required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.TarjetaNumero))), Nothing, "has-error"))">
+                                    <label class="">Número:</label>
+                                    @Html.TextBoxFor(Function(model) model.TarjetaNumero, New With {.class = "form-control"})
+                                    @Html.ValidationMessageFor(Function(model) model.TarjetaNumero, Nothing, New With {.class = "help-block"})
+                                </div>
+                                <div class="form-group form-group-default required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.TarjetaCodigoSeguridad))), Nothing, "has-error"))">
+                                    <label class="">Código de Seguridad:</label>
+                                    @Html.TextBoxFor(Function(model) model.TarjetaCodigoSeguridad, New With {.class = "form-control"})
+                                    @Html.ValidationMessageFor(Function(model) model.TarjetaCodigoSeguridad, Nothing, New With {.class = "help-block"})
+                                </div>
+                                <div class="form-group form-group-default required @IIf(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.TarjetaFechaVencimiento))), Nothing, "has-error")">
+                                    <label class="">Fecha de Vencimiento:</label>
+                                    <div class="input-group date date-picker" data-date-format="mm/yyyy" data-date-start-date="+0d">
+                                        @Html.TextBoxFor(Function(model) model.TarjetaFechaVencimiento, New With {.class = "form-control", .readonly = "readonly", .Value = Model.TarjetaFechaVencimiento.ToString("MM/yyyy")})
+                                        <span class="input-group-btn">
+                                            <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                        </span>
+                                    </div>
 
-                                            @Html.ValidationMessageFor(Function(model) model.TarjetaFechaVencimiento, Nothing, New With {.class = "help-block"})
-                                        </div>
-                                    </div>
+                                    @Html.ValidationMessageFor(Function(model) model.TarjetaFechaVencimiento, Nothing, New With {.class = "help-block"})
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-6 col-sm-12">
-                            <div class="portlet green-meadow box">
-                                <div class="portlet-title">
-                                    <div class="caption">
-                                        <i class="fa fa-cogs"></i>Facturación
-                                    </div>
-                                </div>
-                                <div class="portlet-body">
-                                    <div class="form-group @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.FacturacionTipoComprobante))), Nothing, "has-error"))">
-                                        <label class="control-label">Tipo de Factura:</label>
-                                        @Html.TextBoxFor(Function(model) model.FacturacionTipoComprobante, New With {.class = "form-control", .disabled = "disabled"})
-                                        @Html.ValidationMessageFor(Function(model) model.FacturacionTipoComprobante, Nothing, New With {.class = "help-block"})
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label">Subtotal:</label>
-                                        <input type="text" value="@Model.Pedido.Subtotal" class="form-control" disabled />
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label">Iva:</label>
-                                        <input type="text" value="@Model.Pedido.Iva" class="form-control" disabled />
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label">Total:</label>
-                                        <input type="text" id="ImporteTotal" value="@Model.Pedido.Importe" class="form-control" disabled />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12 col-sm-12">
-                            <div class="portlet grey-cascade box">
-                                <div class="portlet-title">
-                                    <div class="caption">
-                                        <i class="fa fa-cogs"></i>Productos
-                                    </div>
-                                </div>
-                                <div class="portlet-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-hover table-bordered table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>Producto</th>
-                                                    <th>Cantidad</th>
-                                                    <th>Precio Unitario</th>
-                                                    <th>Iva</th>
-                                                    <th>Total</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @Code
-                                                If Model IsNot Nothing Then
-                                                For Each item In Model.Pedido.ListaPedidos
-                                                @<tr>
-                                                    <td>
-                                                        @item.Producto.Nombre
-                                                    </td>
-                                                    <td>
-                                                        @item.Cantidad
-                                                    </td>
-                                                    <td>
-                                                        $@item.Producto.ObtenerPrecio()
-                                                    </td>
-                                                    <td>
-                                                        $@item.Producto.ObtenerIva()
-                                                    </td>
-                                                    <td>
-                                                        $@item.Total
-                                                    </td>
-                                                </tr>
-                                                Next
-                                                End If
-                                                End Code
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <input type="submit" class="btn green" value="Comprar" />
                         </div>
                     </div>
                 </div>
-            End Using
+                <div class="col-md-6">
+                    <div class="panel panel-default bg-primary" style="color: #626262;">
+                        <div class="panel-heading separator">
+                            <div class="panel-title">
+                                Facturación
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group form-group-default m-t-20 @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.FacturacionTipoComprobante))), Nothing, "has-error"))">
+                                <label>Tipo de Factura:</label>
+                                @Html.TextBoxFor(Function(model) model.FacturacionTipoComprobante, New With {.class = "form-control", .disabled = "disabled"})
+                                @Html.ValidationMessageFor(Function(model) model.FacturacionTipoComprobante, Nothing, New With {.class = "help-block"})
+                            </div>
+                            <div class="form-group form-group-default">
+                                <label class="">Subtotal:</label>
+                                <input type="text" value="@Model.Pedido.Subtotal" class="form-control" disabled />
+                            </div>
+                            <div class="form-group form-group-default">
+                                <label class="">Iva:</label>
+                                <input type="text" value="@Model.Pedido.Iva" class="form-control" disabled />
+                            </div>
+                            <div class="form-group form-group-default">
+                                <label class="">Total:</label>
+                                <input type="text" id="ImporteTotal" value="@Model.Pedido.Importe" class="form-control" disabled />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading separator">
+                            <div class="panel-title">
+                                Detalle del Pedido
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="table-responsive m-t-20">
+                                <table class="table table-hover table-bordered table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Producto</th>
+                                            <th>Cantidad</th>
+                                            <th>Precio Unitario</th>
+                                            <th>Iva</th>
+                                            <th>Total</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @Code
+                                            If Model IsNot Nothing Then
+                                                For Each item In Model.Pedido.ListaPedidos
+                                            @<tr>
+                                                <td>
+                                                    @item.Producto.Nombre
+                                                </td>
+                                                <td>
+                                                    @item.Cantidad
+                                                </td>
+                                                <td>
+                                                    $@item.Producto.ObtenerPrecio()
+                                                </td>
+                                                <td>
+                                                    $@item.Producto.ObtenerIva()
+                                                </td>
+                                                <td>
+                                                    $@item.Total
+                                                </td>
+                                            </tr>
+                                                Next
+                                            End If
+                                        End Code
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="submit" class="btn btn-cons btn-success" value="Comprar" />
+                </div>
+            </div>
         </div>
     </div>
-</div>
+End Using

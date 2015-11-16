@@ -1,9 +1,9 @@
-﻿@ModelType EE.Producto
+﻿@ModelType EE.TipoProducto
 
 @Section breadcrumb
     <ul class="breadcrumb">
         <li>
-            <a href="@Url.Action("Index", "Producto")">Productos</a>
+            <a href="@Url.Action("Index", "TipoProducto")">Tipos de Producto</a>
         </li>
         <li>
             <a class="active">Detalle</a>
@@ -25,38 +25,20 @@ End Section
     <!-- Tab panes -->
     <div class="tab-content">
         <div class="tab-pane active" id="tab-fillup1">
-            <img style="width:40%" src="@Model.Fondo" /><br />
-            <label>Nombre:</label>
-            @Model.Nombre<br />
-            <label>Alto:</label>
-            @Model.Alto<br />
-            <label>Ancho:</label>
-            @Model.Ancho<br />
-            <label>Espesor:</label>
-            @Model.Papel.Espesor<br />
-            <label>Papel:</label>
-            @Model.Papel.Nombre<br />
-            <label>Tipo de producto:</label>
-            @Model.TipoProducto.Tipo<br />
-            <label>Tema:</label>
-            @Model.Tema.Tema<br />
-            <label>Costo:</label>
-            $@Model.ObtenerCosto.ToString("0.00")<br />
-            <label>Precio:</label>
-            $@Model.ObtenerPrecio.ToString("0.00")
+            @Html.DisplayNameFor(Function(model) model.Tipo): @Html.DisplayFor(Function(model) model.Tipo)<br />
         </div>
     </div>
 </div>
 <p>
     @Code
-        If User.IsInRole("EditarProducto") Then
-        @Html.ActionLink("Editar", "Editar", New With {.id = Model.Id}, New With {.class = "btn btn-primary btn-cons"})
+        If User.IsInRole("EditarTipoProducto") Then
+    @Html.ActionLink("Editar", "Editar", New With {.id = Model.Id}, New With {.class = "btn btn-primary btn-cons"})
         End If
-        If User.IsInRole("EliminarProducto") Then
-        @<button class="btn btn-primary btn-cons" data-target="#modalStickUpSmall" data-toggle="modal">Eliminar</button>
+        If User.IsInRole("EliminarTipoProducto") Then
+    @<button class="btn btn-primary btn-cons" data-target="#modalStickUpSmall" data-toggle="modal">Eliminar</button>
         End If
-        If User.IsInRole("VerProductos") Then
-        @Html.ActionLink("Volver", "Index", Nothing, New With {.class = "btn btn-default btn-cons"})
+        If User.IsInRole("VerTiposProductos") Then
+    @Html.ActionLink("Volver", "Index", Nothing, New With {.class = "btn btn-default btn-cons"})
         End If
     End Code
 </p>
@@ -75,7 +57,7 @@ End Section
                     <p class="no-margin">Esto eliminará permanentemente el registro.</p>
                 </div>
                 <div class="modal-footer">
-                    @Using Html.BeginForm("Eliminar", "Producto", New With {.id = Model.Id}, FormMethod.Get)
+                    @Using Html.BeginForm("Eliminar", "TipoProducto", New With {.id = Model.Id}, FormMethod.Get)
                         @Html.AntiForgeryToken()
                         @<button type="submit" class="btn btn-primary btn-cons pull-left inline">Aceptar</button>
                     End Using
@@ -87,3 +69,6 @@ End Section
     </div>
     <!-- /.modal-dialog -->
 </div>
+
+
+

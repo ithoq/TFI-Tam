@@ -68,7 +68,7 @@ End Section
             <label>Papel:</label>
             @Model.Papel.Nombre<br />
             <label>Tipo de producto:</label>
-            @Model.TipoProducto<br />
+            @Model.TipoProducto.Tipo<br />
             <label>Tema:</label>
             @Model.Tema.Tema<br />
             <label>Precio:</label>

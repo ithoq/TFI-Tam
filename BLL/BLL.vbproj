@@ -79,6 +79,7 @@
     <Compile Include="ResguardoBLL.vb" />
     <Compile Include="TemaBLL.vb" />
     <Compile Include="TipografiaBLL.vb" />
+    <Compile Include="TipoProductoBLL.vb" />
     <Compile Include="UsuarioBLL.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">

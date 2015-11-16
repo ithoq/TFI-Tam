@@ -51,13 +51,13 @@ End Section
                             @Html.DisplayFor(Function(modelItem) currentItem.Papel.Nombre)
                         </td>
                         <td>
-                            @currentItem.TipoProducto.ToString()
+                            @currentItem.TipoProducto.Tipo
                         </td>
                         <td>
                             @currentItem.Tema.Tema
                         </td>
                         <td>
-                            $@currentItem.ObtenerPrecio()
+                            $@currentItem.ObtenerPrecioConIva()
                         </td>
                     </tr>
                 Next

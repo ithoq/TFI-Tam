@@ -15,7 +15,7 @@ end section
     <script type="text/javascript">
         $(document).ready(function () {
             $("#Tema_Id").select2();
-            $("#TipoProducto").select2();
+            $("#TipoProducto_Id").select2();
             $("#Papel_Id").select2();
             $("#Cartucho_Id").select2();
         });
@@ -56,10 +56,10 @@ End Section
                              @Html.DropDownListFor(Function(model) model.Tema.Id, New SelectList(ViewBag.Temas, "Id", "Tema"), "", New With {.class = "full-width select2-offscreen"})
                              @Html.ValidationMessageFor(Function(model) model.Tema.Id, Nothing, New With {.class = "help-block"})
                          </div>
-                         <div class="form-group form-group-default form-group-default-select2 required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.TipoProducto))), Nothing, "has-error"))">
+                         <div class="form-group form-group-default form-group-default-select2 required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.TipoProducto.Id))), Nothing, "has-error"))">
                              @Html.LabelFor(Function(model) model.TipoProducto)
-                             @Html.DropDownListFor(Function(model) model.TipoProducto, [Enum].GetValues(GetType(EE.TipoProducto)).Cast(Of EE.TipoProducto)().Select(Function(x) New SelectListItem() With {.Value = Convert.ToInt16(x).ToString(), .Text = DirectCast(x.GetType().GetField(x.ToString()).GetCustomAttributes(GetType(System.ComponentModel.DescriptionAttribute), False)(0), System.ComponentModel.DescriptionAttribute).Description}), New With {.class = "full-width select2-offscreen"})
-                             @Html.ValidationMessageFor(Function(model) model.TipoProducto, Nothing, New With {.class = "help-block"})
+                             @Html.DropDownListFor(Function(model) model.TipoProducto.Id, New SelectList(ViewBag.TiposProductos, "Id", "Tipo"), "", New With {.class = "full-width select2-offscreen"})
+                             @Html.ValidationMessageFor(Function(model) model.TipoProducto.Id, Nothing, New With {.class = "help-block"})
                          </div>
                         <div class="form-group">
                             <label for="Archivo" class="control-label">Fondo</label>
