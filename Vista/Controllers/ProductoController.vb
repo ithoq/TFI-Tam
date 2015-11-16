@@ -180,4 +180,11 @@ Public Class ProductoController
         Return RedirectToAction("Agregar", New With {c.Producto.Id})
     End Function
 
+    <HttpPost()>
+    Function Comparar(ByVal form As FormCollection) As ActionResult
+        Dim ids = form.Item("productosId")
+        Dim listaProductos As List(Of Producto) = Me.vBLL.Comparar(ids)
+        Return View(listaProductos)
+    End Function
+
 End Class

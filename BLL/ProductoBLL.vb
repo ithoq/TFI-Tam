@@ -23,6 +23,10 @@ Public Class ProductoBLL
         Return Me.vMapper.Listar()
     End Function
 
+    Public Function Comparar(ByVal ids As String) As List(Of Producto)
+        Return Me.vMapper.Comparar(ids)
+    End Function
+
     Public Function ConsutarPorId(ByVal id As Integer) As Producto
         Return Me.vMapper.ConsutarPorId(id)
     End Function

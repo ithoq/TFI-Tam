@@ -20,8 +20,13 @@ End Section
         .star-black {
             color: black;
         }
+
         .star-gray {
             color: gray;
+        }
+
+        .star-white {
+            color: white;
         }
     </style>
 end section
@@ -84,17 +89,17 @@ End Section
 
                 @For Each item In Model.ListaComentarios
                     @<div class="card share full-width">
-                        <div class="card-header clearfix">
+                        <div class="card-header clearfix bg-primary">
                             <h5>Valoración:</h5>
-                                <p class="rating" >              
-                                    @For index = 1 To 5
-                                    If index <= item.Valoracion Then
-                                        @<i class="fa fa-star star-black"></i>
-                        Else
-                                        @<i class="fa fa-star star-gray"></i>
-                        End If
-                    Next
-                                </p>
+                            <p class="rating">
+                                @For index = 1 To 5
+                                If index <= item.Valoracion Then
+                                    @<i class="fa fa-star star-white"></i>
+                                Else
+                                    @<i class="fa fa-star star-gray"></i>
+                                End If
+                                Next
+                            </p>
                         </div>
                         <div class="card-description">
                             @item.Mensaje
@@ -103,7 +108,7 @@ End Section
                 Next
             End Code
 
-            
+
             @Code
                 If User IsNot Nothing Then
                     Html.RenderAction("Comentar", "Producto", New With {.productoId = Model.Id})

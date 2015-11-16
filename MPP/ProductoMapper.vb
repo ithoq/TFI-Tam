@@ -52,7 +52,47 @@ Public Class ProductoMapper
     Public Function Listar() As List(Of Producto)
         Dim ds As New DataSet
         Dim lista As New List(Of Producto)
+
         ds = vDatos.Leer("s_ListarProducto", Nothing)
+
+        If ds.Tables(0).Rows.Count > 0 Then
+            For Each Item As DataRow In ds.Tables(0).Rows
+                Dim p As Producto = New Producto
+                p.Id = Item("Id")
+                p.Fondo = Item("Fondo")
+                p.Alto = Item("Alto")
+                p.Ancho = Item("Ancho")
+                p.Nombre = Item("Nombre")
+                p.TipoProducto = Item("TipoProducto_Id")
+                p.Tema.Id = Item("Tema_Id")
+                p.Tema.Tema = Item("Tema")
+                p.Papel.Id = Item("IdPapel")
+                p.Papel.Nombre = Item("NombrePapel")
+                p.Papel.Precio = Item("PrecioPapel")
+                p.Papel.Tipo = Item("TipoPapel")
+                p.Papel.Color = Item("ColorPapel")
+                p.Papel.Espesor = Item("EspesorPapel")
+                p.Cartucho.Id = Item("IdCartucho")
+                p.Cartucho.Nombre = Item("NombreCartucho")
+                p.Cartucho.Precio = Item("PrecioCartucho")
+                p.Cartucho.Tipo = Item("TipoCartucho")
+                p.Valoracion = Item("Valoracion")
+                lista.Add(p)
+            Next
+        End If
+
+        Return lista
+    End Function
+
+    Public Function Comparar(ByVal ids As String) As List(Of Producto)
+        Dim ds As New DataSet
+        Dim lista As New List(Of Producto)
+        Dim parametros As New Hashtable
+
+        If ids IsNot Nothing Then
+            parametros.Add("@Ids", ids)
+        End If
+        ds = vDatos.Leer("s_CompararProducto", parametros)
 
         If ds.Tables(0).Rows.Count > 0 Then
             For Each Item As DataRow In ds.Tables(0).Rows

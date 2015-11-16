@@ -78,12 +78,16 @@ Public Class PedidoMapper
             p.Estado = row.Item("Estado")
             p.Direccion.Calle = row.Item("Calle")
             p.Direccion.Numero = row.Item("Numero")
-            p.Direccion.DptoPiso = row.Item("DepartamentoPiso")
+            If IsDBNull(row.Item("DepartamentoPiso")) = False Then
+                p.Direccion.DptoPiso = row.Item("DepartamentoPiso")
+            End If
             p.Direccion.Localidad = row.Item("Localidad")
             p.Usuario.Nombre = row.Item("Nombre")
             p.Usuario.Apellido = row.Item("Apellido")
             p.Usuario.NombreUsuario = row.Item("NombreUsuario")
-            p.Usuario.Telefono = row.Item("Telefono")
+            If IsDBNull(row.Item("Telefono")) = False Then
+                p.Usuario.Telefono = row.Item("Telefono")
+            End If
             Dim lista As New List(Of DetallePedido)
             If ds.Tables(1).Rows.Count > 0 Then
                 For Each row2 As DataRow In ds.Tables(1).Rows
