@@ -111,6 +111,18 @@ Public Class ProductoMapper
             p.Cartucho.Nombre = row.Item("NombreCartucho")
             p.Cartucho.Precio = row.Item("PrecioCartucho")
             p.Cartucho.Tipo = row.Item("TipoCartucho")
+            Dim listaComentarios As New List(Of Comentario)
+            If ds.Tables(1).Rows.Count > 0 Then
+                For Each row2 As DataRow In ds.Tables(1).Rows
+                    Dim c As New Comentario
+                    c.Id = row2("Id")
+                    c.Valoracion = row2("Valoracion")
+                    c.Mensaje = row2("Mensaje")
+                    c.Producto.Id = p.Id
+                    listaComentarios.Add(c)
+                Next
+            End If
+            p.ListaComentarios = listaComentarios
             Return p
         Else
             Return Nothing

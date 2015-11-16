@@ -33,7 +33,7 @@ Public Class PedidoMapper
         Next
         parametros.Add("@Detalles", dt)
 
-        Return vDatos.Escribir("s_CrearPedido", parametros)
+        Return vDatos.Escribir("s_AltaPedido", parametros)
     End Function
 
     Public Function Listar() As List(Of Pedido)
@@ -46,7 +46,9 @@ Public Class PedidoMapper
                 Dim p As Pedido = New Pedido
                 p.Id = Item("Id")
                 p.FechaInicio = Item("FechaInicio")
-                p.FechaFin = Item("FechaFin")
+                If IsDBNull(Item("FechaFin")) = False Then
+                    p.FechaFin = Item("FechaFin")
+                End If
                 p.Importe = Item("Importe")
                 p.Estado = Item("Estado")
                 p.Usuario.NombreUsuario = Item("NombreUsuario")
@@ -69,7 +71,9 @@ Public Class PedidoMapper
             Dim p As New Pedido
             p.Id = row.Item("Id")
             p.FechaInicio = row.Item("FechaInicio")
-            p.FechaFin = row.Item("FechaFin")
+            If IsDBNull(row.Item("FechaFin")) = False Then
+                p.FechaFin = row.Item("FechaFin")
+            End If
             p.Importe = row.Item("Importe")
             p.Estado = row.Item("Estado")
             p.Direccion.Calle = row.Item("Calle")

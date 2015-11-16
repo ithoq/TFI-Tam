@@ -27,7 +27,7 @@ End Section
         <div class="tab-pane active" id="tab-fillup1">
             Número de orden: @model.Id<br />
             @Html.DisplayNameFor(Function(model) model.FechaInicio): @Html.DisplayFor(Function(model) model.FechaInicio)<br />
-            @Html.DisplayNameFor(Function(model) model.FechaFin): @Html.DisplayFor(Function(model) model.FechaFin)<br />
+            @Html.DisplayNameFor(Function(model) model.FechaFin): @IIf(Model.FechaFin = Nothing, "", Model.FechaFin)<br />
             Importe: $@Model.Importe.ToString("0.00")<br />
             @Html.DisplayNameFor(Function(model) model.Estado): @Html.DisplayFor(Function(model) model.Estado)<br />
             @Html.DisplayNameFor(Function(model) model.Direccion.Descripcion): @Html.DisplayFor(Function(model) model.Direccion.Descripcion)<br />
@@ -64,7 +64,7 @@ End Section
                 Next
             </tbody>
         </table>
-        <h3>Total: $@Model.Total.ToString("0.00")</h3>
+        <h3>Total: $@Model.Importe.ToString("0.00")</h3>
     </div>
 </div>
 <p>

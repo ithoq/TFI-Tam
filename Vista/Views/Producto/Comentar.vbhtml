@@ -4,6 +4,7 @@
     Layout = Nothing
 End Code
 
+<h3>Comentar</h3>
 @Using Html.BeginForm("Comentar", "Producto", FormMethod.Post)
     @Html.HiddenFor(Function(model) model.Producto.Id)
     @<div class="form-group form-group-default required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Valoracion))), Nothing, "has-error"))" style="height:80px;">

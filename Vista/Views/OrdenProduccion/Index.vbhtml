@@ -46,10 +46,10 @@ End Section
                             @Html.DisplayFor(Function(modelItem) currentItem.Tipo)
                         </td>
                         <td>
-                            @Html.DisplayFor(Function(modelItem) currentItem.FechaInicio)
+                            @IIf(currentItem.FechaInicio = Nothing, "", currentItem.FechaInicio)
                         </td>
                         <td>
-                            @Html.DisplayFor(Function(modelItem) currentItem.FechaFin)
+                            @IIf(currentItem.FechaFin = Nothing, "", currentItem.FechaFin)
                         </td>
                         <td>
                             @Html.DisplayFor(Function(modelItem) currentItem.Cantidad)

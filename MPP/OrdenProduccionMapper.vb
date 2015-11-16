@@ -19,10 +19,16 @@ Public Class OrdenProduccionMapper
                 Dim o As OrdenProduccion = New OrdenProduccion
                 o.Id = Item("Id")
                 o.Tipo = Item("Tipo")
-                o.FechaInicio = Item("FechaInicio")
-                o.FechaFin = Item("FechaFin")
+                If IsDBNull(Item("FechaInicio")) = False Then
+                    o.FechaInicio = Item("FechaInicio")
+                End If
+                If IsDBNull(Item("FechaFin")) = False Then
+                    o.FechaFin = Item("FechaFin")
+                End If
                 o.Cantidad = Item("Cantidad")
-                o.Observacion = Item("Observacion")
+                If IsDBNull(Item("Observacion")) = False Then
+                    o.Observacion = Item("Observacion")
+                End If
                 o.Estado = Item("Estado")
                 o.Pedido.Usuario.NombreUsuario = Item("NombreUsuario")
                 lista.Add(o)
@@ -40,7 +46,7 @@ Public Class OrdenProduccionMapper
         parametros.Add("@Cantidad", entidad.Cantidad)
         parametros.Add("@Producto_Id", entidad.Producto.Id)
 
-        Return vDatos.Escribir("s_CrearOrden", parametros)
+        Return vDatos.Escribir("s_AltaOrden", parametros)
     End Function
 
     Public Function Iniciar(ByVal id As Integer) As Boolean

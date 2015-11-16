@@ -60,7 +60,7 @@ Public Class MovimientoMapper
         Next
         parametros.Add("@Detalles", dt)
 
-        Return vDatos.Escribir("s_CrearMovimiento", parametros)
+        Return vDatos.Escribir("s_AltaMovimiento", parametros)
     End Function
 
     Public Function SaldoAFavorPorCliente(ByVal clienteId As Integer) As Double

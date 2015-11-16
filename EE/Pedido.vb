@@ -89,4 +89,10 @@ Public Class Pedido
         End Get
     End Property
 
+    Public ReadOnly Property Subtotal() As Double
+        Get
+            Return Math.Round(Me.Importe - Me.Iva, 2)
+        End Get
+    End Property
+
 End Class

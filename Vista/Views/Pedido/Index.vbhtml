@@ -49,7 +49,7 @@ End Section
                             @Html.DisplayFor(Function(modelItem) currentItem.FechaInicio)
                         </td>
                         <td>
-                            @Html.DisplayFor(Function(modelItem) currentItem.FechaFin)
+                            @IIf(currentItem.FechaFin = Nothing, "", currentItem.FechaFin)
                         </td>
                         <td>
                             $@currentItem.Importe.ToString("0.00")

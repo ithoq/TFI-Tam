@@ -16,6 +16,14 @@ End Section
     <link href="~/Pages/assets/plugins/jquery-datatable/extensions/FixedColumns/css/dataTables.fixedColumns.min.css" rel="stylesheet" type="text/css" />
     <link href="~/Pages/assets/plugins/datatables-responsive/css/datatables.responsive.css" rel="stylesheet" type="text/css" media="screen" />
     <link href="~/Pages/assets/plugins/bootstrap-star-rating/css/star-rating.css" rel="stylesheet" type="text/css" />
+    <style>
+        .star-black {
+            color: black;
+        }
+        .star-gray {
+            color: gray;
+        }
+    </style>
 end section
 
 @Section javascripts_vendor
@@ -72,12 +80,30 @@ End Section
             End Using
         </div>
         <div class="tab-pane" id="tab-fillup2">
-            @For Each item In Model.ListaComentarios
-                @<label>Valoración:</label>
-                @item.Valoracion
-                @<label>Mensaje:</label>
-                @item.Mensaje
-            Next
+            @code
+
+                @For Each item In Model.ListaComentarios
+                    @<div class="card share full-width">
+                        <div class="card-header clearfix">
+                            <h5>Valoración:</h5>
+                                <p class="rating" >              
+                                    @For index = 1 To 5
+                                    If index <= item.Valoracion Then
+                                        @<i class="fa fa-star star-black"></i>
+                        Else
+                                        @<i class="fa fa-star star-gray"></i>
+                        End If
+                    Next
+                                </p>
+                        </div>
+                        <div class="card-description">
+                            @item.Mensaje
+                        </div>
+                    </div>
+                Next
+            End Code
+
+            
             @Code
                 If User IsNot Nothing Then
                     Html.RenderAction("Comentar", "Producto", New With {.productoId = Model.Id})
