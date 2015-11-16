@@ -1,28 +1,23 @@
 ﻿@ModelType Vista.ComprarViewModel
-
 @Section breadcrumb
-    <ul class="page-breadcrumb">
+    <ul class="breadcrumb">
         <li>
-            <i class="fa fa-home"></i>
             <a href="@Url.Action("Index", "Home")">Home</a>
-            <i class="fa fa-angle-right"></i>
         </li>
         <li>
-            <a href="#">Pedido</a>
+            <a class="active">Pedido</a>
         </li>
     </ul>
 End Section
-
 @*@Section stylesheets
-    @Styles.Render("~/Content/select2/css")
-    @Styles.Render("~/Content/datepicker/css")
-End Section
+        @Styles.Render("~/Content/select2/css")
+        @Styles.Render("~/Content/datepicker/css")
+    End Section
 
-@Section javascripts
-    @Scripts.Render("~/Content/select2/js")
-    @Scripts.Render("~/Content/datepicker/js")
-End Section*@
-
+    @Section javascripts
+        @Scripts.Render("~/Content/select2/js")
+        @Scripts.Render("~/Content/datepicker/js")
+    End Section*@
 @Section javascripts_custom
     <script type="text/javascript">
         $(document).ready(function () {
@@ -102,17 +97,16 @@ End Section*@
         });
     </script>
 End Section
-
 <div class="row">
     <div class="col-md-12">
-        <!-- Begin: life time stats -->
-        <div class="portlet light">
-            <div class="portlet-title">
-                <div class="caption">
-                    <i class="fa fa-shopping-cart"></i>Nuevo Pedido
+        <!-- START PANEL -->
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    Nuevo Pedido
                 </div>
                 <div class="actions">
-                    <a href="@Url.Action("VerCarro", "Pedido")" class="btn default yellow-stripe">
+                    <a href="@Url.Action("VerCarro", "Pedido")" class="btn default">
                         <i class="fa fa-angle-left"></i>
                         <span class="hidden-480">
                             Atrás
@@ -120,6 +114,67 @@ End Section
                     </a>
                 </div>
             </div>
+            <div class="panel-body">
+                @Using Html.BeginForm("Crear", "Producto", FormMethod.Post, New With {.enctype = "multipart/form-data"})
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(True)
+                    @<fieldset>
+                        <div class="form-group form-group-default required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Nombre))), Nothing, "has-error")) ">
+                            @Html.LabelFor(Function(model) model.Nombre)
+                            @Html.TextBoxFor(Function(model) model.Nombre, New With {.class = "form-control"})
+                            @Html.ValidationMessageFor(Function(model) model.Nombre, Nothing, New With {.class = "help-block"})
+                        </div>
+                        <div class="form-group form-group-default form-group-default-select2 required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Papel.Id))), Nothing, "has-error"))">
+                            <label>Papel</label>
+                            @Html.DropDownListFor(Function(model) model.Papel.Id, New SelectList(ViewBag.Papeles, "Id", "Nombre"), "", New With {.class = "full-width select2-offscreen"})
+                            @Html.ValidationMessageFor(Function(model) model.Papel.Id, Nothing, New With {.class = "help-block"})
+                        </div>
+                        <div class="form-group form-group-default form-group-default-select2 required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Cartucho.Id))), Nothing, "has-error"))">
+                            <label>Cartucho</label>
+                            @Html.DropDownListFor(Function(model) model.Cartucho.Id, New SelectList(ViewBag.Cartuchos, "Id", "Nombre"), "", New With {.class = "full-width select2-offscreen"})
+                            @Html.ValidationMessageFor(Function(model) model.Cartucho.Id, Nothing, New With {.class = "help-block"})
+                        </div>
+                        <div class="form-group form-group-default form-group-default-select2 required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Tema.Id))), Nothing, "has-error"))">
+                            @Html.LabelFor(Function(model) model.Tema)
+                            @Html.DropDownListFor(Function(model) model.Tema.Id, New SelectList(ViewBag.Temas, "Id", "Tema"), "", New With {.class = "full-width select2-offscreen"})
+                            @Html.ValidationMessageFor(Function(model) model.Tema.Id, Nothing, New With {.class = "help-block"})
+                        </div>
+                        <div class="form-group form-group-default form-group-default-select2 required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.TipoProducto))), Nothing, "has-error"))">
+                            @Html.LabelFor(Function(model) model.TipoProducto)
+                            @Html.DropDownListFor(Function(model) model.TipoProducto, [Enum].GetValues(GetType(EE.TipoProducto)).Cast(Of EE.TipoProducto)().Select(Function(x) New SelectListItem() With {.Value = Convert.ToInt16(x).ToString(), .Text = DirectCast(x.GetType().GetField(x.ToString()).GetCustomAttributes(GetType(System.ComponentModel.DescriptionAttribute), False)(0), System.ComponentModel.DescriptionAttribute).Description}), New With {.class = "full-width select2-offscreen"})
+                            @Html.ValidationMessageFor(Function(model) model.TipoProducto, Nothing, New With {.class = "help-block"})
+                        </div>
+                        <div class="form-group">
+                            <label for="Archivo" class="control-label">Fondo</label>
+                            <input type="file" name="Archivo" />
+                            @Html.ValidationMessage("Archivo", New With {.class = "help-block"})
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-cons">Grabar</button>
+                    </fieldset>
+
+                End Using
+            </div>
+        </div>
+        <!-- END PANEL -->
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <!-- Begin: life time stats -->
+        <div class="portlet light">
+            @*<div class="portlet-title">
+                    <div class="caption">
+                        Nuevo Pedido
+                    </div>
+                    <div class="actions">
+                        <a href="@Url.Action("VerCarro", "Pedido")" class="btn default yellow-stripe">
+                            <i class="fa fa-angle-left"></i>
+                            <span class="hidden-480">
+                                Atrás
+                            </span>
+                        </a>
+                    </div>
+                </div>*@
             @Using Html.BeginForm()
                 @Html.AntiForgeryToken()
                 @<div class="portlet-body">
@@ -273,7 +328,6 @@ End Section
                                                     <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
                                                 </span>
                                             </div>
-
                                             @Html.ValidationMessageFor(Function(model) model.TarjetaFechaVencimiento, Nothing, New With {.class = "help-block"})
                                         </div>
                                     </div>
@@ -335,7 +389,7 @@ End Section
                                                 For Each item In Model.Pedido.ListaPedidos
                                                     @<tr>
                                                         <td>
-                                                            @item.Producto.Nombre 
+                                                            @item.Producto.Nombre
                                                         </td>
                                                         <td>
                                                             @item.Cantidad
