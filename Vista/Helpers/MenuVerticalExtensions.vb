@@ -12,6 +12,35 @@ Public Module MenuVerticalExtensions
             Dim vPerfilBll As New PerfilBLL()
             Dim listaPermisos As List(Of Permiso) = vPerfilBll.ConsultarPermisos(0, customPrincipal.UsuarioId)
 
+            output = output +
+                "<li>" +
+                    "<a href='javascript:;'>" +
+                        "<span class='title'>Mi Cuenta</span>" +
+                        "<span class='arrow'></span>" +
+                    "</a>" +
+                    "<i class='icon-thumbnail'>M</i>" +
+                    "<ul class='sub-menu'>" +
+                        "<li>" +
+                            "<a href='/Usuario/MiCuenta'>" +
+                                "<span class='title'>Información Básica</span>" +
+                            "</a>" +
+                            "<i class='icon-thumbnail'>IB</i>" +
+                        "</li>" +
+                        "<li>" +
+                            "<a href='/Usuario/MiCuenta'>" +
+                                "<span class='title'>Cuenta Corriente</span>" +
+                            "</a>" +
+                            "<i class='icon-thumbnail'>CC</i>" +
+                        "</li>" +
+                        "<li>" +
+                            "<a href='/Usuario/MiCuenta'>" +
+                                "<span class='title'>Mis Compras</span>" +
+                            "</a>" +
+                            "<i class='icon-thumbnail'>MC</i>" +
+                        "</li>" +
+                    "</ul>" +
+                "</li>"
+
             For Each p As Permiso In listaPermisos
                 If p.Habilitado And p.Activo Then
                     If TypeOf p Is Familia Then
