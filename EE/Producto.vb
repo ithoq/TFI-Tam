@@ -71,7 +71,7 @@ Public Class Producto
         End Set
     End Property
 
-    Private vTema As Tema
+    Private vTema As New Tema
     Public Property Tema() As Tema
         Get
             Return vTema
@@ -88,6 +88,26 @@ Public Class Producto
         End Get
         Set(ByVal value As Cartucho)
             vCartucho = value
+        End Set
+    End Property
+
+    Private vValoracion As Integer
+    Public Property Valoracion() As Integer
+        Get
+            Return vValoracion
+        End Get
+        Set(ByVal value As Integer)
+            vValoracion = value
+        End Set
+    End Property
+
+    Private vListaComentarios As New List(Of Comentario)
+    Public Property ListaComentarios() As List(Of Comentario)
+        Get
+            Return vListaComentarios
+        End Get
+        Set(ByVal value As List(Of Comentario))
+            vListaComentarios = value
         End Set
     End Property
 

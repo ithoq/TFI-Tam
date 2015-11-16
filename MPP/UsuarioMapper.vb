@@ -121,11 +121,15 @@ Public Class UsuarioMapper
                             m = New NotaCredito
                         Case "NotaDebito"
                             m = New NotaDebito
+                        Case "Pago"
+                            m = New Pago
                     End Select
 
                     m.Numero = row3("Numero")
                     m.TipoComprobante = row3("TipoComprobante")
-                    m.Observacion = row3("Observacion")
+                    If IsDBNull(row3("Observacion")) = False Then
+                        m.Observacion = row3("Observacion")
+                    End If
                     m.Importe = row3("Importe")
                     listaMovimientos.Add(m)
                 Next
@@ -138,7 +142,9 @@ Public Class UsuarioMapper
                     Dim p As New Pedido
                     p.Id = row4("Id")
                     p.FechaInicio = row4("FechaInicio")
-                    p.FechaFin = row4("FechaFin")
+                    If IsDBNull(row4("FechaFin")) = False Then
+                        p.FechaFin = row4("FechaFin")
+                    End If
                     p.Estado = row4("Estado")
                     p.Importe = row4("Importe")
                     p.Direccion.Calle = row4("Direccion_Calle")

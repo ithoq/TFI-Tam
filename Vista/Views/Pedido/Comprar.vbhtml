@@ -1,10 +1,6 @@
 ﻿@ModelType Vista.ComprarViewModel
 
-@Code
-    Layout = "~/Views/Shared/_BackEnd.vbhtml"
-End Code
-
-@Section breadcrumbs
+@Section breadcrumb
     <ul class="page-breadcrumb">
         <li>
             <i class="fa fa-home"></i>
@@ -17,7 +13,7 @@ End Code
     </ul>
 End Section
 
-@Section stylesheets
+@*@Section stylesheets
     @Styles.Render("~/Content/select2/css")
     @Styles.Render("~/Content/datepicker/css")
 End Section
@@ -25,9 +21,9 @@ End Section
 @Section javascripts
     @Scripts.Render("~/Content/select2/js")
     @Scripts.Render("~/Content/datepicker/js")
-End Section
+End Section*@
 
-@Section javascript_codigo
+@Section javascripts_custom
     <script type="text/javascript">
         $(document).ready(function () {
 
@@ -299,7 +295,7 @@ End Section
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">Subtotal:</label>
-                                        <input type="text" value="@Model.Pedido.Importe" class="form-control" disabled />
+                                        <input type="text" value="@Model.Pedido.Subtotal" class="form-control" disabled />
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label">Iva:</label>
@@ -336,19 +332,19 @@ End Section
                                             <tbody>
                                                 @Code
                                                 If Model IsNot Nothing Then
-                                                For Each item In Model.Pedido.ListaDetalles
+                                                For Each item In Model.Pedido.ListaPedidos
                                                     @<tr>
                                                         <td>
-                                                            @item.Producto.ObtenerNombre()
+                                                            @item.Producto.Nombre 
                                                         </td>
                                                         <td>
                                                             @item.Cantidad
                                                         </td>
                                                         <td>
-                                                            $@item.Producto.CalcularPrecio()
+                                                            $@item.Producto.ObtenerPrecio()
                                                         </td>
                                                         <td>
-                                                            $@item.Producto.CalcularIva()
+                                                            $@item.Producto.ObtenerIva()
                                                         </td>
                                                         <td>
                                                             $@item.Total

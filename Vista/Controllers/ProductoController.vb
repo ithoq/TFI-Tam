@@ -8,10 +8,12 @@ Public Class ProductoController
     Private vBLL As ProductoBLL
     Private vPapelBLL As PapelBLL
     Private vCartuchoBLL As CartuchoBLL
+    Private vTemaBLL As TemaBLL
     Sub New()
         Me.vBLL = New ProductoBLL()
         Me.vPapelBLL = New PapelBLL()
         Me.vCartuchoBLL = New CartuchoBLL()
+        Me.vTemaBLL = New TemaBLL()
     End Sub
 
     '
@@ -35,6 +37,7 @@ Public Class ProductoController
     Function Crear() As ActionResult
         ViewBag.Papeles = Me.vPapelBLL.Listar()
         ViewBag.Cartuchos = Me.vCartuchoBLL.Listar()
+        ViewBag.Temas = Me.vTemaBLL.Listar()
         Return View()
     End Function
 
@@ -52,6 +55,14 @@ Public Class ProductoController
         ElseIf listaTiposImagenes.Contains(Archivo.ContentType) = False Then
             ModelState.AddModelError("Archivo", "Tipo de archivo no permitido")
         End If
+        ModelState("Cartucho.Modelo").Errors.Clear()
+        ModelState("Cartucho.Nombre").Errors.Clear()
+        ModelState("Cartucho.Marca").Errors.Clear()
+        ModelState("Cartucho.Tipo").Errors.Clear()
+        ModelState("Tema.Tema").Errors.Clear()
+        ModelState("Papel.Color").Errors.Clear()
+        ModelState("Papel.Nombre").Errors.Clear()
+        ModelState("Papel.Tipo").Errors.Clear()
         If ModelState.IsValid Then
             Dim directorioSubidas As String = "~/Content/img"
             Dim urlSubidas As String = "/Content/img"
@@ -70,6 +81,8 @@ Public Class ProductoController
             Return RedirectToAction("Index")
         End If
         ViewBag.Papeles = Me.vPapelBLL.Listar()
+        ViewBag.Cartuchos = Me.vCartuchoBLL.Listar()
+        ViewBag.Temas = Me.vTemaBLL.Listar()
         Return View(entidad)
     End Function
 
@@ -80,6 +93,7 @@ Public Class ProductoController
         Dim vProducto As Producto = Me.vBLL.ConsutarPorId(id)
         ViewBag.Papeles = Me.vPapelBLL.Listar()
         ViewBag.Cartuchos = Me.vCartuchoBLL.Listar()
+        ViewBag.Temas = Me.vTemaBLL.Listar()
         Return View(vProducto)
     End Function
 
@@ -98,6 +112,14 @@ Public Class ProductoController
                 ModelState.AddModelError("Archivo", "Tipo de archivo no permitido")
             End If
         End If
+        ModelState("Cartucho.Modelo").Errors.Clear()
+        ModelState("Cartucho.Nombre").Errors.Clear()
+        ModelState("Cartucho.Marca").Errors.Clear()
+        ModelState("Cartucho.Tipo").Errors.Clear()
+        ModelState("Tema.Tema").Errors.Clear()
+        ModelState("Papel.Color").Errors.Clear()
+        ModelState("Papel.Nombre").Errors.Clear()
+        ModelState("Papel.Tipo").Errors.Clear()
         If ModelState.IsValid Then
             If Archivo IsNot Nothing Then
                 Dim vProducto As Producto = Me.vBLL.ConsutarPorId(id)
@@ -123,12 +145,13 @@ Public Class ProductoController
         End If
         ViewBag.Papeles = Me.vPapelBLL.Listar()
         ViewBag.Cartuchos = Me.vCartuchoBLL.Listar()
+        ViewBag.Temas = Me.vTemaBLL.Listar()
         Return View(entidad)
     End Function
 
     '
     ' GET: /Producto/Delete/5
-    <Autorizar(Roles:="EliminarPapel")>
+    <Autorizar(Roles:="EliminarProducto")>
     Function Eliminar(ByVal id As Integer) As ActionResult
         If ModelState.IsValid Then
             Me.vBLL.Eliminar(id)
@@ -139,6 +162,22 @@ Public Class ProductoController
     Function Agregar(ByVal id As Integer) As ActionResult
         Dim vProducto As Producto = Me.vBLL.ConsutarPorId(id)
         Return View(vProducto)
+    End Function
+
+    <Autorizar()>
+    Function Comentar(ByVal productoId As Integer) As ActionResult
+        Dim c As New Comentario
+        c.Producto.Id = productoId
+        Return View(c)
+    End Function
+
+    <Autorizar()>
+    <HttpPost()>
+    Function Comentar(ByVal c As Comentario) As ActionResult
+        If ModelState.IsValid Then
+            Me.vBLL.Comentar(c)
+        End If
+        Return RedirectToAction("Agregar", New With {c.Producto.Id})
     End Function
 
 End Class

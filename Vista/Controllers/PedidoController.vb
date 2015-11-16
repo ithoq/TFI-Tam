@@ -151,7 +151,7 @@ Public Class PedidoController
         detalle.Precio = prod.ObtenerPrecioConIva()
         detalle.Producto = prod
         Me.ObtenerCarrito.Importe += detalle.Total
-        Me.ObtenerCarrito().ListaPedidos.Add(detalle)
+        Me.AgregarDetalle(detalle)
         Return RedirectToAction("Index", "Home")
     End Function
 
@@ -168,6 +168,25 @@ Public Class PedidoController
             Next
         End If
 
+        Return RedirectToAction("VerCarro")
+    End Function
+
+    Function AgregarDetalle(ByVal pd As DetallePedido) As ActionResult
+        Dim p As Pedido = Me.ObtenerCarrito()
+        Dim Encontro As Boolean = False
+        If p IsNot Nothing Then
+            For i = 0 To p.ListaPedidos.Count - 1
+                Dim item As DetallePedido = p.ListaPedidos(i)
+                If pd.Producto.Id = item.Producto.Id Then
+                    item.Cantidad += pd.Cantidad
+                    Encontro = True
+                    Exit For
+                End If
+            Next
+        End If
+        If Encontro = False Then
+            p.ListaPedidos.Add(pd)
+        End If
         Return RedirectToAction("VerCarro")
     End Function
 

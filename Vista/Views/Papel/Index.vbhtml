@@ -64,7 +64,7 @@ End Section
                             @Html.DisplayFor(Function(modelItem) currentItem.Nombre)
                         </td>
                         <td>
-                            @Html.DisplayFor(Function(modelItem) currentItem.Precio)
+                            $@currentItem.Precio.ToString("0.00")
                         </td>
                         <td>
                             @Html.DisplayFor(Function(modelItem) currentItem.Tipo)

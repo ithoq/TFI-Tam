@@ -28,7 +28,7 @@ End Section
             @Html.DisplayNameFor(Function(model) model.Espesor): @Html.DisplayFor(Function(model) model.Espesor)<br />
             @Html.DisplayNameFor(Function(model) model.Color): @Html.DisplayFor(Function(model) model.Color)<br />
             @Html.DisplayNameFor(Function(model) model.Nombre): @Html.DisplayFor(Function(model) model.Nombre)<br />
-            @Html.DisplayNameFor(Function(model) model.Precio): @Html.DisplayFor(Function(model) model.Precio)<br />
+            Precio: $@Model.Precio.ToString("0.00")<br />
             @Html.DisplayNameFor(Function(model) model.Tipo): @Html.DisplayFor(Function(model) model.Tipo)
         </div>
     </div>

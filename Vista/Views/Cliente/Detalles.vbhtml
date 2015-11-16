@@ -128,8 +128,6 @@ End Section
     End Code
 </p>
 
-
-
 @Section javascripts_vendor
     <script type="text/javascript" src="~/Pages/assets/plugins/bootstrap-select2/select2.min.js"></script>
     <script type="text/javascript" src="~/Pages/assets/plugins/classie/classie.js"></script>

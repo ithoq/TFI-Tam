@@ -18,9 +18,9 @@
                         <div class="gradient-grey p-l-20 p-r-20 p-t-20 p-b-5">
                             <div class="">
                                 <h3 class="pull-left bold text-white no-margin">@producto.Nombre</h3>
-                                <h3 class="pull-right semi-bold text-white font-montserrat bold no-margin">$@producto.ObtenerPrecio()</h3>
+                                <h3 class="pull-right semi-bold text-white font-montserrat bold no-margin">$@producto.ObtenerPrecioConIva()</h3>
                                 <div class="clearfix"></div>
-                                <span class="hint-text pull-left text-white">@producto.Tema.ToString()</span>
+                                <span class="hint-text pull-left text-white">@producto.Tema.Tema</span>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="">
@@ -33,11 +33,15 @@
                                 <div class="inline m-l-10">
                                     <p class="no-margin text-white fs-12">Valoraciones</p>
                                     <p class="rating">
-                                        <i class="fa fa-star rated"></i>
-                                        <i class="fa fa-star rated"></i>
-                                        <i class="fa fa-star rated"></i>
-                                        <i class="fa fa-star rated"></i>
-                                        <i class="fa fa-star"></i>
+                                        @Code
+                                                    For index = 1 To 5
+                                                        If index <= producto.Valoracion Then
+                                            @<i class="fa fa-star rated"></i>
+                                                        Else
+                                            @<i class="fa fa-star"></i>
+                                                        End If
+                                                    Next
+                                        End Code
                                     </p>
                                 </div>
                                 <div class="pull-right m-t-10">
@@ -61,9 +65,9 @@
                         <div class="gradient-grey p-l-20 p-r-20 p-t-20 p-b-5">
                             <div class="">
                                 <h3 class="pull-left bold text-white no-margin">@producto.Nombre</h3>
-                                <h3 class="pull-right semi-bold text-white font-montserrat bold no-margin">$@producto.ObtenerPrecio()</h3>
+                                <h3 class="pull-right semi-bold text-white font-montserrat bold no-margin">$@producto.ObtenerPrecioConIva()</h3>
                                 <div class="clearfix"></div>
-                                <span class="hint-text pull-left text-white">@producto.Tema.ToString()</span>
+                                <span class="hint-text pull-left text-white">@producto.Tema.Tema</span>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="">
@@ -76,11 +80,15 @@
                                 <div class="inline m-l-10">
                                     <p class="no-margin text-white fs-12">Valoraciones</p>
                                     <p class="rating">
-                                        <i class="fa fa-star rated"></i>
-                                        <i class="fa fa-star rated"></i>
-                                        <i class="fa fa-star rated"></i>
-                                        <i class="fa fa-star rated"></i>
-                                        <i class="fa fa-star"></i>
+                                        @Code
+                                                    For index = 1 To 5
+                                                        If index <= producto.Valoracion Then
+                                            @<i class="fa fa-star rated"></i>
+                                                        Else
+                                            @<i class="fa fa-star"></i>
+                                                        End If
+                                                    Next
+                                        End Code
                                     </p>
                                 </div>
                                 <div class="pull-right m-t-10">
@@ -104,9 +112,9 @@
                         <div class="gradient-grey p-l-20 p-r-20 p-t-20 p-b-5">
                             <div class="">
                                 <h3 class="pull-left bold text-white no-margin">@producto.Nombre</h3>
-                                <h3 class="pull-right semi-bold text-white font-montserrat bold no-margin">$@producto.ObtenerPrecio()</h3>
+                                <h3 class="pull-right semi-bold text-white font-montserrat bold no-margin">$@producto.ObtenerPrecioConIva()</h3>
                                 <div class="clearfix"></div>
-                                <span class="hint-text pull-left text-white">@producto.Tema.ToString()</span>
+                                <span class="hint-text pull-left text-white">@producto.Tema.Tema</span>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="">
@@ -119,11 +127,15 @@
                                 <div class="inline m-l-10">
                                     <p class="no-margin text-white fs-12">Valoraciones</p>
                                     <p class="rating">
-                                        <i class="fa fa-star rated"></i>
-                                        <i class="fa fa-star rated"></i>
-                                        <i class="fa fa-star rated"></i>
-                                        <i class="fa fa-star rated"></i>
-                                        <i class="fa fa-star"></i>
+                                        @Code
+                                                    For index = 1 To 5
+                                                        If index <= producto.Valoracion Then
+                                            @<i class="fa fa-star rated"></i>
+                                                        Else
+                                            @<i class="fa fa-star"></i>
+                                                        End If
+                                                    Next
+                                        End Code
                                     </p>
                                 </div>
                                 <div class="pull-right m-t-10">
@@ -145,7 +157,7 @@
     </div>
     <div class="col col-lg-3">
         @Code
-            Html.RenderAction("Responder", "Encuesta")
+            Html.RenderAction("Responder", "Encuesta", New With {.tipo = "Encuesta"})
         End Code
     </div>
 </div>

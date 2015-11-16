@@ -69,11 +69,13 @@ End Section
             </tbody>
         </table>
         <div class="pull-right m-t-10">
-            Total: $@Model.Importe
+            <h3>Total: $@Model.Importe</h3>
         </div>
         <br />
         <div class="pull-right m-t-10">
-            @Html.ActionLink("Comenzar Compra", "Comprar", "Pedido", New With {.class = "btn btn-primary btn-cons pull-right"})
+            @If User IsNot Nothing Then
+                @Html.ActionLink("Comenzar Compra", "Comprar", "Pedido", New With {.class = "btn btn-primary btn-cons pull-right"})
+            End If
         </div>
     </div>
 </div>
@@ -122,7 +124,7 @@ End Section
                     "sSortDescending": ": Activar para ordenar la columna de manera descendente"
                 }
             },
-            "iDisplayLength": 10
+            "iDisplayLength": 10000000000000
         };
 
         table.dataTable(settings);

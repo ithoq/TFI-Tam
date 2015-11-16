@@ -14,7 +14,7 @@ end section
 @section javascripts_custom
     <script type="text/javascript">
         $(document).ready(function () {
-            $("#Tema").select2();
+            $("#Tema_Id").select2();
             $("#TipoProducto").select2();
             $("#Papel_Id").select2();
             $("#Cartucho_Id").select2();
@@ -51,10 +51,10 @@ End Section
                              @Html.DropDownListFor(Function(model) model.Cartucho.Id, New SelectList(ViewBag.Cartuchos, "Id", "Nombre"), "", New With {.class = "full-width select2-offscreen"})
                              @Html.ValidationMessageFor(Function(model) model.Cartucho.Id, Nothing, New With {.class = "help-block"})
                          </div>
-                         <div class="form-group form-group-default form-group-default-select2 required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Tema))), Nothing, "has-error"))">
+                         <div class="form-group form-group-default form-group-default-select2 required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.Tema.Id))), Nothing, "has-error"))">
                              @Html.LabelFor(Function(model) model.Tema)
-                             @Html.DropDownListFor(Function(model) model.Tema, [Enum].GetValues(GetType(EE.Tema)).Cast(Of EE.Tema)().Select(Function(x) New SelectListItem() With {.Value = Convert.ToInt16(x).ToString(), .Text = DirectCast(x.GetType().GetField(x.ToString()).GetCustomAttributes(GetType(System.ComponentModel.DescriptionAttribute), False)(0), System.ComponentModel.DescriptionAttribute).Description}), New With {.class = "full-width select2-offscreen"})
-                             @Html.ValidationMessageFor(Function(model) model.Tema, Nothing, New With {.class = "help-block"})
+                             @Html.DropDownListFor(Function(model) model.Tema.Id, New SelectList(ViewBag.Temas, "Id", "Tema"), "", New With {.class = "full-width select2-offscreen"})
+                             @Html.ValidationMessageFor(Function(model) model.Tema.Id, Nothing, New With {.class = "help-block"})
                          </div>
                          <div class="form-group form-group-default form-group-default-select2 required @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.TipoProducto))), Nothing, "has-error"))">
                              @Html.LabelFor(Function(model) model.TipoProducto)

@@ -30,9 +30,15 @@ end section
 </div>
 <p>
     @Code
-    @Html.ActionLink("Editar", "Editar", New With {.id = Model.Id}, New With {.class = "btn btn-primary btn-cons"})
-    @<button class="btn btn-primary btn-cons" data-target="#modalStickUpSmall" data-toggle="modal">Eliminar</button>
-    @Html.ActionLink("Volver", "Index", Nothing, New With {.class = "btn btn-default btn-cons"})
+        If User.IsInRole("EditarNovedad") Then
+        @Html.ActionLink("Editar", "Editar", New With {.id = Model.Id}, New With {.class = "btn btn-primary btn-cons"})
+        End If
+        If User.IsInRole("EliminarNovedad") Then
+        @<button class="btn btn-primary btn-cons" data-target="#modalStickUpSmall" data-toggle="modal">Eliminar</button>
+        End If
+        If User.IsInRole("VerNovedades") Then
+        @Html.ActionLink("Volver", "Index", Nothing, New With {.class = "btn btn-default btn-cons"})
+        End If
     End Code
 </p>
 

@@ -15,18 +15,20 @@ Public Module MenuVerticalExtensions
             For Each p As Permiso In listaPermisos
                 If p.Habilitado And p.Activo Then
                     If TypeOf p Is Familia Then
-                        output = output +
-                            "<li>" +
-                                "<a href='javascript:;'>" +
-                                    "<span class='title'>" + p.Descripcion + "</span>" +
-                                    "<span class='arrow'></span>" +
-                                "</a>" +
-                                "<i class='icon-thumbnail'>" + p.Descripcion.Substring(0, 1) + "</i>" +
-                                "<ul class='sub-menu'>"
-                        ArmarMenu(output, p)
-                        output = output +
-                                "</ul>" +
-                            "</li>"
+                        If AlgunHijoActivoHabilitado(p) Then
+                            output = output +
+                                "<li>" +
+                                    "<a href='javascript:;'>" +
+                                        "<span class='title'>" + p.Descripcion + "</span>" +
+                                        "<span class='arrow'></span>" +
+                                    "</a>" +
+                                    "<i class='icon-thumbnail'>" + p.Descripcion.Substring(0, 1) + "</i>" +
+                                    "<ul class='sub-menu'>"
+                            ArmarMenu(output, p)
+                            output = output +
+                                    "</ul>" +
+                                "</li>"
+                        End If
                     Else
                         output = output +
                             "<li>" +
@@ -70,5 +72,19 @@ Public Module MenuVerticalExtensions
             End If
         Next
     End Sub
+
+    Private Function AlgunHijoActivoHabilitado(ByVal f As Familia) As Boolean
+        Dim Mostrar As Boolean = True
+        For Each p As Permiso In f.ListaPermisos
+            If TypeOf p Is Familia Then
+                Mostrar = Mostrar And AlgunHijoActivoHabilitado(p)
+            Else
+                If p.Activo Then
+                    Mostrar = Mostrar And p.Habilitado
+                End If
+            End If
+        Next
+        Return Mostrar
+    End Function
 
 End Module
