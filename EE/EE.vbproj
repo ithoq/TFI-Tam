@@ -67,11 +67,13 @@
     <Compile Include="Cartucho.vb" />
     <Compile Include="Categoria.vb" />
     <Compile Include="Comentario.vb" />
+    <Compile Include="DetalleInformeTiempoRespuesta.vb" />
     <Compile Include="DetalleMovimiento.vb" />
     <Compile Include="DetallePedido.vb" />
     <Compile Include="Direccion.vb" />
     <Compile Include="Factura.vb" />
     <Compile Include="InformeGanancia.vb" />
+    <Compile Include="InformeTiempoRespuesta.vb" />
     <Compile Include="Leyenda.vb" />
     <Compile Include="Movimiento.vb" />
     <Compile Include="NotaCredito.vb" />

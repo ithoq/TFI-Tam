@@ -68,6 +68,7 @@
     <Compile Include="ContactoMapper.vb" />
     <Compile Include="EncuestaMapper.vb" />
     <Compile Include="IdiomaMapper.vb" />
+    <Compile Include="InformeMapper.vb" />
     <Compile Include="MensajeMapper.vb" />
     <Compile Include="MovimientoMapper.vb" />
     <Compile Include="NovedadMapper.vb" />

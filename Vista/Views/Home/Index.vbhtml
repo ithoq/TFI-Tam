@@ -8,6 +8,7 @@
             <input type="submit" value="Comparar" class="btn btn-primary btn-cons">
         </form>
     </div>
+
 </div>
 <div class="row">
     <div class="col col-lg-12">

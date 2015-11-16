@@ -68,6 +68,7 @@
     <Compile Include="ContactoBLL.vb" />
     <Compile Include="EncuestaBLL.vb" />
     <Compile Include="IdiomaBLL.vb" />
+    <Compile Include="InformeBLL.vb" />
     <Compile Include="MensajeBLL.vb" />
     <Compile Include="MovimientoBLL.vb" />
     <Compile Include="NovedadBLL.vb" />
