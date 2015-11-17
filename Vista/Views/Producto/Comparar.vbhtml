@@ -3,7 +3,7 @@
 @section breadcrumb
     <ul class="breadcrumb">
         <li>
-            <p>Productos</p>
+            <a href="@Url.Action("Index", "Home")">Productos</a>
         </li>
         <li>
             <a class="active">Listado</a>

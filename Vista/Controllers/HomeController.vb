@@ -8,6 +8,10 @@
     ' GET: /Home
     Private vProductoBLL As BLL.ProductoBLL
     Function Index() As ActionResult
+        Dim vTemaBLL As New BLL.TemaBLL
+        ViewBag.Temas = vTemaBLL.Listar()
+        Dim vTipoProducto As New BLL.TipoProductoBLL
+        ViewBag.TipoProductos = vTipoProducto.Listar()
         Return View(Me.vProductoBLL.Listar())
     End Function
 
