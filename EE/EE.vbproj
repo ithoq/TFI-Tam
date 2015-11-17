@@ -72,7 +72,6 @@
     <Compile Include="DetallePedido.vb" />
     <Compile Include="Direccion.vb" />
     <Compile Include="Factura.vb" />
-    <Compile Include="InformeGanancia.vb" />
     <Compile Include="InformeTiempoRespuesta.vb" />
     <Compile Include="Leyenda.vb" />
     <Compile Include="Movimiento.vb" />

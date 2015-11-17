@@ -20,4 +20,8 @@ Public Class MovimientoBLL
         Return vMapper.Compensar(clienteId, importe)
     End Function
 
+    Public Function Listar() As List(Of Movimiento)
+        Return vMapper.Listar()
+    End Function
+
 End Class

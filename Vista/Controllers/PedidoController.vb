@@ -75,7 +75,7 @@ Public Class PedidoController
             nuevoPedido.Direccion = direccionEnvio
             nuevoPedido.Usuario = usuarioLogeado
             nuevoPedido.Estado = "Pendiente"
-            nuevoPedido.FechaInicio = Now.Date
+            nuevoPedido.FechaInicio = Now
             Dim listaMovimientoDetalles As New List(Of DetalleMovimiento)
             For Each dp As DetallePedido In nuevoPedido.ListaPedidos
                 Dim nuevoDetalle As New DetalleMovimiento
@@ -209,7 +209,7 @@ Public Class PedidoController
     End Function
 
     Private Sub EliminarCarro()
-        System.Web.HttpContext.Current.Session("Carro") = Nothing
+        System.Web.HttpContext.Current.Session("Carrito") = Nothing
     End Sub
 
 End Class

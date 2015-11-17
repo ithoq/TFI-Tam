@@ -28,4 +28,5 @@
     Public Overrides Function ObtenerTipo() As String
         Return "Factura " + Me.TipoComprobante
     End Function
+
 End Class

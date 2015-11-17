@@ -95,13 +95,13 @@ End Section
                                 @Html.DisplayFor(Function(modelItem) item.Id)
                             </td>
                             <td>
-                                @Html.DisplayFor(Function(modelItem) item.FechaInicio)
+                                @item.FechaInicio
                             </td>
                             <td>
-                                @Html.DisplayFor(Function(modelItem) item.FechaFin)
+                                @IIf(item.FechaFin = Nothing, "", item.FechaFin)
                             </td>
                             <td>
-                                @Html.DisplayFor(Function(modelItem) item.Importe)
+                                $@item.Importe.ToString("0.00")
                             </td>
                             <td>
                                 @Html.DisplayFor(Function(modelItem) item.Estado)

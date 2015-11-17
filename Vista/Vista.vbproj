@@ -197,6 +197,7 @@
     <Compile Include="Controllers\HomeController.vb" />
     <Compile Include="Controllers\IdiomaController.vb" />
     <Compile Include="Controllers\InformeController.vb" />
+    <Compile Include="Controllers\MovimientoController.vb" />
     <Compile Include="Controllers\NovedadController.vb" />
     <Compile Include="Controllers\OrdenProduccionController.vb" />
     <Compile Include="Controllers\PapelController.vb" />
@@ -222,6 +223,7 @@
     <Compile Include="Models\FloatChartSerializableModel.vb" />
     <Compile Include="Models\IdiomaEditarViewModel.vb" />
     <Compile Include="Models\LogInViewModel.vb" />
+    <Compile Include="Models\MovimientoListAjaxViewModel.vb" />
     <Compile Include="Models\NovedadViewModel.vb" />
     <Compile Include="Models\RegistrarViewModel.vb" />
     <Compile Include="Models\SuscribirseViewModel.vb" />
@@ -1597,6 +1599,7 @@
     <Content Include="Views\TipoProducto\Crear.vbhtml" />
     <Content Include="Views\TipoProducto\Editar.vbhtml" />
     <Content Include="Views\Informe\ListadoInformeTiempoRespuesta.vbhtml" />
+    <Content Include="Views\Movimiento\Index.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

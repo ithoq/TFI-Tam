@@ -1,0 +1,92 @@
+﻿Imports EE
+Imports BLL
+Public Class MovimientoController
+    Inherits BaseController
+
+    Private vBLL As MovimientoBLL
+
+    Sub New()
+        Me.vBLL = New MovimientoBLL
+    End Sub
+    '
+    ' GET: /Movimiento
+    <Autorizar(Roles:="VerMovimientos")>
+    Function Index() As ActionResult
+        Return View()
+    End Function
+
+    <Autorizar(Roles:="VerMovimientos")>
+    Function ListarAjax() As JsonResult
+        Dim draw = Request("draw")
+        Dim inicio = Request("start")
+        Dim cantidadPorPagina = Request("length")
+
+        'Obtiene todos los registros
+        Dim lista As List(Of Movimiento) = Me.vBLL.Listar()
+
+        'Se aplican todos los filtros
+        Dim listaFiltrada As List(Of Movimiento) = lista
+        'If Not [String].IsNullOrEmpty(Request("search[value]")) Then
+        '    Dim busqueda As String = Request("search[value]").ToLower()
+        '    listaFiltrada = listaFiltrada.Where(Function(x) x.FechaHora.ToString("dd/MM/yyyy").Contains(busqueda) Or x.Tipo.ToString().ToLower().Contains(busqueda) Or x.Descripcion.ToLower().Contains(busqueda) Or x.Usuario.NombreUsuario.ToLower().Contains(busqueda)).ToList()
+        'End If
+        If Not [String].IsNullOrEmpty(Request("desde")) Then
+            Dim desde As Date = Date.ParseExact(Request("desde"), "dd/MM/yyyy", Nothing)
+            listaFiltrada = listaFiltrada.Where(Function(x) x.Fecha.Date >= desde).ToList()
+        End If
+        If Not [String].IsNullOrEmpty(Request("hasta")) Then
+            Dim hasta As Date = Date.ParseExact(Request("hasta"), "dd/MM/yyyy", Nothing)
+            listaFiltrada = listaFiltrada.Where(Function(x) x.Fecha.Date <= hasta).ToList()
+        End If
+        If Not [String].IsNullOrEmpty(Request("tipo[]")) Then
+            Dim tipo As String = Request("tipo[]").ToLower()
+            listaFiltrada = listaFiltrada.Where(Function(x) tipo.Contains(x.ObtenerTipo.ToLower())).ToList()
+        End If
+
+        'Se aplica el ordenamiento
+        Dim sortColumnIndex = Convert.ToInt32(Request("order[0][column]"))
+        Dim orderingFunction As Func(Of Movimiento, Object) = (Function(m) _
+            If(sortColumnIndex = 0, m.Numero, _
+                If(sortColumnIndex = 1, m.ObtenerTipo, _
+                    If(sortColumnIndex = 2, m.Observacion, _
+                        If(sortColumnIndex = 3, m.Importe, _
+                            If(sortColumnIndex = 4, m.Usuario.NombreUsuario, m.Fecha)
+                        )
+                    )
+                )
+            )
+        )
+        Dim sortDirection = Request("order[0][dir]")
+        If sortDirection = "asc" Then
+            listaFiltrada = listaFiltrada.OrderBy(orderingFunction).ToList()
+        Else
+            listaFiltrada = listaFiltrada.OrderByDescending(orderingFunction).ToList()
+        End If
+
+        'Se aplica el paginado
+        Dim listaModel As List(Of MovimientoListAjaxViewModel) =
+            listaFiltrada _
+            .Select(Function(x) New MovimientoListAjaxViewModel With {
+                .Numero = x.Numero,
+                .Tipo = x.ObtenerTipo(),
+                .Observacion = x.Observacion,
+                .Importe = "$" + x.Importe.ToString("0.00"),
+                .Usuario = x.Usuario.NombreUsuario,
+                .Fecha = x.Fecha.ToString("dd/MM/yyyy"),
+                .Acciones = x.ObtenerTipo().ToString() + " " + x.Numero.ToString()
+            }) _
+            .Skip(inicio) _
+            .Take(cantidadPorPagina) _
+            .ToList()
+
+        'Se forma el json y se retorno por ajax
+        Return Json(New With { _
+            Key .draw = draw, _
+            Key .recordsTotal = lista.Count.ToString, _
+            Key .recordsFiltered = listaFiltrada.Count.ToString, _
+            Key .data = listaModel _
+        }, JsonRequestBehavior.AllowGet)
+    End Function
+
+
+End Class

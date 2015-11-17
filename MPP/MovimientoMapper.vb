@@ -85,4 +85,37 @@ Public Class MovimientoMapper
         Return vDatos.Escribir("s_CompensarMovimiento", parametros)
     End Function
 
+    Public Function Listar() As List(Of Movimiento)
+        Dim ds As New DataSet
+        Dim lista As New List(Of Movimiento)
+        ds = vDatos.Leer("s_ListarMovimiento", Nothing)
+
+        If ds.Tables(0).Rows.Count > 0 Then
+            For Each Item As DataRow In ds.Tables(0).Rows
+                Dim m As Movimiento = Nothing
+                Select Case Item("Tipo")
+                    Case "Factura"
+                        m = New Factura
+                    Case "NotaCredito"
+                        m = New NotaCredito
+                    Case "NotaDebito"
+                        m = New NotaDebito
+                    Case "Pago"
+                        m = New Pago
+                End Select
+                m.Numero = Item("Numero")
+                m.TipoComprobante = Item("TipoComprobante")
+                If IsDBNull(Item("Observacion")) = False Then
+                    m.Observacion = Item("Observacion")
+                End If
+                m.Importe = Item("Importe")
+                m.Usuario.NombreUsuario = Item("NombreUsuario")
+                m.Fecha = Item("Fecha")
+                lista.Add(m)
+            Next
+        End If
+
+        Return lista
+    End Function
+
 End Class

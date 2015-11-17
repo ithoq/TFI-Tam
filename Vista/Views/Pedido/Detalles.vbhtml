@@ -26,7 +26,7 @@ End Section
     <div class="tab-content">
         <div class="tab-pane active" id="tab-fillup1">
             Número de orden: @model.Id<br />
-            @Html.DisplayNameFor(Function(model) model.FechaInicio): @Html.DisplayFor(Function(model) model.FechaInicio)<br />
+            @Html.DisplayNameFor(Function(model) model.FechaInicio): @Model.FechaInicio<br />
             @Html.DisplayNameFor(Function(model) model.FechaFin): @IIf(Model.FechaFin = Nothing, "", Model.FechaFin)<br />
             Importe: $@Model.Importe.ToString("0.00")<br />
             @Html.DisplayNameFor(Function(model) model.Estado): @Html.DisplayFor(Function(model) model.Estado)<br />
