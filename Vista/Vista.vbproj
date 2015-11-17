@@ -1600,6 +1600,7 @@
     <Content Include="Views\TipoProducto\Editar.vbhtml" />
     <Content Include="Views\Informe\ListadoInformeTiempoRespuesta.vbhtml" />
     <Content Include="Views\Movimiento\Index.vbhtml" />
+    <Content Include="Views\Movimiento\Detalles.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />

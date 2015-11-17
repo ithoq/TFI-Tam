@@ -30,6 +30,12 @@ Public Class PedidoController
         Return View(vPedido)
     End Function
 
+    <Autorizar(Roles:="AnularPedido")>
+    Function Anular(ByVal id As Integer) As ActionResult
+        Me.vBLL.Anular(id)
+        Return RedirectToAction("Detalle", New With {.id = id})
+    End Function
+
     Function Comprar() As ActionResult
         Dim model As New ComprarViewModel
         model.Pedido = Me.ObtenerCarrito()

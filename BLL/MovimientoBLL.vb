@@ -24,4 +24,8 @@ Public Class MovimientoBLL
         Return vMapper.Listar()
     End Function
 
+    Public Function Consultar(ByVal tipo As String, ByVal numero As Integer, ByVal tipoComprobante As String) As Movimiento
+        Return vMapper.Consultar(tipo, numero, tipoComprobante)
+    End Function
+
 End Class

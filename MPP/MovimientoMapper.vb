@@ -118,4 +118,91 @@ Public Class MovimientoMapper
         Return lista
     End Function
 
+    Public Function Consultar(ByVal tipo As String, ByVal numero As Integer, ByVal tipoComprobante As String) As Movimiento
+        Dim parametros As New Hashtable
+        Dim ds As New DataSet
+
+        parametros.Add("@Tipo", tipo)
+        parametros.Add("@Numero", numero)
+        parametros.Add("@TipoComprobante", tipoComprobante)
+        ds = vDatos.Leer("s_ConsultarMovimiento", parametros)
+
+        If ds.Tables(0).Rows.Count > 0 Then
+            Dim row As DataRow = ds.Tables(0).Rows(0)
+            Dim m As Movimiento = Nothing
+            Select Case row("Tipo")
+                Case "Factura"
+                    m = New Factura
+
+                    If IsDBNull(row.Item("Cuit")) = False Then
+                        DirectCast(m, Factura).Cuit = row.Item("Cuit")
+                    End If
+                    DirectCast(m, Factura).Direccion.Calle = row.Item("Direccion_Calle")
+                    DirectCast(m, Factura).Direccion.Numero = row.Item("Direccion_Numero")
+                    If IsDBNull(row.Item("Direccion_DptoPiso")) = False Then
+                        DirectCast(m, Factura).Direccion.DptoPiso = row.Item("Direccion_DptoPiso")
+                    End If
+                    DirectCast(m, Factura).Direccion.Localidad = row.Item("Direccion_Localidad")
+                Case "NotaCredito"
+                    m = New NotaCredito
+
+                    DirectCast(m, NotaCredito).Direccion.Calle = row.Item("Direccion_Calle")
+                    DirectCast(m, NotaCredito).Direccion.Numero = row.Item("Direccion_Numero")
+                    If IsDBNull(row.Item("Direccion_DptoPiso")) = False Then
+                        DirectCast(m, NotaCredito).Direccion.DptoPiso = row.Item("Direccion_DptoPiso")
+                    End If
+                    DirectCast(m, NotaCredito).Direccion.Localidad = row.Item("Direccion_Localidad")
+                Case "NotaDebito"
+                    m = New NotaDebito
+                Case "Pago"
+                    m = New Pago
+            End Select
+
+            m.Fecha = row("Fecha")
+            m.Numero = row("Numero")
+            m.TipoComprobante = row("TipoComprobante")
+            If IsDBNull(row("Observacion")) = False Then
+                m.Observacion = row("Observacion")
+            End If
+            m.Importe = row("Importe")
+
+            Dim lista As New List(Of DetalleMovimiento)
+            If ds.Tables(1).Rows.Count > 0 Then
+                For Each row2 As DataRow In ds.Tables(1).Rows
+                    Dim dm As New DetalleMovimiento
+                    dm.Cantidad = row2.Item("Cantidad")
+                    dm.Precio = row2.Item("Precio")
+
+                    Dim p As Producto = New Producto
+                    p.Id = row2.Item("Id")
+                    p.Fondo = row2.Item("Fondo")
+                    p.Alto = row2.Item("Alto")
+                    p.Ancho = row2.Item("Ancho")
+                    p.Nombre = row2.Item("Nombre")
+                    p.TipoProducto.Id = row2.Item("TipoProducto_Id")
+                    p.TipoProducto.Tipo = row2.Item("Tipo")
+                    p.Tema.Id = row2.Item("Tema_Id")
+                    p.Tema.Tema = row2.Item("Tema")
+                    p.Papel.Id = row2.Item("IdPapel")
+                    p.Papel.Nombre = row2.Item("NombrePapel")
+                    p.Papel.Precio = row2.Item("PrecioPapel")
+                    p.Papel.Tipo = row2.Item("TipoPapel")
+                    p.Papel.Color = row2.Item("ColorPapel")
+                    p.Papel.Espesor = row2.Item("EspesorPapel")
+                    p.Cartucho.Id = row2.Item("IdCartucho")
+                    p.Cartucho.Nombre = row2.Item("NombreCartucho")
+                    p.Cartucho.Precio = row2.Item("PrecioCartucho")
+                    p.Cartucho.Tipo = row2.Item("TipoCartucho")
+                    p.Valoracion = row2.Item("Valoracion")
+                    dm.Producto = p
+
+                    lista.Add(dm)
+                Next
+                m.ListaDetalles = lista
+            End If
+            Return m
+        Else
+            Return Nothing
+        End If
+    End Function
 End Class

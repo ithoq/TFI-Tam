@@ -105,5 +105,10 @@ Public Class PedidoMapper
         End If
     End Function
 
+    Public Function Anular(ByVal id As Integer) As Boolean
+        Dim parametros As New Hashtable
+        parametros.Add("@Id", id)
+        Return vDatos.Escribir("s_AnularPedido", parametros)
+    End Function
 
 End Class
