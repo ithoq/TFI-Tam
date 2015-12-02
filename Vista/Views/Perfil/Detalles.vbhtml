@@ -92,10 +92,10 @@ End Section
 </div>
 <p>
     @Code
-        If Model.Nombre <> "Administrador" And User.IsInRole("EditarPerfil") Then
+        If Model.Nombre <> "Administrador" And Model.Nombre <> "Cliente" And User.IsInRole("EditarPerfil") Then
         @Html.ActionLink("Editar", "Editar", New With {.id = Model.Id}, New With {.class = "btn btn-primary btn-cons"})
         End If
-        If Model.Nombre <> "Administrador" And User.IsInRole("BajaPerfil") Then
+        If Model.Nombre <> "Administrador" And Model.Nombre <> "Cliente" And User.IsInRole("EliminarPerfil") Then
         @<button class="btn btn-primary btn-cons" data-target="#modalStickUpSmall" data-toggle="modal">Eliminar</button>
         End If
         If User.IsInRole("VerPerfiles") Then

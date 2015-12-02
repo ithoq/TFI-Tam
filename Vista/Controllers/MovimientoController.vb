@@ -43,13 +43,18 @@ Public Class MovimientoController
             listaFiltrada = listaFiltrada.Where(Function(x) tipo.Contains(x.ObtenerTipo.ToLower())).ToList()
         End If
 
+        Dim Total As Double = 0
+        For Each m As Movimiento In listaFiltrada
+            Total += (m.ObtenerImporte() * -1)
+        Next
+
         'Se aplica el ordenamiento
         Dim sortColumnIndex = Convert.ToInt32(Request("order[0][column]"))
         Dim orderingFunction As Func(Of Movimiento, Object) = (Function(m) _
             If(sortColumnIndex = 0, m.Numero, _
                 If(sortColumnIndex = 1, m.ObtenerTipo, _
                     If(sortColumnIndex = 2, m.Observacion, _
-                        If(sortColumnIndex = 3, m.Importe, _
+                        If(sortColumnIndex = 3, (m.ObtenerImporte() * -1), _
                             If(sortColumnIndex = 4, m.Usuario.NombreUsuario, m.Fecha)
                         )
                     )
@@ -70,10 +75,10 @@ Public Class MovimientoController
                 .Numero = x.Numero,
                 .Tipo = x.ObtenerTipo(),
                 .Observacion = x.Observacion,
-                .Importe = "$" + x.Importe.ToString("0.00"),
+                .Importe = "$" + (x.ObtenerImporte() * -1).ToString("0.00"),
                 .Usuario = x.Usuario.NombreUsuario,
                 .Fecha = x.Fecha.ToString("dd/MM/yyyy"),
-                .Acciones = x.ObtenerTipo().ToString() + " " + x.Numero.ToString()
+                .Acciones = x.ObtenerTipoSinFormato().ToString() + " " + x.Numero.ToString()
             }) _
             .Skip(inicio) _
             .Take(cantidadPorPagina) _
@@ -81,6 +86,7 @@ Public Class MovimientoController
 
         'Se forma el json y se retorno por ajax
         Return Json(New With { _
+            Key .total = Math.Round(Total, 2).ToString("0.00"), _
             Key .draw = draw, _
             Key .recordsTotal = lista.Count.ToString, _
             Key .recordsFiltered = listaFiltrada.Count.ToString, _
@@ -88,11 +94,11 @@ Public Class MovimientoController
         }, JsonRequestBehavior.AllowGet)
     End Function
 
-    'Function GenerarPdf(ByVal tipo As String, ByVal numero As Integer, ByVal tipoComprobante As String) As ActionResult
-    '    Return New Rotativa.ActionAsPdf("Detalle", New With {.tipo = tipo, .numero = numero, .tipoComprobante = tipoComprobante})
-    'End Function
+    Function GenerarPdf(ByVal tipo As String, ByVal numero As Integer, ByVal tipoComprobante As String) As ActionResult
+        Return New Rotativa.ActionAsPdf("Detalles", New With {.tipo = tipo, .numero = numero, .tipoComprobante = tipoComprobante})
+    End Function
 
-    Function Detalle(ByVal tipo As String, ByVal numero As Integer, ByVal tipoComprobante As String) As ActionResult
+    Function Detalles(ByVal tipo As String, ByVal numero As Integer, ByVal tipoComprobante As String) As ActionResult
         Dim vMovimiento As Movimiento = Me.vBLL.Consultar(tipo, numero, tipoComprobante)
         Return View(vMovimiento)
     End Function

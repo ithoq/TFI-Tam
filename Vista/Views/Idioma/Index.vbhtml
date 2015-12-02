@@ -55,7 +55,7 @@ End Section
                         </td>
                         <td class="text-center">
                             @Code
-                            If User.IsInRole("EliminarResguardo") Then
+                            If User.IsInRole("EliminarIdioma") Then
                                 @<a class="btn btn-danger btn-xs" data-toggle="modal" href="#delete-confirmation-@currentItem.Id">Eliminar</a>
                                 @<div class="modal fade stick-up" id="delete-confirmation-@currentItem.Id" tabindex="-1" role="dialog" aria-hidden="true">
                                     <div class="modal-dialog modal-sm">

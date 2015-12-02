@@ -182,6 +182,7 @@ Public Class ProductoController
     <Autorizar()>
     <HttpPost()>
     Function Comentar(ByVal c As Comentario) As ActionResult
+        ModelState("Producto.Nombre").Errors.Clear()
         If ModelState.IsValid Then
             Me.vBLL.Comentar(c)
         End If

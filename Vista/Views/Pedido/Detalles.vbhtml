@@ -72,7 +72,7 @@ End Section
         If User.IsInRole("VerPedidos") Then
         @Html.ActionLink("Volver", "Index", Nothing, New With {.class = "btn btn-default btn-cons"})
         End If
-        If User.IsInRole("AnularPedido") Then
+        If User.IsInRole("AnularPedido") And Model.Estado = "Pendiente" Then
         @<button class="btn btn-primary btn-cons" data-target="#modalStickUpSmall" data-toggle="modal">Anular</button>
         End If
     End Code

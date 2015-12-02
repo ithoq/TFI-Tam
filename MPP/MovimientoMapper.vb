@@ -193,7 +193,6 @@ Public Class MovimientoMapper
                     p.Cartucho.Nombre = row2.Item("NombreCartucho")
                     p.Cartucho.Precio = row2.Item("PrecioCartucho")
                     p.Cartucho.Tipo = row2.Item("TipoCartucho")
-                    p.Valoracion = row2.Item("Valoracion")
                     dm.Producto = p
 
                     lista.Add(dm)

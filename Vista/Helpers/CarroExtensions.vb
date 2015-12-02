@@ -11,7 +11,7 @@ Public Module CarroExtensions
         Dim output As String = ""
         Dim badge As String = ""
         If ObtenerCarrito().ListaPedidos.Count > 0 Then
-            badge += "<span class='bubble' style='padding-left: 3px; padding-top: 1px; right: 0px;'>" + ObtenerCarrito().ListaPedidos.Count.ToString() + "</span>"
+            badge += "<span class='bubble' style='padding-left: 4px; padding-top: 0px; right: 0px;'>" + ObtenerCarrito().ListaPedidos.Count.ToString() + "</span>"
         End If
         output = output +
             "<li class='p-r-15 inline'>" + _

@@ -26,4 +26,14 @@ Public Class InformeMapper
         Return i
     End Function
 
+    Function ObtenerGanancias(ByVal desde As Date, ByVal hasta As Date) As Double
+        Dim parametros As New Hashtable
+        Dim ds As New DataSet
+
+        parametros.Add("@Desde", desde)
+        parametros.Add("@Hasta", hasta)
+        ds = vDatos.Leer("s_ObtenerGananciasInforme", parametros)
+        Return ds.Tables(0).Rows(0).Item(0)
+    End Function
+
 End Class

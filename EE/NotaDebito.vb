@@ -1,7 +1,7 @@
 ﻿Public Class NotaDebito
     Inherits Movimiento
 
-    Private vDireccion As Direccion
+    Private vDireccion As New Direccion
     Public Property Direccion() As Direccion
         Get
             Return vDireccion
@@ -18,4 +18,13 @@
     Public Overrides Function ObtenerTipo() As String
         Return "Nota de Débito " + Me.TipoComprobante
     End Function
+
+    Public Overrides Function ObtenerTipoSinFormato() As String
+        Return "NotaDebito " + Me.TipoComprobante
+    End Function
+
+    Public Overrides Function ObtenerSoloTipo() As String
+        Return "NotaDebito"
+    End Function
+
 End Class

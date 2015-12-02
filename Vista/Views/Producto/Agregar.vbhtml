@@ -43,6 +43,14 @@ End Section
     </script>
 End Section
 
+@Code
+    If TempData("error") IsNot Nothing Then
+        @<div class="alert alert-danger" role="alert">
+            <button class="close" data-dismiss="alert"></button>
+            <strong>Error: </strong>@TempData("error").ToString()
+        </div>
+    End If
+End Code
 <div class="panel panel-transparent ">
     <!-- Nav tabs -->
     <ul class="nav nav-tabs nav-tabs-fillup">

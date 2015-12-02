@@ -51,11 +51,11 @@ End Code
             <div class="col-xs-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4>De: <a href="#">Balian Bolsas</a></h4>
+                        <h4>De: <a href="#">Asahi</a></h4>
                     </div>
                     <div class="panel-body">
                         <p>
-                            Av. Caseros 3335, Capital Federal <br>
+                            La Pampa 5000, Capital Federal <br>
                             Responsable Inscripto <br>
                             XX-XXXXXXXX-X <br>
                         </p>

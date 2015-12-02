@@ -9,15 +9,24 @@ Public Class CartuchoBLL
     End Sub
 
     Public Function Crear(ByVal entidad As Cartucho) As Boolean
-        Return Me.vMapper.Crear(entidad)
+        If Me.vMapper.Crear(entidad) Then
+            Servicios.BitacoraServicio.Crear(EE.TipoEvento.Informacion, "Alta de Cartucho")
+        End If
+        Return True
     End Function
 
     Public Function Editar(ByVal entidad As Cartucho) As Boolean
-        Return Me.vMapper.Editar(entidad)
+        If Me.vMapper.Editar(entidad) Then
+            Servicios.BitacoraServicio.Crear(EE.TipoEvento.Informacion, "Edición de Cartucho")
+        End If
+        Return True
     End Function
 
     Public Function Eliminar(ByVal id As Integer) As Boolean
-        Return Me.vMapper.Eliminar(id)
+        If Me.vMapper.Eliminar(id) Then
+            Servicios.BitacoraServicio.Crear(EE.TipoEvento.Informacion, "Edición de Cartucho")
+        End If
+        Return True
     End Function
 
     Public Function Listar() As List(Of Cartucho)

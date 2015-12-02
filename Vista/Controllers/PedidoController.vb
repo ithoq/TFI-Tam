@@ -33,9 +33,10 @@ Public Class PedidoController
     <Autorizar(Roles:="AnularPedido")>
     Function Anular(ByVal id As Integer) As ActionResult
         Me.vBLL.Anular(id)
-        Return RedirectToAction("Detalle", New With {.id = id})
+        Return RedirectToAction("Detalles", New With {.id = id})
     End Function
 
+    <Autorizar()>
     Function Comprar() As ActionResult
         Dim model As New ComprarViewModel
         model.Pedido = Me.ObtenerCarrito()
@@ -44,6 +45,7 @@ Public Class PedidoController
         Return View(model)
     End Function
 
+    <Autorizar()>
     <HttpPost()>
     Function Comprar(ByVal model As ComprarViewModel) As ActionResult
         If model.ClienteCondicion IsNot Nothing Then
@@ -152,6 +154,10 @@ Public Class PedidoController
 
     Function Agregar(ByVal form As FormCollection) As ActionResult
         Dim detalle As New DetallePedido
+        If Integer.TryParse(form.Item("Cantidad"), detalle.Cantidad) = False Then
+            TempData("error") = "Debe ingresar un número entero en la cantidad"
+            Return RedirectToAction("Agregar", "Producto", New With {.id = form.Item("Producto_Id")})
+        End If
         Dim prod As Producto = Me.vProductoBLL.ConsutarPorId(form.Item("Producto_Id"))
         detalle.Cantidad = form.Item("Cantidad")
         detalle.Precio = prod.ObtenerPrecioConIva()

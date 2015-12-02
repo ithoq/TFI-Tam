@@ -42,8 +42,8 @@ End Section
         <table class="table table-hover" id="tablaPapeles">
             <thead>
                 <tr>
-                    <th>Modelo</th>
-                    <th>Marca</th>
+                    <th>Espesor</th>
+                    <th>Color</th>
                     <th>Nombre</th>
                     <th>Precio</th>
                     <th>Tipo</th>

@@ -18,7 +18,7 @@
             Next
             valor = valor / Me.ListaDetalles.Count
             If valor > 0 Then
-                Return TimeSpan.FromSeconds(Convert.ToInt16(valor / Me.ListaDetalles.Count))
+                Return TimeSpan.FromSeconds(Convert.ToInt32(valor / Me.ListaDetalles.Count))
             Else
                 Return TimeSpan.FromSeconds(0)
             End If

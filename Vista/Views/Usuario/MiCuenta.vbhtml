@@ -47,6 +47,7 @@ End Section
                         <th>Número</th>
                         <th>Observación</th>
                         <th>Importe</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -66,6 +67,9 @@ End Section
                                 <td>
                                     $@item.ObtenerImporte.ToString("0.00")
                                 </td>
+                                 <td class="text-center">
+                                     @Html.ActionLink("Exportar", "GenerarPdf", "Movimiento", New With {.tipo = item.ObtenerSoloTipo(), .numero = item.Numero.ToString(), .tipoComprobante = item.TipoComprobante}, New With {.class = "btn btn-primary btn-cons"})
+                                 </td>
                             </tr>
                             Next
                         End If

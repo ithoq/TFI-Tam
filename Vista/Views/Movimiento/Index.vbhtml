@@ -67,7 +67,8 @@ End Section
                             <th>Acciones</th>
                         </tr>
                     </thead>
-                </table>
+                </table>    
+                <h3 class="pull-right" id="TotalMovimientos"></h3>
             </div>
         </div>
     </div>
@@ -146,6 +147,11 @@ End Section
             };
 
             var table = $('#tablaMovimientos').DataTable(settings);
+            
+            table.on("xhr", function () {
+                var json = table.ajax.json();
+                $("#TotalMovimientos").html("Total: $" + json.total);
+            });
 
             $.fn.datepicker.dates['es'] = {
                 days: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],

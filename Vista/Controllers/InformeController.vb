@@ -13,4 +13,15 @@ Public Class InformeController
         Return View(Me.vBLL.ListarInformeTiempoRespuesta())
     End Function
 
+    Function ListadoInformeGanancias() As ActionResult
+        Return View()
+    End Function
+
+    Function ObtenerGananciasAjax() As ActionResult
+        Dim desdeDate As Date = Date.ParseExact(Request("desde"), "dd/MM/yyyy", Nothing)
+        Dim hastaDate As Date = Date.ParseExact(Request("hasta"), "dd/MM/yyyy", Nothing)
+        Dim vImporte As Double = Me.vBLL.ObtenerGanancias(desdeDate, hastaDate)
+        Return Json(vImporte, JsonRequestBehavior.AllowGet)
+    End Function
+
 End Class

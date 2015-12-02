@@ -25,7 +25,7 @@
                     @<br />
                     Next
                 @<br />
-                @<button type="submit" class="btn blue" id="btnResponderEncuesta" disabled>Votar</button>
+                @<button type="submit" class="btn btn-success" id="btnResponderEncuesta" disabled>Votar</button>
                 End Using
         </div>
     </div>

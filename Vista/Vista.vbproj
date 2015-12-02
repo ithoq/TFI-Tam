@@ -71,6 +71,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
+    <Reference Include="Rotativa">
+      <HintPath>..\packages\Rotativa.1.6.4\lib\net40\Rotativa.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -256,6 +259,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Browsers\qt.browser" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -1520,6 +1524,7 @@
     <Content Include="Pages\pages\js\pages.min.js" />
     <Content Include="Pages\pages\js\pages.social.js" />
     <Content Include="Pages\pages\js\pages.social.min.js" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
     <Content Include="Scripts\jquery.signalR-2.2.0.js" />
     <Content Include="Scripts\jquery.signalR-2.2.0.min.js" />
     <Content Include="Views\Usuario\Index.vbhtml" />
@@ -1601,6 +1606,7 @@
     <Content Include="Views\Informe\ListadoInformeTiempoRespuesta.vbhtml" />
     <Content Include="Views\Movimiento\Index.vbhtml" />
     <Content Include="Views\Movimiento\Detalles.vbhtml" />
+    <Content Include="Views\Informe\ListadoInformeGanancias.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
