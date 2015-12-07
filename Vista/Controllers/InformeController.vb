@@ -20,8 +20,10 @@ Public Class InformeController
     Function ObtenerGananciasAjax() As ActionResult
         Dim desdeDate As Date = Date.ParseExact(Request("desde"), "dd/MM/yyyy", Nothing)
         Dim hastaDate As Date = Date.ParseExact(Request("hasta"), "dd/MM/yyyy", Nothing)
-        Dim vImporte As Double = Me.vBLL.ObtenerGanancias(desdeDate, hastaDate)
-        Return Json(vImporte, JsonRequestBehavior.AllowGet)
+        Dim vLista As List(Of InformeGanancias) = Me.vBLL.ObtenerGanancias(desdeDate, hastaDate)
+        Dim vListaPadre As New List(Of Object)
+        vListaPadre.Add(vLista)
+        Return Json(vListaPadre.ToArray(), JsonRequestBehavior.AllowGet)
     End Function
 
 End Class
