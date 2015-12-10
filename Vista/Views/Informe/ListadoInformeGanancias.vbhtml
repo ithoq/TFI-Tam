@@ -11,7 +11,7 @@ end section
 
 @section stylesheets
     <link href="~/Pages/assets/plugins/bootstrap-datepicker/css/datepicker3.css" rel="stylesheet" type="text/css" media="screen">
-    <link href="~/Pages/assets/plugins/rickshaw/rickshaw.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Pages/assets/plugins/jquery-morris/morris.css" rel="stylesheet" type="text/css" />
 End Section
 
 <div class="panel panel-transparent">
@@ -41,7 +41,10 @@ End Section
         </div>
         <div class="row">
             <div class="col-md-12">
-                <div id="rickshaw-stacked-bars" class="rickshaw-chart"></div>
+                <div id="graficoGanancias"></div>
+            </div>
+            <div class="col-md-12">
+                <h3 id="totalGanancias"></h3>
             </div>
         </div>
     </div>
@@ -49,8 +52,8 @@ End Section
 
 @Section javascripts_vendor
     <script src="~/Pages/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js" type="text/javascript"></script>
-    <script src="~/Pages/assets/plugins/nvd3/lib/d3.v3.js" type="text/javascript"></script>
-    <script src="~/Pages/assets/plugins/rickshaw/rickshaw.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.2/raphael-min.js"></script>
+    <script src="~/Pages/assets/plugins/jquery-morris/morris.js"></script>
 End Section
 
 @Section javascripts_custom
@@ -82,29 +85,23 @@ End Section
                     url: '@Url.Action("ObtenerGananciasAjax")',
                     type: 'post',
                     success: function (data) {
-                        var graph = new Rickshaw.Graph({
-                            renderer: 'bar',
-                            element: document.querySelector("#rickshaw-stacked-bars"),
-                            height: 500,
-                            padding: {
-                                top: 0.5
-                            },
-                            series: [{
-                                data: data[0],
-                                color: $.Pages.getColor('complete-light'), // Get Pages contextual color
-                                name: "Ventas"
-                            }]
-
-                        });
-
-                        var hoverDetail = new Rickshaw.Graph.HoverDetail({
-                            graph: graph,
-                            formatter: function (series, x, y) {
-                                var date = '<span class="date">' + new Date(x * 1000).toUTCString() + '</span>';
-                                var swatch = '<span class="detail_swatch" style="background-color: ' + series.color + '"></span>';
-                                var content = swatch + series.name + ": " + parseInt(y) + '<br>' + date;
-                                return content;
-                            }
+                        $("#graficoGanancias").html("");
+                        var total = 0;
+                        for (var index in data) {
+                            var obj = data[index];
+                            total += parseFloat(obj.y.replace(",", "."));
+                        }
+                        $("#totalGanancias").html("Total General: "+total.toFixed(2));
+                        Morris.Bar({
+                            element: 'graficoGanancias',
+                            data: data,
+                            // The name of the data record attribute that contains x-values.
+                            xkey: 'x',
+                            // A list of names of data record attributes that contain y-values.
+                            ykeys: ['y'],
+                            // Labels for the ykeys -- will be displayed when you hover over the
+                            // chart.
+                            labels: ['Importe']
                         });
                     }
                 });

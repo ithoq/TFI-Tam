@@ -21,9 +21,7 @@ Public Class InformeController
         Dim desdeDate As Date = Date.ParseExact(Request("desde"), "dd/MM/yyyy", Nothing)
         Dim hastaDate As Date = Date.ParseExact(Request("hasta"), "dd/MM/yyyy", Nothing)
         Dim vLista As List(Of InformeGanancias) = Me.vBLL.ObtenerGanancias(desdeDate, hastaDate)
-        Dim vListaPadre As New List(Of Object)
-        vListaPadre.Add(vLista)
-        Return Json(vListaPadre.ToArray(), JsonRequestBehavior.AllowGet)
+        Return Json(vLista.ToArray(), JsonRequestBehavior.AllowGet)
     End Function
 
 End Class

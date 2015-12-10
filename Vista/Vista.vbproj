@@ -1180,6 +1180,8 @@
     <Content Include="Pages\assets\plugins\jquery-metrojs\MetroJs.js" />
     <Content Include="Pages\assets\plugins\jquery-metrojs\MetroJs.min.css" />
     <Content Include="Pages\assets\plugins\jquery-metrojs\MetroJs.min.js" />
+    <Content Include="Pages\assets\plugins\jquery-morris\morris.css" />
+    <Content Include="Pages\assets\plugins\jquery-morris\morris.js" />
     <Content Include="Pages\assets\plugins\jquery-mousewheel\jquery.mousewheel.min.js" />
     <Content Include="Pages\assets\plugins\jquery-nestable\jquery.nestable.css" />
     <Content Include="Pages\assets\plugins\jquery-nestable\jquery.nestable.js" />
@@ -1607,6 +1609,7 @@
     <Content Include="Views\Movimiento\Index.vbhtml" />
     <Content Include="Views\Movimiento\Detalles.vbhtml" />
     <Content Include="Views\Informe\ListadoInformeGanancias.vbhtml" />
+    <Content Include="Views\Encuesta\Resultado.vbhtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
