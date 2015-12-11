@@ -10,15 +10,24 @@ Public Class EncuestaBLL
     End Sub
 
     Public Function Crear(ByVal e As Encuesta) As Boolean
-        Return vMapper.Crear(e)
+        If Me.vMapper.Crear(e) Then
+            BitacoraServicio.Crear(TipoEvento.Informacion, "Alta de Encuesta")
+        End If
+        Return True
     End Function
 
     Public Function Editar(ByVal e As Encuesta) As Boolean
-        Return vMapper.Editar(e)
+        If Me.vMapper.Editar(e) Then
+            BitacoraServicio.Crear(TipoEvento.Informacion, "Edición de Encuesta")
+        End If
+        Return True
     End Function
 
     Public Function Eliminar(ByVal id As Integer) As Boolean
-        Return vMapper.Eliminar(id)
+        If Me.vMapper.Eliminar(id) Then
+            BitacoraServicio.Crear(TipoEvento.Informacion, "Baja de Encuesta")
+        End If
+        Return True
     End Function
 
     Public Function Listar() As List(Of Encuesta)

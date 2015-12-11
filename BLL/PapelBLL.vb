@@ -9,15 +9,24 @@ Public Class PapelBLL
     End Sub
 
     Public Function Crear(ByVal entidad As Papel) As Boolean
-        Return Me.vMapper.Crear(entidad)
+        If Me.vMapper.Crear(entidad) Then
+            Servicios.BitacoraServicio.Crear(TipoEvento.Informacion, "Alta de Papel")
+        End If
+        Return True
     End Function
 
     Public Function Editar(ByVal entidad As Papel) As Boolean
-        Return Me.vMapper.Editar(entidad)
+        If Me.vMapper.Editar(entidad) Then
+            Servicios.BitacoraServicio.Crear(TipoEvento.Informacion, "Edición de Papel")
+        End If
+        Return True
     End Function
 
     Public Function Eliminar(ByVal id As Integer) As Boolean
-        Return Me.vMapper.Eliminar(id)
+        If Me.vMapper.Eliminar(id) Then
+            Servicios.BitacoraServicio.Crear(TipoEvento.Informacion, "Baja de Papel")
+        End If
+        Return True
     End Function
 
     Public Function Listar() As List(Of Papel)

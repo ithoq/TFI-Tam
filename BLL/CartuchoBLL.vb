@@ -24,7 +24,7 @@ Public Class CartuchoBLL
 
     Public Function Eliminar(ByVal id As Integer) As Boolean
         If Me.vMapper.Eliminar(id) Then
-            Servicios.BitacoraServicio.Crear(EE.TipoEvento.Informacion, "Edición de Cartucho")
+            Servicios.BitacoraServicio.Crear(EE.TipoEvento.Informacion, "Baja de Cartucho")
         End If
         Return True
     End Function
