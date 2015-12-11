@@ -6,14 +6,14 @@ Public Class MailServicio
             Dim Mail As New MailMessage
             Mail.Subject = asunto
             Mail.To.Add(para)
-            Mail.From = New MailAddress("tamiviola@gmail.com")
+            Mail.From = New MailAddress("asahitarjeteria@gmail.com")
             Mail.Body = contenido
             Mail.IsBodyHtml = True
 
             Dim SMTP As New SmtpClient("smtp.gmail.com")
             SMTP.EnableSsl = True
             SMTP.UseDefaultCredentials = False
-            SMTP.Credentials = New System.Net.NetworkCredential("tamiviola@gmail.com", "tamnoe89")
+            SMTP.Credentials = New System.Net.NetworkCredential("asahitarjeteria@gmail.com", "asahi123456")
             SMTP.Port = "587"
             SMTP.Timeout = 10000
             SMTP.Send(Mail)

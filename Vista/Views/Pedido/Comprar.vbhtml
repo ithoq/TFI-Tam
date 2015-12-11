@@ -87,6 +87,11 @@ End Section
 
             $("#ClienteCondicion").trigger("change");
             $("#PagoConNC").trigger("change");
+
+            var saldoAFavor = $("#SaldoAFavor").val();
+            if (saldoAFavor = "0") {
+                $("#campoPagoNC").hide();
+            }
         });
     </script>
 End Section
@@ -184,7 +189,7 @@ End Section
                             </div>
                         </div>
                         <div class="panel-body">
-                            <div class="row">
+                            <div class="row" id="campoPagoNC">
                                 <div class="col-md-6 col-sm-12">
                                     <div class="form-group form-group-default m-t-20 @(If(Html.ViewData.ModelState.IsValidField(Convert.ToString(Html.IdFor(Function(model) model.PagoConNC))), Nothing, "has-error"))">
                                         @Html.CheckBoxFor(Function(model) model.PagoConNC) Pagar con notas de crédito?
