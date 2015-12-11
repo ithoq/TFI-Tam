@@ -89,7 +89,7 @@ End Section
             $("#PagoConNC").trigger("change");
 
             var saldoAFavor = $("#SaldoAFavor").val();
-            if (saldoAFavor = "0") {
+            if (saldoAFavor == "0") {
                 $("#campoPagoNC").hide();
             }
         });
